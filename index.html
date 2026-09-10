@@ -109,7 +109,380 @@
 
     <!-- Main Content -->
     <main style="flex:1;overflow-y:auto;background:#FFF7ED;position:relative;">
-      <!-- TELAS -->
+      <section data-tela="vitrine-inicial" class="hidden">
+  <div class="pb-24">
+    <!-- Header da tela -->
+    <div class="px-5 pt-6 pb-4">
+      <div class="flex items-center justify-between mb-1">
+        <div>
+          <p class="text-sm text-marca-700 font-medium">Bem-vindo de volta</p>
+          <h1 class="text-2xl font-display font-bold text-marca-900 leading-tight">Vitrine</h1>
+        </div>
+        <button onclick="mostrarTela('meus-pedidos')" class="relative w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-marca-200 shadow-sm active:scale-95 transition-all">
+          <svg class="w-5 h-5 text-marca-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/></svg>
+          <span class="absolute -top-0.5 -right-0.5 w-4.5 h-4.5 bg-accent rounded-full text-[10px] font-bold text-white flex items-center justify-center">3</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Barra de pesquisa -->
+    <div class="px-5 mb-5">
+      <div class="relative">
+        <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-marca-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+        <input id="vitrine_inicial_busca" type="text" placeholder="Buscar e-books e cursos" oninput="vitrine_inicial_filtrar(this.value)" class="w-full pl-11 pr-10 py-3 bg-white border border-marca-200 rounded-xl text-sm text-marca-900 placeholder:text-marca-400 focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent shadow-sm transition-all">
+        <button onclick="vitrine_inicial_limparBusca()" id="vitrine_inicial_btn_limpar" class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center rounded-full bg-marca-200 text-marca-700 hover:bg-marca-300 transition-colors">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Carrossel de banners -->
+    <div class="px-5 mb-6">
+      <div class="relative overflow-hidden rounded-2xl shadow-lg" style="height:180px">
+        <div id="vitrine_inicial_carrossel" class="flex transition-transform duration-500 ease-in-out h-full" style="width:100%">
+        </div>
+        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5" id="vitrine_inicial_dots"></div>
+      </div>
+    </div>
+
+    <!-- Categorias -->
+    <div class="px-5 mb-6">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-base font-display font-bold text-marca-900">Categorias</h2>
+      </div>
+      <div class="flex gap-3 overflow-x-auto pb-2 -mx-5 px-5 scrollbar-hide" style="scrollbar-width:none">
+        <button onclick="vitrine_inicial_filtrarCategoria('todos')" class="vitrine-inicial_cat-btn flex-shrink-0 flex flex-col items-center gap-2 w-16" data-cat="todos">
+          <div class="w-14 h-14 rounded-xl bg-marca-800 flex items-center justify-center shadow-md active:scale-95 transition-transform">
+            <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/></svg>
+          </div>
+          <span class="text-xs font-medium text-marca-700">Todos</span>
+        </button>
+        <button onclick="vitrine_inicial_filtrarCategoria('mentalidade')" class="vitrine-inicial_cat-btn flex-shrink-0 flex flex-col items-center gap-2 w-16" data-cat="mentalidade">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-marca-600 to-marca-800 flex items-center justify-center shadow-md active:scale-95 transition-transform">
+            <svg class="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"/></svg>
+          </div>
+          <span class="text-xs font-medium text-marca-700">Mentalidade</span>
+        </button>
+        <button onclick="vitrine_inicial_filtrarCategoria('habitos')" class="vitrine-inicial_cat-btn flex-shrink-0 flex flex-col items-center gap-2 w-16" data-cat="habitos">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-marca-600 to-marca-800 flex items-center justify-center shadow-md active:scale-95 transition-transform">
+            <svg class="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"/></svg>
+          </div>
+          <span class="text-xs font-medium text-marca-700">Hábitos</span>
+        </button>
+        <button onclick="vitrine_inicial_filtrarCategoria('produtividade')" class="vitrine-inicial_cat-btn flex-shrink-0 flex flex-col items-center gap-2 w-16" data-cat="produtividade">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-marca-600 to-marca-800 flex items-center justify-center shadow-md active:scale-95 transition-transform">
+            <svg class="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+          </div>
+          <span class="text-xs font-medium text-marca-700">Produtividade</span>
+        </button>
+        <button onclick="vitrine_inicial_filtrarCategoria('financas')" class="vitrine-inicial_cat-btn flex-shrink-0 flex flex-col items-center gap-2 w-16" data-cat="financas">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-marca-600 to-marca-800 flex items-center justify-center shadow-md active:scale-95 transition-transform">
+            <svg class="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <span class="text-xs font-medium text-marca-700">Finanças</span>
+        </button>
+        <button onclick="vitrine_inicial_filtrarCategoria('lideranca')" class="vitrine-inicial_cat-btn flex-shrink-0 flex flex-col items-center gap-2 w-16" data-cat="lideranca">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-marca-600 to-marca-800 flex items-center justify-center shadow-md active:scale-95 transition-transform">
+            <svg class="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-3.83-2.477m0 0A9.111 9.111 0 0112 17.25a9.111 9.111 0 01-6.366-1.747 4.125 4.125 0 00-3.83 2.477 9.337 9.337 0 004.121.952M15 19.128v.003M12 12.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z"/></svg>
+          </div>
+          <span class="text-xs font-medium text-marca-700">Liderança</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Destaques da semana -->
+    <div class="px-5 mb-6">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-base font-display font-bold text-marca-900">🔥 Destaques da semana</h2>
+        <button onclick="mostrarTela('catalogo-completo')" class="text-xs font-semibold text-accent hover:text-marca-700 transition-colors">Ver todos</button>
+      </div>
+      <div id="vitrine_inicial_grid_produtos" class="grid grid-cols-2 gap-3">
+      </div>
+      <div id="vitrine_inicial_vazio" class="hidden text-center py-10">
+        <svg class="w-12 h-12 text-marca-300 mx-auto mb-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h10.5a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0016.5 4.5h-10.5A2.25 2.25 0 004.5 6.75v9.75A2.25 2.25 0 004.5 18.75z"/></svg>
+        <p class="text-sm text-marca-500">Nenhum produto encontrado</p>
+        <button onclick="vitrine_inicial_limparBusca()" class="mt-2 text-sm font-semibold text-accent">Limpar busca</button>
+      </div>
+    </div>
+
+    <!-- Avaliações em destaque -->
+    <div class="px-5 mb-6">
+      <h2 class="text-base font-display font-bold text-marca-900 mb-3">⭐ O que dizem nossos alunos</h2>
+      <div class="bg-white rounded-2xl border border-marca-200 p-4 shadow-sm">
+        <div class="flex gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-marca-600 to-marca-800 flex items-center justify-center flex-shrink-0">
+            <span class="text-sm font-bold text-yellow-300">MC</span>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-0.5">
+              <span class="text-sm font-semibold text-marca-900">Marina Costa</span>
+              <span class="text-xs text-marca-400">2 dias atrás</span>
+            </div>
+            <div class="flex gap-0.5 mb-1.5">
+              <svg class="w-3.5 h-3.5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-3.5 h-3.5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-3.5 h-3.5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-3.5 h-3.5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-3.5 h-3.5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-sm text-marca-600 leading-relaxed">"O e-book de hábitos mudou completamente minha rotina. Em 30 dias já estava aplicando tudo sem esforço. Material excepcional!"</p>
+          </div>
+        </div>
+        <div class="flex gap-3 mt-4 pt-3 border-t border-marca-100">
+          <div class="flex gap-3 flex-1">
+            <div class="flex gap-3">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-marca-500 to-marca-700 flex items-center justify-center">
+                <span class="text-xs font-bold text-yellow-200">RS</span>
+              </div>
+              <div>
+                <span class="text-xs font-semibold text-marca-900 block">Rafael Silva</span>
+                <div class="flex gap-0.5">
+                  <svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3 h-3 text-marca-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Selo de confiança -->
+    <div class="px-5 mb-6">
+      <div class="bg-gradient-to-r from-marca-800 to-marca-900 rounded-2xl p-4 flex items-center gap-4 shadow-lg">
+        <div class="w-12 h-12 bg-yellow-400 rounded-xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-6 h-6 text-marca-900" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+        </div>
+        <div>
+          <p class="text-sm font-bold text-yellow-400">Garantia de 7 dias</p>
+          <p class="text-xs text-marca-200 mt-0.5">Não gostou? Devolvemos 100% do seu investimento. Sem burocracia.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    var produtos = [
+      { id: 1, titulo: "Sistema de Metas Diárias", categoria: "habitos", preco: 97.00, precoAntigo: 197.00, badge: "-50%", badgeCor: "bg-red-500 text-white", descricao: "Transforme suas metas em ações diárias com um método simples e eficaz. Aprenda a criar um sistema que funciona mesmo quando a motivação acaba.", autor: "Dr. Ricardo Mendes", avaliacao: 4.8, alunos: 3420, capa: "from-marca-700 to-marca-900", icone: "🎯" },
+      { id: 2, titulo: "Mentalidade de Alta Performance", categoria: "mentalidade", preco: 147.00, precoAntigo: 297.00, badge: "LANÇAMENTO", badgeCor: "bg-accent text-marca-900", descricao: "Reprograme sua mente para o sucesso. Técnicas baseadas em neurociência para eliminar crenças limitantes e desenvolver uma mentalidade inabalável.", autor: "Dra. Ana Beatriz", avaliacao: 4.9, alunos: 5180, capa: "from-marca-800 to-marca-950", icone: "🧠" },
+      { id: 3, titulo: "Produtividade X: O Método", categoria: "produtividade", preco: 127.00, precoAntigo: 247.00, badge: "MAIS VENDIDO", badgeCor: "bg-marca-900 text-yellow-400", descricao: "O sistema que mais de 5.000 pessoas usam para organizar o dia e fazer mais em menos tempo, sem burnout.", autor: "Carlos Eduardo", avaliacao: 4.7, alunos: 8920, capa: "from-marca-600 to-marca-800", icone: "⚡" },
+      { id: 4, titulo: "Inteligência Emocional Prática", categoria: "mentalidade", preco: 87.00, precoAntigo: 167.00, badge: "-48%", badgeCor: "bg-red-500 text-white", descricao: "Aprenda a gerenciar emoções, reduzir o estresse e melhorar seus relacionamentos com exercícios práticos.", autor: "Dra. Patrícia Lopes", avaliacao: 4.6, alunos: 2750, capa: "from-marca-700 to-marca-900", icone: "💡" },
+      { id: 5, titulo: "Finanças Pessoais do Zero", categoria: "financas", preco: 197.00, precoAntigo: 397.00, badge: "BESTSELLER", badgeCor: "bg-accent text-marca-900", descricao: "Sistema completo de organização financeira para sair das dívidas e construir patrimônio mesmo ganhando pouco.", autor: "Marcos Vinícius", avaliacao: 4.9, alunos: 12400, capa: "from-marca-800 to-marca-950", icone: "💰" },
+      { id: 6, titulo: "Liderança Consciente", categoria: "lideranca", preco: 177.00, precoAntigo: 347.00, badge: "-49%", badgeCor: "bg-red-500 text-white", descricao: "Lidere equipes com empatia e resultados. Desenvolva habilidades de comunicação e gestão de pessoas.", autor: "Fernanda Almeida", avaliacao: 4.8, alunos: 1890, capa: "from-marca-600 to-marca-800", icone: "🌟" },
+      { id: 7, titulo: "Hábitos Atômicos Aplicados", categoria: "habitos", preco: 67.00, precoAntigo: 137.00, badge: "-51%", badgeCor: "bg-red-500 text-white", descricao: "Baseado nas melhores técnicas de formação de hábitos. Aprenda a mudar comportamentos de forma duradoura.", autor: "Dr. Ricardo Mendes", avaliacao: 4.7, alunos: 6300, capa: "from-marca-700 to-marca-900", icone: "🔄" },
+      { id: 8, titulo: "Oratória e Comunicação", categoria: "lideranca", preco: 157.00, precoAntigo: 307.00, badge: "LANÇAMENTO", badgeCor: "bg-accent text-marca-900", descricao: "Fale com confiança em qualquer situação. Técnicas de comunicação eficaz para reuniões, palestras e negociações.", autor: "Fernanda Almeida", avaliacao: 4.5, alunos: 2100, capa: "from-marca-800 to-marca-950", icone: "🎤" },
+    ];
+
+    var banners = [
+      { titulo: "Domine seus hábitos", subtitulo: "Transforme sua rotina com o método comprovado por +5.000 alunos", cor: "from-marca-800 to-marca-950", btn: "Conhecer agora", link: "catalogo-completo" },
+      { titulo: "Mentalidade Blindada", subtitulo: "E-book exclusivo — 50% OFF por tempo limitado", cor: "from-marca-900 to-black", btn: "Aproveitar", link: "catalogo-completo" },
+      { titulo: "Comece sua transformação", subtitulo: "Roteiro em 7 passos para sair do planejamento e ir para ação", cor: "from-marca-700 to-marca-900", btn: "Baixar grátis", link: "catalogo-completo" },
+    ];
+
+    var carrosselIdx = 0;
+    var carrosselTimer;
+    var categoriaAtiva = "todos";
+
+    function vitrine_inicial_iniciarCarrossel() {
+      var container = document.getElementById("vitrine_inicial_carrossel");
+      var dotsContainer = document.getElementById("vitrine_inicial_dots");
+      container.innerHTML = banners.map(function(b, i) {
+        return '<div class="w-full flex-shrink-0 h-full bg-gradient-to-br ' + b.cor + ' flex flex-col justify-center px-6 relative overflow-hidden">' +
+          '<div class="absolute top-4 right-4 w-24 h-24 bg-yellow-400 opacity-10 rounded-full -translate-y-1/2 translate-x-1/4"></div>' +
+          '<div class="absolute bottom-0 right-6 w-32 h-32 bg-accent opacity-10 rounded-full translate-y-1/2"></div>' +
+          '<p class="text-xs font-semibold text-yellow-400 mb-1.5 uppercase tracking-wider">' + b.subtitulo + '</p>' +
+          '<h3 class="text-xl font-display font-bold text-white mb-4 leading-tight">' + b.titulo + '</h3>' +
+          '<button onclick="mostrarTela(\'' + b.link + '\')" class="bg-accent text-marca-900 font-bold text-sm px-5 py-2.5 rounded-xl w-fit active:scale-95 transition-transform shadow-lg hover:shadow-xl">' + b.btn + '</button>' +
+        '</div>';
+      }).join("");
+      dotsContainer.innerHTML = banners.map(function(_, i) {
+        return '<button onclick="vitrine_inicial_irParaSlide(' + i + ')" class="carrossel-dot w-2 h-2 rounded-full transition-all duration-300 ' + (i === 0 ? 'bg-yellow-400 w-5' : 'bg-white/50') + '"></button>';
+      }).join("");
+      vitrine_inicial_avancarCarrossel();
+    }
+
+    function vitrine_inicial_avancarCarrossel() {
+      clearInterval(carrosselTimer);
+      carrosselTimer = setInterval(function() {
+        carrosselIdx = (carrosselIdx + 1) % banners.length;
+        vitrine_inicial_irParaSlide(carrosselIdx);
+      }, 4000);
+    }
+
+    function vitrine_inicial_irParaSlide(idx) {
+      carrosselIdx = idx;
+      var container = document.getElementById("vitrine_inicial_carrossel");
+      container.style.transform = "translateX(-" + (idx * 100) + "%)";
+      var dots = document.querySelectorAll(".carrossel-dot");
+      dots.forEach(function(d, i) {
+        if (i === idx) { d.className = "carrossel-dot w-5 h-2 rounded-full bg-yellow-400 transition-all duration-300"; }
+        else { d.className = "carrossel-dot w-2 h-2 rounded-full bg-white/50 transition-all duration-300"; }
+      });
+    }
+
+    function vitrine_inicial_capaSVG(cor, icone) {
+      return '<div class="w-full h-28 bg-gradient-to-br ' + cor + ' flex items-center justify-center relative overflow-hidden"><div class="absolute inset-0 opacity-10" style="background-image:radial-gradient(circle at 30% 40%, white 1px, transparent 1px); background-size: 16px 16px;"></div><span class="text-4xl relative z-10">' + icone + '</span></div>';
+    }
+
+    function vitrine_inicial_renderizar(lista) {
+      var grid = document.getElementById("vitrine_inicial_grid_produtos");
+      var vazio = document.getElementById("vitrine_inicial_vazio");
+      if (lista.length === 0) {
+        grid.innerHTML = "";
+        vazio.classList.remove("hidden");
+        return;
+      }
+      vazio.classList.add("hidden");
+      grid.innerHTML = lista.map(function(p) {
+        return '<div class="bg-white rounded-2xl border border-marca-200 shadow-sm overflow-hidden card cursor-pointer active:scale-[0.97] transition-all duration-200 hover:shadow-md" onclick="abrirModal(vitrine_inicial_modalProduto(' + p.id + '), \'' + p.titulo + '\')">' +
+          '<div class="relative">' + vitrine_inicial_capaSVG(p.capa, p.icone) +
+          '<span class="badge absolute top-2 left-2 px-2.5 py-1 rounded-lg text-[10px] font-bold ' + p.badgeCor + '">' + p.badge + '</span>' +
+          '</div>' +
+          '<div class="p-3">' +
+            '<h3 class="text-sm font-semibold text-marca-900 leading-tight mb-1 line-clamp-2">' + p.titulo + '</h3>' +
+            '<p class="text-[11px] text-marca-500 mb-2">' + p.autor + '</p>' +
+            '<div class="flex items-center gap-1 mb-2">' +
+              '<svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>' +
+              '<span class="text-[11px] font-medium text-marca-700">' + p.avaliacao + '</span>' +
+              '<span class="text-[11px] text-marca-400">(' + p.alunos.toLocaleString("pt-BR") + ')</span>' +
+            '</div>' +
+            '<div class="flex items-baseline gap-2">' +
+              '<span class="text-base font-bold text-marca-900">' + brl(p.preco) + '</span>' +
+              '<span class="text-xs text-marca-400 line-through">' + brl(p.precoAntigo) + '</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      }).join("");
+    }
+
+    function vitrine_inicial_modalProduto(id) {
+      var p = produtos.find(function(x) { return x.id === id; });
+      if (!p) return "";
+      return '<div class="p-5">' +
+        '<div class="rounded-xl overflow-hidden mb-4 shadow-md">' + vitrine_inicial_capaSVG(p.capa, p.icone) + '</div>' +
+        '<span class="badge inline-block px-3 py-1 rounded-lg text-xs font-bold mb-2 ' + p.badgeCor + '">' + p.badge + '</span>' +
+        '<h3 class="text-lg font-display font-bold text-marca-900 mb-1">' + p.titulo + '</h3>' +
+        '<p class="text-sm text-marca-500 mb-1">por <span class="font-medium text-marca-700">' + p.autor + '</span></p>' +
+        '<div class="flex items-center gap-1 mb-3">' + Array(5).fill(0).map(function(_, i) {
+          return '<svg class="w-4 h-4 ' + (i < Math.floor(p.avaliacao) ? 'text-yellow-500' : 'text-marca-200') + '" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
+        }).join("") + '<span class="text-xs text-marca-500 ml-1">' + p.avaliacao + ' (' + p.alunos.toLocaleString("pt-BR") + ' alunos)</span></div>' +
+        '<p class="text-sm text-marca-600 leading-relaxed mb-4">' + p.descricao + '</p>' +
+        '<div class="flex items-baseline gap-3 mb-5">' +
+          '<span class="text-2xl font-bold text-marca-900">' + brl(p.preco) + '</span>' +
+          '<span class="text-sm text-marca-400 line-through">' + brl(p.precoAntigo) + '</span>' +
+          '<span class="text-xs font-bold text-red-500 bg-red-50 px-2 py-0.5 rounded-md">' + p.badge + '</span>' +
+        '</div>' +
+        '<div class="flex gap-2">' +
+          '<button onclick="vitrine_inicial_adicionarCarrinho(' + p.id + ')" class="flex-1 btn bg-accent text-marca-900 font-bold py-3 px-4 rounded-xl active:scale-95 transition-all shadow-md text-sm">Adicionar ao Carrinho</button>' +
+          '<button onclick="vitrine_inicial_comprarAgora(' + p.id + ')" class="flex-1 btn bg-marca-800 text-white font-bold py-3 px-4 rounded-xl active:scale-95 transition-all shadow-md text-sm">Comprar Agora</button>' +
+        '</div>' +
+        '<button onclick="fecharModal()" class="w-full mt-3 py-2 text-sm text-marca-500 hover:text-marca-700 transition-colors">Fechar</button>' +
+      '</div>';
+    }
+
+    function vitrine_inicial_adicionarCarrinho(id) {
+      var p = produtos.find(function(x) { return x.id === id; });
+      if (p) {
+        var carrinho = JSON.parse(localStorage.getItem("bluecircuit_carrinho") || "[]");
+        var existente = carrinho.find(function(c) { return c.id === id; });
+        if (existente) { existente.qtd += 1; }
+        else { carrinho.push({ id: p.id, titulo: p.titulo, preco: p.preco, qtd: 1 }); }
+        localStorage.setItem("bluecircuit_carrinho", JSON.stringify(carrinho));
+        fecharModal();
+        toast("'" + p.titulo + "' adicionado ao carrinho!", "ok");
+        vitrine_inicial_atualizarCarrinho();
+      }
+    }
+
+    function vitrine_inicial_comprarAgora(id) {
+      var p = produtos.find(function(x) { return x.id === id; });
+      if (p) {
+        vitrine_inicial_adicionarCarrinho(id);
+        setTimeout(function() { mostrarTela("meu-carrinho"); }, 300);
+      }
+    }
+
+    function vitrine_inicial_filtrarCategoria(cat) {
+      categoriaAtiva = cat;
+      document.querySelectorAll(".vitrine-inicial_cat-btn").forEach(function(btn) {
+        var b = btn.querySelector("div");
+        if (btn.dataset.cat === cat) {
+          btn.classList.add("ring-2", "ring-accent", "ring-offset-1", "rounded-xl");
+          b.classList.add("ring-2", "ring-accent");
+          b.classList.remove("active:scale-95");
+        } else {
+          btn.classList.remove("ring-2", "ring-accent", "ring-offset-1", "rounded-xl");
+          b.classList.remove("ring-2", "ring-accent");
+          b.classList.add("active:scale-95");
+        }
+      });
+      var termo = document.getElementById("vitrine_inicial_busca").value.trim().toLowerCase();
+      vitrine_inicial_filtrar(termo);
+    }
+
+    function vitrine_inicial_filtrar(termo) {
+      termo = termo.toLowerCase().trim();
+      var btnLimpar = document.getElementById("vitrine_inicial_btn_limpar");
+      if (termo) { btnLimpar.classList.remove("hidden"); btnLimpar.classList.add("flex"); }
+      else { btnLimpar.classList.add("hidden"); btnLimpar.classList.remove("flex"); }
+      var lista = produtos.filter(function(p) {
+        var matchCat = categoriaAtiva === "todos" || p.categoria === categoriaAtiva;
+        var matchBusca = !termo || p.titulo.toLowerCase().includes(termo) || p.autor.toLowerCase().includes(termo) || p.categoria.toLowerCase().includes(termo) || p.descricao.toLowerCase().includes(termo);
+        return matchCat && matchBusca;
+      });
+      vitrine_inicial_renderizar(lista);
+    }
+
+    function vitrine_inicial_limparBusca() {
+      var inp = document.getElementById("vitrine_inicial_busca");
+      inp.value = "";
+      vitrine_inicial_filtrar("");
+      inp.focus();
+    }
+
+    function vitrine_inicial_atualizarCarrinho() {
+      var carrinho = JSON.parse(localStorage.getItem("bluecircuit_carrinho") || "[]");
+      var total = carrinho.reduce(function(s, c) { return s + c.qtd; }, 0);
+      var badges = document.querySelectorAll(".nav-carrinho-badge");
+      badges.forEach(function(b) {
+        b.textContent = total;
+        b.style.display = total > 0 ? "flex" : "none";
+      });
+    }
+
+    // Ícone SVG para usar no carrossel
+    window.vitrine_inicial = {
+      iniciarCarrossel: vitrine_inicial_iniciarCarrossel,
+      filtrar: vitrine_inicial_filtrar,
+      filtrarCategoria: vitrine_inicial_filtrarCategoria,
+      limparBusca: vitrine_inicial_limparBusca,
+      adicionarCarrinho: vitrine_inicial_adicionarCarrinho,
+      comprarAgora: vitrine_inicial_comprarAgora,
+      atualizarCarrinho: vitrine_inicial_atualizarCarrinho,
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", function() {
+        vitrine_inicial_iniciarCarrossel();
+        vitrine_inicial_renderizar(produtos);
+        vitrine_inicial_filtrarCategoria("todos");
+        vitrine_inicial_atualizarCarrinho();
+      });
+    } else {
+      vitrine_inicial_iniciarCarrossel();
+      vitrine_inicial_renderizar(produtos);
+      vitrine_inicial_filtrarCategoria("todos");
+      vitrine_inicial_atualizarCarrinho();
+    }
+  })();
+  </script>
+</section>
+
+    <!-- TELAS -->
     </main>
 
     <!-- Bottom Navigation -->
