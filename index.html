@@ -506,6 +506,48 @@
       </script>
     </section>
 
+    <section data-tela="catalogo" class="hidden">
+      <div class="catalogo-header px-5 pt-4 pb-3">
+        <div class="flex items-center justify-between mb-1">
+          <div>
+            <h1 class="font-display text-xl font-bold text-marca-900 tracking-tight">Catálogo</h1>
+            <p class="text-sm text-stone-500 mt-0.5">Infoprodutos para sua transformação</p>
+          </div>
+          <button onclick="mostrarTela('notificacoes')" class="relative w-10 h-10 rounded-full bg-white border border-stone-200 flex items-center justify-center active:scale-95 transition-all shadow-sm hover:shadow-md">
+            <svg class="w-5 h-5 text-marca-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/></svg>
+            <span class="absolute -top-0.5 -right-0.5 w-4.5 h-4.5 bg-marca-500 rounded-full text-[10px] text-white font-bold flex items-center justify-center border-2 border-marca-50">3</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="px-5 mb-3">
+        <div class="relative">
+          <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-stone-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 0010.5 18.75a7.5 7.5 0 00-7.5-7.5A7.5 7.5 0 003 10.5a7.5 7.5 0 007.5 7.5 7.5 7.5 0 007.146-4.146"/></svg>
+          <input id="catalogo-busca" type="text" placeholder="Buscar infoprodutos..." oninput="catalogo_filtrar()" class="w-full pl-11 pr-4 py-3 bg-white border border-stone-200 rounded-xl text-sm text-marca-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-marca-500/30 focus:border-marca-500 transition-all shadow-sm font-body">
+        </div>
+      </div>
+
+      <div class="catalogo-filtros px-5 mb-4 flex gap-2 overflow-x-auto pb-1 -mx-5 px-5 scrollbar-none" style="scrollbar-width:none;">
+        <button onclick="catalogo_setFiltro('todos')" data-filtro="todos" class="catalogo-btn-filtro shrink-0 px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-marca-900 text-white shadow-md">Todos</button>
+        <button onclick="catalogo_setFiltro('habitos')" data-filtro="habitos" class="catalogo-btn-filtro shrink-0 px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white text-marca-800 border border-stone-200 hover:border-marca-400 hover:text-marca-900">Hábitos</button>
+        <button onclick="catalogo_setFiltro('mindset')" data-filtro="mindset" class="catalogo-btn-filtro shrink-0 px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white text-marca-800 border border-stone-200 hover:border-marca-400 hover:text-marca-900">Mindset</button>
+        <button onclick="catalogo_setFiltro('produtividade')" data-filtro="produtividade" class="catalogo-btn-filtro shrink-0 px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white text-marca-800 border border-stone-200 hover:border-marca-400 hover:text-marca-900">Produtividade</button>
+        <button onclick="catalogo_setFiltro('metas')" data-filtro="metas" class="catalogo-btn-filtro shrink-0 px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white text-marca-800 border border-stone-200 hover:border-marca-400 hover:text-marca-900">Metas</button>
+      </div>
+
+      <div id="catalogo-contador" class="px-5 mb-2 text-xs text-stone-500 font-medium"></div>
+
+      <div id="catalogo-lista" class="px-5 pb-24 grid grid-cols-2 gap-3"></div>
+
+      <div id="catalogo-vazio" class="hidden px-5 pb-24 text-center py-12">
+        <div class="w-16 h-16 mx-auto mb-3 bg-stone-100 rounded-full flex items-center justify-center">
+          <svg class="w-8 h-8 text-stone-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 0010.5 18.75a7.5 7.5 0 00-7.5-7.5A7.5 7.5 0 003 10.5a7.5 7.5 0 007.5 7.5 7.5 7.5 0 007.146-4.146"/></svg>
+        </div>
+        <p class="text-sm text-stone-500 font-medium">Nenhum infoproduto encontrado</p>
+        <p class="text-xs text-stone-400 mt-1">Tente outra categoria ou termo de busca</p>
+      </div>
+    </section>
+
     <!-- TELAS -->
 
       <!-- ══════════════ NAVEGAÇÃO INFERIOR ══════════════ -->
