@@ -2001,6 +2001,296 @@
     </style>
 </section>
 
+    <section data-tela="painel-administrativo" class="hidden">
+      <div class="p-4 pt-6 max-w-[430px] mx-auto min-h-screen bg-marca-50">
+        <!-- Cabeçalho -->
+        <div class="mb-5">
+          <h1 class="font-display text-2xl font-bold text-marca-900 tracking-tight">Painel</h1>
+          <p class="text-sm text-marca-700 mt-0.5">Visão geral do negócio · Hoje</p>
+        </div>
+
+        <!-- Cards KPI -->
+        <div class="grid grid-cols-2 gap-3 mb-5" id="kpi-grid">
+          <div class="bg-white rounded-xl p-3.5 shadow-sm border border-marca-100 active:scale-[0.97] transition-transform cursor-default">
+            <div class="flex items-center justify-between mb-2">
+              <div class="w-8 h-8 rounded-lg bg-marca-100 flex items-center justify-center">
+                <svg class="w-4 h-4 text-marca-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              </div>
+              <span class="text-[10px] font-semibold text-green-700 bg-green-50 px-1.5 py-0.5 rounded-full">+12%</span>
+            </div>
+            <p class="font-display text-lg font-bold text-marca-900 leading-none">4.820</p>
+            <p class="text-[11px] text-gray-500 mt-1">Vendas hoje</p>
+          </div>
+          <div class="bg-white rounded-xl p-3.5 shadow-sm border border-marca-100 active:scale-[0.97] transition-transform cursor-default">
+            <div class="flex items-center justify-between mb-2">
+              <div class="w-8 h-8 rounded-lg bg-yellow-50 flex items-center justify-center">
+                <svg class="w-4 h-4 text-yellow-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <span class="text-[10px] font-semibold text-marca-700 bg-marca-50 px-1.5 py-0.5 rounded-full">3 novos</span>
+            </div>
+            <p class="font-display text-lg font-bold text-marca-900 leading-none">12</p>
+            <p class="text-[11px] text-gray-500 mt-1">Pedidos pendentes</p>
+          </div>
+          <div class="bg-white rounded-xl p-3.5 shadow-sm border border-marca-100 active:scale-[0.97] transition-transform cursor-default">
+            <div class="flex items-center justify-between mb-2">
+              <div class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center">
+                <svg class="w-4 h-4 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <span class="text-[10px] font-semibold text-green-700 bg-green-50 px-1.5 py-0.5 rounded-full">+8%</span>
+            </div>
+            <p class="font-display text-lg font-bold text-marca-900 leading-none">348</p>
+            <p class="text-[11px] text-gray-500 mt-1">Total de clientes</p>
+          </div>
+          <div class="bg-white rounded-xl p-3.5 shadow-sm border border-marca-100 active:scale-[0.97] transition-transform cursor-default">
+            <div class="flex items-center justify-between mb-2">
+              <div class="w-8 h-8 rounded-lg bg-purple-50 flex items-center justify-center">
+                <svg class="w-4 h-4 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <span class="text-[10px] font-semibold text-red-700 bg-red-50 px-1.5 py-0.5 rounded-full">-3%</span>
+            </div>
+            <p class="font-display text-lg font-bold text-marca-900 leading-none">127</p>
+            <p class="text-[11px] text-gray-500 mt-1">Ticket médio</p>
+          </div>
+        </div>
+
+        <!-- Gráfico de Vendas 7 dias -->
+        <div class="bg-white rounded-xl p-4 shadow-sm border border-marca-100 mb-5">
+          <div class="flex items-center justify-between mb-3">
+            <div>
+              <h2 class="font-display text-sm font-bold text-marca-900">Vendas — últimos 7 dias</h2>
+              <p class="text-[11px] text-gray-500">Faturamento diário</p>
+            </div>
+            <span class="text-xs font-semibold text-green-700 bg-green-50 px-2 py-1 rounded-full">+15% vs semana</span>
+          </div>
+          <svg viewBox="0 0 320 120" class="w-full h-auto" aria-label="Gráfico de vendas dos últimos 7 dias">
+            <defs>
+              <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#F97316" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="#F97316" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <!-- Grade horizontal -->
+            <line x1="30" y1="10" x2="315" y2="10" stroke="#F5F5F4" stroke-width="0.5"/>
+            <line x1="30" y1="35" x2="315" y2="35" stroke="#F5F5F4" stroke-width="0.5"/>
+            <line x1="30" y1="60" x2="315" y2="60" stroke="#F5F5F4" stroke-width="0.5"/>
+            <line x1="30" y1="85" x2="315" y2="85" stroke="#F5F5F4" stroke-width="0.5"/>
+            <line x1="30" y1="110" x2="315" y2="110" stroke="#F5F5F4" stroke-width="0.5"/>
+            <!-- Área preenchida -->
+            <path d="M30,85 L75,70 L120,78 L165,55 L210,42 L255,38 L300,15 L300,110 L30,110 Z" fill="url(#chartFill)"/>
+            <!-- Linha -->
+            <polyline points="30,85 75,70 120,78 165,55 210,42 255,38 300,15" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Pontos -->
+            <circle cx="30" cy="85" r="3.5" fill="#FFF" stroke="#F97316" stroke-width="2"/>
+            <circle cx="75" cy="70" r="3.5" fill="#FFF" stroke="#F97316" stroke-width="2"/>
+            <circle cx="120" cy="78" r="3.5" fill="#FFF" stroke="#F97316" stroke-width="2"/>
+            <circle cx="165" cy="55" r="3.5" fill="#FFF" stroke="#F97316" stroke-width="2"/>
+            <circle cx="210" cy="42" r="3.5" fill="#FFF" stroke="#F97316" stroke-width="2"/>
+            <circle cx="255" cy="38" r="3.5" fill="#FFF" stroke="#F97316" stroke-width="2"/>
+            <circle cx="300" cy="15" r="5" fill="#F97316" stroke="#FFF" stroke-width="2.5"/>
+            <!-- Labels -->
+            <text x="30" y="120" text-anchor="middle" class="text-[9px]" fill="#9CA3AF" font-size="8">Seg</text>
+            <text x="75" y="120" text-anchor="middle" fill="#9CA3AF" font-size="8">Ter</text>
+            <text x="120" y="120" text-anchor="middle" fill="#9CA3AF" font-size="8">Qua</text>
+            <text x="165" y="120" text-anchor="middle" fill="#9CA3AF" font-size="8">Qui</text>
+            <text x="210" y="120" text-anchor="middle" fill="#9CA3AF" font-size="8">Sex</text>
+            <text x="255" y="120" text-anchor="middle" fill="#9CA3AF" font-size="8">Sáb</text>
+            <text x="300" y="120" text-anchor="middle" fill="#9CA3AF" font-size="8">Dom</text>
+          </svg>
+          <div class="flex items-center justify-between mt-2 text-[11px] text-gray-500">
+            <span>R$ 2.140 · segunda</span>
+            <span class="font-semibold text-marca-700">R$ 4.820 · domingo</span>
+          </div>
+        </div>
+
+        <!-- Ações rápidas -->
+        <div class="flex gap-2 mb-5">
+          <button onclick="mostrarTela('gestao-de-produtos')" class="flex-1 bg-marca-800 text-white text-xs font-semibold py-2.5 rounded-xl active:scale-95 transition-all flex items-center justify-center gap-1.5">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+            Produtos
+          </button>
+          <button onclick="mostrarTela('meus-pedidos')" class="flex-1 bg-white text-marca-800 text-xs font-semibold py-2.5 rounded-xl active:scale-95 transition-all border border-marca-200 flex items-center justify-center gap-1.5">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+            Pedidos
+          </button>
+          <button onclick="mostrarTela('catalogo-completo')" class="flex-1 bg-white text-marca-800 text-xs font-semibold py-2.5 rounded-xl active:scale-95 transition-all border border-marca-200 flex items-center justify-center gap-1.5">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            Catálogo
+          </button>
+        </div>
+
+        <!-- Pedidos Recentes -->
+        <div class="mb-6">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="font-display text-base font-bold text-marca-900">Pedidos recentes</h2>
+            <button onclick="mostrarTela('meus-pedidos')" class="text-[11px] font-semibold text-marca-700 hover:text-marca-900 transition-colors">Ver todos →</button>
+          </div>
+          <!-- Filtros -->
+          <div class="flex gap-2 mb-3 overflow-x-auto pb-1 -mx-1 px-1" id="filtros-pedidos">
+            <button onclick="painel_administrativo_filtrarPedidos('todos')" data-filtro="todos" class="filtro-btn whitespace-nowrap text-[11px] font-semibold px-3 py-1.5 rounded-full bg-marca-800 text-white transition-all active:scale-95">Todos</button>
+            <button onclick="painel_administrativo_filtrarPedidos('pendente')" data-filtro="pendente" class="filtro-btn whitespace-nowrap text-[11px] font-semibold px-3 py-1.5 rounded-full bg-gray-100 text-gray-600 transition-all active:scale-95">Pendentes</button>
+            <button onclick="painel_administrativo_filtrarPedidos('processando')" data-filtro="processando" class="filtro-btn whitespace-nowrap text-[11px] font-semibold px-3 py-1.5 rounded-full bg-gray-100 text-gray-600 transition-all active:scale-95">Processando</button>
+            <button onclick="painel_administrativo_filtrarPedidos('concluido')" data-filtro="concluido" class="filtro-btn whitespace-nowrap text-[11px] font-semibold px-3 py-1.5 rounded-full bg-gray-100 text-gray-600 transition-all active:scale-95">Concluídos</button>
+          </div>
+          <!-- Lista -->
+          <div id="lista-pedidos" class="space-y-2.5">
+          </div>
+          <div id="estado-vazio" class="hidden text-center py-8">
+            <svg class="w-12 h-12 text-gray-300 mx-auto mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
+            <p class="text-sm text-gray-500 font-medium">Nenhum pedido encontrado</p>
+            <p class="text-xs text-gray-400 mt-1">Tente outro filtro</p>
+          </div>
+        </div>
+      </div>
+    </section>
+```
+
+```javascript
+<script>
+(function(){
+  const pedidos = [
+    { id: '#4821', cliente: 'Ana Beatriz Souza', produto: 'E-book: Método Hábitos Atômicos', valor: 197.00, status: 'concluido', data: '2026-01-19', hora: '14:32', avatar: 'AB', cor: '#7C2D12' },
+    { id: '#4820', cliente: 'Carlos Eduardo Lima', produto: 'Curso: Planejamento Semanal Pro', valor: 297.00, status: 'processando', data: '2026-01-19', hora: '13:15', avatar: 'CL', cor: '#2563EB' },
+    { id: '#4819', cliente: 'Mariana Oliveira', produto: 'E-book: Hábitos Atômicos', valor: 197.00, status: 'pendente', data: '2026-01-19', hora: '11:48', avatar: 'MO', cor: '#059669' },
+    { id: '#4818', cliente: 'Felipe Rocha', produto: 'Combo: E-book + Planner Digital', valor: 347.00, status: 'concluido', data: '2026-01-18', hora: '18:22', avatar: 'FR', cor: '#7C2D12' },
+    { id: '#4817', cliente: 'Juliana Martins', produto: 'Curso: Planejamento Semanal Pro', valor: 297.00, status: 'processando', data: '2026-01-18', hora: '16:05', avatar: 'JM', cor: '#2563EB' },
+    { id: '#4816', cliente: 'Rafael Almeida', produto: 'E-book: Método Hábitos Atômicos', valor: 197.00, status: 'pendente', data: '2026-01-18', hora: '09:33', avatar: 'RA', cor: '#7C2D12' },
+    { id: '#4815', cliente: 'Patrícia Nunes', produto: 'Assinatura: Clube da Produtividade', valor: 47.90, status: 'concluido', data: '2026-01-17', hora: '20:10', avatar: 'PN', cor: '#059669' },
+    { id: '#4814', cliente: 'Thiago Barbosa', produto: 'E-book: Hábitos Atômicos', valor: 197.00, status: 'concluido', data: '2026-01-17', hora: '15:44', avatar: 'TB', cor: '#7C2D12' },
+  ];
+
+  const statusMap = {
+    pendente: { label: 'Pendente', bg: 'bg-blue-50', text: 'text-blue-700', dot: 'bg-blue-500' },
+    processando: { label: 'Processando', bg: 'bg-yellow-50', text: 'text-yellow-700', dot: 'bg-yellow-500' },
+    concluido: { label: 'Concluído', bg: 'bg-green-50', text: 'text-green-700', dot: 'bg-green-500' },
+  };
+
+  function formatCurrency(v) {
+    return 'R$ ' + v.toFixed(2).replace('.', ',');
+  }
+
+  function renderPedidos(filtro) {
+    var container = document.getElementById('lista-pedidos');
+    var vazio = document.getElementById('estado-vazio');
+    var items = pedidos;
+    if (filtro && filtro !== 'todos') items = pedidos.filter(function(p){ return p.status === filtro; });
+    if (items.length === 0) {
+      container.innerHTML = '';
+      vazio.classList.remove('hidden');
+      return;
+    }
+    vazio.classList.add('hidden');
+    var html = '';
+    items.forEach(function(p) {
+      var s = statusMap[p.status];
+      html += '<div onclick="painel_administrativo_abrirDetalhePedido(\'' + p.id + '\')" class="bg-white rounded-xl p-3.5 shadow-sm border border-marca-100 active:scale-[0.98] transition-all cursor-pointer">';
+      html += '  <div class="flex items-start justify-between mb-2">';
+      html += '    <div class="flex items-center gap-2.5">';
+      html += '      <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:' + p.cor + '">' + p.avatar + '</div>';
+      html += '      <div>';
+      html += '        <p class="text-sm font-semibold text-marca-900 leading-tight">' + p.cliente + '</p>';
+      html += '        <p class="text-[11px] text-gray-500 mt-0.5 truncate max-w-[180px]">' + p.produto + '</p>';
+      html += '      </div>';
+      html += '    </div>';
+      html += '    <span class="text-xs font-bold text-marca-900 flex-shrink-0 ml-2">' + formatCurrency(p.valor) + '</span>';
+      html += '  </div>';
+      html += '  <div class="flex items-center justify-between">';
+      html += '    <div class="flex items-center gap-2">';
+      html += '      <span class="inline-flex items-center gap-1 ' + s.bg + ' ' + s.text + ' text-[10px] font-semibold px-2 py-0.5 rounded-full">';
+      html += '        <span class="w-1.5 h-1.5 rounded-full ' + s.dot + '"></span>';
+      html += s.label;
+      html += '      </span>';
+      html += '      <span class="text-[10px] text-gray-400">' + p.data + '</span>';
+      html += '    </div>';
+      html += '    <svg class="w-4 h-4 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>';
+      html += '  </div>';
+      html += '</div>';
+    });
+    container.innerHTML = html;
+  }
+
+  window.painel_administrativo_filtrarPedidos = function(filtro) {
+    document.querySelectorAll('#filtros-pedidos .filtro-btn').forEach(function(btn) {
+      btn.classList.remove('bg-marca-800', 'text-white');
+      btn.classList.add('bg-gray-100', 'text-gray-600');
+    });
+    var ativo = document.querySelector('#filtros-pedidos [data-filtro="' + filtro + '"]');
+    if (ativo) {
+      ativo.classList.remove('bg-gray-100', 'text-gray-600');
+      ativo.classList.add('bg-marca-800', 'text-white');
+    }
+    renderPedidos(filtro);
+  };
+
+  window.painel_administrativo_abrirDetalhePedido = function(id) {
+    var p = pedidos.find(function(x){ return x.id === id; });
+    if (!p) return;
+    var s = statusMap[p.status];
+    var html = '<div class="p-1">';
+    html += '  <div class="flex items-center gap-3 mb-4">';
+    html += '    <div class="w-11 h-11 rounded-full flex items-center justify-center text-white text-sm font-bold" style="background:' + p.cor + '">' + p.avatar + '</div>';
+    html += '    <div>';
+    html += '      <p class="font-display font-bold text-marca-900 text-sm">' + p.cliente + '</p>';
+    html += '      <p class="text-[11px] text-gray-500">' + p.id + ' · ' + p.data + ' às ' + p.hora + '</p>';
+    html += '    </div>';
+    html += '  </div>';
+    html += '  <div class="bg-marca-50 rounded-xl p-3 mb-3">';
+    html += '    <p class="text-xs text-gray-500 mb-1">Produto</p>';
+    html += '    <p class="text-sm font-semibold text-marca-900">' + p.produto + '</p>';
+    html += '  </div>';
+    html += '  <div class="flex items-center justify-between bg-white rounded-xl p-3 mb-3 border border-marca-100">';
+    html += '    <span class="text-xs text-gray-500">Valor</span>';
+    html += '    <span class="text-sm font-bold text-marca-800">' + formatCurrency(p.valor) + '</span>';
+    html += '  </div>';
+    html += '  <div class="flex items-center justify-between bg-white rounded-xl p-3 mb-4 border border-marca-100">';
+    html += '    <span class="text-xs text-gray-500">Status</span>';
+    html += '    <span class="inline-flex items-center gap-1 ' + s.bg + ' ' + s.text + ' text-xs font-semibold px-2.5 py-1 rounded-full">';
+    html += '      <span class="w-1.5 h-1.5 rounded-full ' + s.dot + '"></span>';
+    html += s.label;
+    html += '    </span>';
+    html += '  </div>';
+    if (p.status === 'pendente') {
+      html += '  <div class="flex gap-2">';
+      html += '    <button onclick="painel_administrativo_mudarStatus(\'' + p.id + '\', \'processando\'); fecharModal();" class="flex-1 bg-yellow-500 text-white text-xs font-semibold py-2.5 rounded-xl active:scale-95 transition-all">Processar</button>';
+      html += '    <button onclick="painel_administrativo_mudarStatus(\'' + p.id + '\', \'concluido\'); fecharModal();" class="flex-1 bg-green-600 text-white text-xs font-semibold py-2.5 rounded-xl active:scale-95 transition-all">Concluir</button>';
+      html += '  </div>';
+    } else if (p.status === 'processando') {
+      html += '  <button onclick="painel_administrativo_mudarStatus(\'' + p.id + '\', \'concluido\'); fecharModal();" class="w-full bg-green-600 text-white text-xs font-semibold py-2.5 rounded-xl active:scale-95 transition-all">Marcar como Concluído</button>';
+    } else {
+      html += '  <button onclick="fecharModal(); toast(\'Pedido já concluído — notificação enviada ao cliente\', \'info\')" class="w-full bg-marca-100 text-marca-800 text-xs font-semibold py-2.5 rounded-xl active:scale-95 transition-all">Pedido Finalizado</button>';
+    }
+    html += '</div>';
+    abrirModal(html, 'Detalhe do Pedido');
+  };
+
+  window.painel_administrativo_mudarStatus = function(id, novoStatus) {
+    var p = pedidos.find(function(x){ return x.id === id; });
+    if (p) {
+      p.status = novoStatus;
+      var labels = { processando: 'Processando', concluido: 'Concluído' };
+      toast('Pedido ' + id + ' atualizado para "' + (labels[novoStatus] || novoStatus) + '"', 'ok');
+      painel_administrativo_filtrarPedidos(filtroAtual);
+      renderPedidos(filtroAtual);
+    }
+  };
+
+  var filtroAtual = 'todos';
+  renderPedidos('todos');
+
+  // Animação de entrada nos cards KPI
+  setTimeout(function(){
+    document.querySelectorAll('#kpi-grid > div').forEach(function(card, i){
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(12px)';
+      card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      setTimeout(function(){
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, i * 80);
+    });
+  }, 50);
+})();
+</script>
+
     <!-- TELAS -->
     </main>
 
