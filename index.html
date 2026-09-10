@@ -2,23 +2,19 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-  <title>Metodo — Hábitos & Resultados</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>MentePlena — Loja</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-            body: ['"Nunito Sans"', 'system-ui', 'sans-serif'],
-          },
           colors: {
             marca: {
-              50: '#FFF7ED',
+              50:  '#FFF7ED',
               100: '#FFEDD5',
               200: '#FED7AA',
               300: '#FDBA74',
@@ -31,267 +27,289 @@
             },
             destaque: '#FFFF00',
           },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            body:    ['"Source Sans 3"', 'system-ui', 'sans-serif'],
+          },
           boxShadow: {
-            'card': '0 2px 12px rgba(124,45,18,0.07)',
-            'elevada': '0 6px 24px rgba(124,45,18,0.12)',
-            'nav': '0 -2px 16px rgba(124,45,18,0.10)',
+            card:   '0 2px 12px rgba(124,45,18,.08)',
+            cardHover: '0 6px 24px rgba(124,45,18,.14)',
+            nav:    '0 -2px 16px rgba(124,45,18,.06)',
+            toast:  '0 4px 20px rgba(0,0,0,.18)',
           },
           borderRadius: {
-            'app': '28px',
-            'card': '14px',
-            'btn': '10px',
-            'input': '10px',
-          }
-        }
-      }
-    }
+            card:  '14px',
+            btn:   '10px',
+            input: '10px',
+          },
+        },
+      },
+    };
   </script>
   <style>
-    *, *::before, *::after { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
-    body { font-family: 'Nunito Sans', system-ui, sans-serif; background: #E8E0D8; margin: 0; }
-    ::-webkit-scrollbar { width: 3px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: rgba(124,45,18,0.2); border-radius: 3px; }
-    *:focus-visible { outline: 2px solid #F97316; outline-offset: 2px; border-radius: 4px; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { font-family: 'Source Sans 3', system-ui, sans-serif; }
+    body { margin: 0; background: #e8e0d8; }
 
+    /* ── Animação de entrada de tela ── */
     @keyframes fadeSlideIn {
       from { opacity: 0; transform: translateY(10px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    @keyframes toastIn {
-      from { opacity: 0; transform: translateX(40px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes toastOut {
-      from { opacity: 1; transform: translateX(0); }
-      to   { opacity: 0; transform: translateX(40px); }
-    }
-    @keyframes pulse-ring {
-      0%   { transform: scale(0.92); opacity: 0.7; }
-      50%  { transform: scale(1.06); opacity: 0.25; }
-      100% { transform: scale(0.92); opacity: 0.7; }
-    }
-    @keyframes modalIn {
-      from { opacity: 0; transform: scale(0.94) translateY(12px); }
-      to   { opacity: 1; transform: scale(1) translateY(0); }
-    }
-    [data-tela] { animation: fadeSlideIn 0.22s ease-out both; }
-    [data-nav].ativo svg   { color: #FFFF00; }
-    [data-nav].ativo span  { color: #FFFF00; }
-    [data-nav].ativo::before {
-      content: ''; position: absolute; top: -1px; left: 25%; right: 25%; height: 2.5px;
-      background: #FFFF00; border-radius: 0 0 3px 3px;
+    [data-tela]:not(.hidden) {
+      animation: fadeSlideIn .28s ease-out both;
     }
 
+    /* ── Classe utilitária .badge ── */
     .badge {
       display: inline-flex; align-items: center; gap: 4px;
-      padding: 3px 10px; border-radius: 999px; font-size: 11px;
-      font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase;
+      font-size: .7rem; font-weight: 700; letter-spacing: .03em;
+      text-transform: uppercase; padding: 3px 9px; border-radius: 999px;
     }
-    .badge-success { background: #D1FAE5; color: #065F46; }
-    .badge-warning { background: #FEF3C7; color: #92400E; }
-    .badge-info    { background: #DBEAFE; color: #1E40AF; }
-    .badge-neutral { background: #F3F4F6; color: #374151; }
+    .badge-destaque { background: #FFFF00; color: #7C2D12; }
+    .badge-sucesso  { background: #D1FAE5; color: #065F46; }
+    .badge-info     { background: #FFEDD5; color: #7C2D12; }
+    .badge-erro     { background: #FEE2E2; color: #991B1B; }
 
+    /* ── Classe utilitária .card ── */
     .card {
       background: #fff; border-radius: 14px;
-      box-shadow: 0 2px 12px rgba(124,45,18,0.07);
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      box-shadow: 0 2px 12px rgba(124,45,18,.08);
+      transition: box-shadow .2s, transform .15s;
     }
-    .card:active { transform: scale(0.985); box-shadow: 0 1px 6px rgba(124,45,18,0.05); }
+    .card-interactive:hover {
+      box-shadow: 0 6px 24px rgba(124,45,18,.14);
+      transform: translateY(-2px);
+    }
 
+    /* ── Classe utilitária .btn ── */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 12px 24px; border-radius: 10px; font-weight: 700; font-size: 14px;
-      border: none; cursor: pointer; font-family: 'Nunito Sans', system-ui, sans-serif;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+      font-family: inherit; font-weight: 700; font-size: .95rem;
+      padding: 13px 22px; border-radius: 10px; border: none;
+      cursor: pointer; transition: all .18s; user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
-    .btn:active { transform: scale(0.96); }
-    .btn-primary   { background: #7C2D12; color: #fff; box-shadow: 0 2px 8px rgba(124,45,18,0.2); }
-    .btn-primary:hover { background: #431407; }
-    .btn-accent    { background: #F97316; color: #fff; box-shadow: 0 2px 8px rgba(249,115,22,0.25); }
-    .btn-accent:hover { background: #EA580C; }
-    .btn-outline   { background: transparent; color: #7C2D12; border: 1.5px solid #7C2D12; }
-    .btn-outline:hover { background: rgba(124,45,18,0.04); }
-    .btn-destaque  { background: #FFFF00; color: #7C2D12; box-shadow: 0 2px 8px rgba(255,255,0,0.25); font-weight: 800; }
-    .btn-destaque:hover { background: #E6E600; }
-    .btn-ghost     { background: transparent; color: #7C2D12; }
-    .btn-ghost:hover { background: rgba(124,45,18,0.06); }
-    .btn-sm { padding: 8px 16px; font-size: 13px; border-radius: 8px; }
+    .btn:active { transform: scale(.97); }
+    .btn-primario { background: #7C2D12; color: #fff; }
+    .btn-primario:hover { background: #431407; }
+    .btn-destaque  { background: #F97316; color: #fff; }
+    .btn-destaque:hover { background: #C2410C; }
+    .btn-outline {
+      background: transparent; color: #7C2D12;
+      border: 2px solid #7C2D12;
+    }
+    .btn-outline:hover { background: #FFF7ED; }
+    .btn-gradiente {
+      background: linear-gradient(135deg, #7C2D12, #F97316);
+      color: #fff;
+    }
+    .btn-gradiente:hover { filter: brightness(1.08); }
+    .btn-sm { padding: 8px 14px; font-size: .82rem; }
     .btn-icon {
-      width: 36px; height: 36px; padding: 0; border-radius: 50%;
-      display: inline-flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,0.12); border: none; cursor: pointer;
-      color: #fff; transition: background 0.15s ease;
+      width: 38px; height: 38px; padding: 0;
+      border-radius: 50%; display: inline-flex;
+      align-items: center; justify-content: center;
     }
-    .btn-icon:hover { background: rgba(255,255,255,0.22); }
 
-    .toast-enter { animation: toastIn 0.28s ease-out forwards; }
-    .toast-exit  { animation: toastOut 0.25s ease-in forwards; }
+    /* ── Navegação ativa ── */
+    [data-nav] { color: #A8A29E; transition: color .18s; }
+    [data-nav].ativo { color: #F97316; }
+
+    /* ── Scrollbar discreta ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #FDBA74; border-radius: 4px; }
+
+    /* ── Foco visível ── */
+    :focus-visible {
+      outline: 2px solid #F97316;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* ── Moldura de celular ── */
+    .celular-frame {
+      width: 390px; height: 100dvh; max-height: 844px;
+      border-radius: 40px; overflow: hidden;
+      border: 6px solid #1a1a1a;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      display: flex; flex-direction: column;
+      position: relative; background: #FFF7ED;
+    }
+    @media (max-width: 430px) {
+      .celular-frame {
+        width: 100%; height: 100dvh; max-height: none;
+        border-radius: 0; border: none;
+        box-shadow: none;
+      }
+    }
+
+    /* ── Toast ── */
+    @keyframes toastIn  { from { opacity:0; transform:translateY(16px) scale(.94);} to {opacity:1; transform:translateY(0) scale(1);} }
+    @keyframes toastOut { from {opacity:1; transform:translateY(0) scale(1);} to {opacity:0; transform:translateY(-10px) scale(.95);} }
+    .toast-entrando { animation: toastIn .28s ease-out both; }
+    .toast-saindo   { animation: toastOut .22s ease-in both; }
   </style>
 </head>
-<body class="bg-stone-300 min-h-screen flex items-start sm:items-center justify-center py-0 sm:py-8">
+<body class="bg-stone-300 font-body text-stone-800 antialiased">
 
-  <div id="moldura" class="hidden sm:flex flex-col w-[390px] max-h-[844px] bg-marca-900 rounded-[32px] shadow-2xl overflow-hidden border-[5px] border-stone-800 relative">
+  <!-- ══════════════ APP CONTAINER ══════════════ -->
+  <div id="app" class="celular-frame mx-auto">
 
-    <div class="flex items-center justify-between px-7 pt-3 pb-1 bg-marca-900 relative z-20 flex-shrink-0">
-      <span id="hora" class="text-white text-xs font-bold font-body tracking-wide"></span>
-      <div class="flex items-center gap-1.5">
-        <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor" class="text-white"><rect x="0" y="5" width="3" height="7" rx="0.8" opacity="0.35"/><rect x="4.2" y="3.5" width="3" height="8.5" rx="0.8" opacity="0.5"/><rect x="8.4" y="2" width="3" height="10" rx="0.8" opacity="0.7"/><rect x="12.6" y="0" width="3" height="12" rx="0.8"/></svg>
-        <svg width="13" height="12" viewBox="0 0 13 12" fill="currentColor" class="text-white"><path d="M6.5 2.2C4 2.2 1.8 3.3.5 5 .8 3.9 1.8 3 3 2.5V.5C1.4.9.6 1.6 0 2.5 2 0 4.6-.6 6.5-.6S11 0 13 2.5c-.6-.9-1.4-1.6-2.5-2 1.2.5 2.2 1.4 2.5 2.5-2-.6-4.5.3-6.5 2.2z"/></svg>
-        <svg width="26" height="12" viewBox="0 0 26 12" fill="none" class="text-white"><rect x="0.5" y="0.5" width="22" height="11" rx="3" stroke="currentColor" stroke-opacity="0.35" fill="none"/><rect x="2" y="2" width="17" height="7" rx="1.5" fill="currentColor" opacity="0.9"/><path d="M23 4v4c.8-.5 1.3-1.4 1.3-2s-.5-1.5-1.3-2z" fill="currentColor" opacity="0.4"/></svg>
+    <!-- Barra de status -->
+    <div class="flex items-center justify-between px-7 pt-3 pb-1 bg-marca-800 text-white text-xs font-semibold select-none shrink-0" style="font-family:'Source Sans 3',sans-serif;">
+      <span id="hora-status">09:41</span>
+      <div class="flex items-center gap-1">
+        <!-- sinal -->
+        <svg width="16" height="11" viewBox="0 0 16 11" fill="none"><rect x="0" y="7" width="2.5" height="4" rx=".5" fill="white" opacity=".35"/><rect x="3.5" y="5" width="2.5" height="6" rx=".5" fill="white" opacity=".55"/><rect x="7" y="2.5" width="2.5" height="8.5" rx=".5" fill="white" opacity=".75"/><rect x="10.5" y="0" width="2.5" height="11" rx=".5" fill="white"/></svg>
+        <!-- wifi -->
+        <svg width="15" height="11" viewBox="0 0 15 11" fill="none"><path d="M7.5 9.5a1.1 1.1 0 100-2.2 1.1 1.1 0 000 2.2zM4.3 7.3a3.2 3.2 0 016.4 0M1.6 4.8a6 6 0 0112 0M-1 2.2a8.7 8.7 0 0116 0" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <!-- bateria -->
+        <svg width="24" height="11" viewBox="0 0 24 11" fill="none"><rect x=".5" y=".5" width="20" height="10" rx="2.5" stroke="white" stroke-opacity=".5"/><rect x="2" y="2" width="15" height="7" rx="1.5" fill="white"/><path d="M21.5 3.5v4a2 2 0 000-4z" fill="white" opacity=".5"/></svg>
       </div>
     </div>
-    <div id="app-moldura" class="flex-1 flex flex-col bg-marca-50 overflow-hidden min-h-0"></div>
+
+    <!-- ═══ CONTEÚDO SCROLLÁVEL ═══ -->
+    <main id="main" class="flex-1 overflow-y-auto bg-marca-50 relative">
+
+      <!-- ══════════════ HEADER GLOBAL ══════════════ -->
+      <header id="app-header" class="sticky top-0 z-30 bg-marca-800 text-white px-5 py-3.5 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-2.5">
+          <!-- Logo monograma -->
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+            <rect width="34" height="34" rx="8" fill="#F97316"/>
+            <path d="M17 8v6.5M17 19v8M11 14.5h12" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="17" cy="17" r="14" stroke="white" stroke-width="1" opacity=".25" fill="none"/>
+          </svg>
+          <span class="font-display text-lg font-bold tracking-tight leading-none">MentePlena</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <button data-nav="notificacoes" onclick="mostrarTela('notificacoes')" class="relative p-1" aria-label="Notificações">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0112 0v5a2 2 0 01-2 2H8a2 2 0 01-2-2V8z"/><path d="M10 18a2 2 0 004 0"/></svg>
+            <span class="absolute -top-0.5 -right-0.5 w-4 h-4 bg-destaque text-marca-800 text-[9px] font-bold rounded-full flex items-center justify-center">3</span>
+          </button>
+          <button data-nav="carrinho" onclick="mostrarTela('carrinho')" class="relative p-1" aria-label="Carrinho">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M1 1h3.5l2.5 13h10l3-8H5"/></svg>
+            <span class="absolute -top-0.5 -right-0.5 w-4 h-4 bg-destaque text-marca-800 text-[9px] font-bold rounded-full flex items-center justify-center">2</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- ═══ TELAS ═══ -->
+      <!-- TELAS -->
+
+      <!-- ══════════════ NAVEGAÇÃO INFERIOR ══════════════ -->
+      <nav class="shrink-0 bg-white border-t border-marca-100 flex justify-around items-center pb-2 pt-1 px-1 shadow-nav z-40" style="padding-bottom: max(8px, env(safe-area-inset-bottom));">
+        <button data-nav="vitrine-home" onclick="mostrarTela('vitrine-home')" class="flex flex-col items-center gap-0.5 py-1.5 px-2 min-w-[56px]">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span class="text-[10px] font-semibold">Início</span>
+        </button>
+        <button data-nav="catalogo" onclick="mostrarTela('catalogo')" class="flex flex-col items-center gap-0.5 py-1.5 px-2 min-w-[56px]">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <span class="text-[10px] font-semibold">Catálogo</span>
+        </button>
+        <button data-nav="meus-pedidos" onclick="mostrarTela('meus-pedidos')" class="flex flex-col items-center gap-0.5 py-1.5 px-2 min-w-[56px]">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span class="text-[10px] font-semibold">Pedidos</span>
+        </button>
+        <button data-nav="meu-perfil" onclick="mostrarTela('meu-perfil')" class="flex flex-col items-center gap-0.5 py-1.5 px-2 min-w-[56px]">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span class="text-[10px] font-semibold">Perfil</span>
+        </button>
+      </nav>
+    </main>
   </div>
 
-  <div id="app-movel" class="sm:hidden fixed inset-0 flex flex-col bg-marca-50 w-full"></div>
+  <!-- ══════════════ TOASTS ══════════════ -->
+  <div id="toasts" class="fixed bottom-20 left-1/2 -translate-x-1/2 z-[100] flex flex-col items-center gap-2 pointer-events-none" style="max-width:360px;"></div>
 
-  <div id="toasts" class="fixed top-5 right-5 z-[9999] flex flex-col gap-2.5 pointer-events-none" style="max-width:310px;"></div>
-
-  <div id="modal-overlay" class="fixed inset-0 z-[9998] bg-black/55 backdrop-blur-sm hidden items-end sm:items-center justify-center p-0 sm:p-6" onclick="if(event.target===this)fecharModal()">
-    <div id="modal-cartao" class="bg-white rounded-t-2xl sm:rounded-2xl w-full max-w-md max-h-[82vh] flex flex-col shadow-2xl" style="animation: modalIn 0.22s ease-out;">
-      <div class="flex items-center justify-between px-5 pt-5 pb-3 border-b border-stone-100 flex-shrink-0">
-        <h3 id="modal-titulo" class="font-display text-xl font-bold text-marca-800"></h3>
-        <button onclick="fecharModal()" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-stone-100 text-marca-800 transition-colors" aria-label="Fechar">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg>
+  <!-- ══════════════ MODAL GENÉRICO ══════════════ -->
+  <div id="modal-overlay" class="fixed inset-0 z-[90] bg-black/50 hidden items-end sm:items-center justify-center p-0 sm:p-4" onclick="if(event.target===this)fecharModal()">
+    <div id="modal-card" class="bg-white rounded-t-2xl sm:rounded-2xl w-full sm:max-w-md max-h-[85vh] flex flex-col shadow-2xl">
+      <div class="flex items-center justify-between px-5 pt-5 pb-3 border-b border-stone-100">
+        <h3 id="modal-titulo" class="font-display text-lg font-bold text-marca-800">Título</h3>
+        <button onclick="fecharModal()" class="btn-icon bg-stone-100 hover:bg-stone-200 text-stone-600" aria-label="Fechar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
       </div>
-      <div id="modal-corpo" class="p-5 overflow-y-auto flex-1"></div>
+      <div id="modal-conteudo" class="px-5 py-4 overflow-y-auto text-sm leading-relaxed"></div>
     </div>
   </div>
 
+  <!-- ══════════════ UTILITÁRIOS GLOBAIS ══════════════ -->
   <script>
-    var toastId = 0;
-    function toast(mensagem, tipo) {
-      var container = document.getElementById('toasts');
-      var id = 'toast-' + (++toastId);
-      var cores = { ok: '#059669', erro: '#DC2626', info: '#2563EB' };
-      var icones = {
-        ok: '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-width="1.5"/><path d="M6 9l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-        erro: '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="6" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="6" x2="6" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
-        info: '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-width="1.5"/><line x1="9" y1="8.5" x2="9" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="5.5" r="1" fill="currentColor"/></svg>'
-      };
-      var el = document.createElement('div');
-      el.id = id;
-      el.className = 'toast-enter pointer-events-auto flex items-center gap-3 bg-white rounded-xl px-4 py-3 shadow-elevada border-l-[3.5px]';
-      el.style.borderLeftColor = cores[tipo] || cores.info;
-      el.innerHTML = '<span style="color:' + (cores[tipo]||cores.info) + '">' + (icones[tipo]||icones.info) + '</span><span class="text-sm font-semibold text-marca-900 flex-1">' + mensagem + '</span>';
-      container.appendChild(el);
-      setTimeout(function() {
-        el.classList.remove('toast-enter');
-        el.classList.add('toast-exit');
-        el.addEventListener('animationend', function() { el.remove(); });
-      }, 3000);
-    }
+    /* ── Relógio da barra de status ── */
+    (function relogio(){
+      var h = document.getElementById('hora-status');
+      function t(){
+        var d=new Date();
+        h.textContent = String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
+      }
+      t(); setInterval(t, 30000);
+    })();
 
-    function abrirModal(html, titulo) {
-      document.getElementById('modal-titulo').textContent = titulo || '';
-      document.getElementById('modal-corpo').innerHTML = html;
-      var overlay = document.getElementById('modal-overlay');
-      overlay.classList.remove('hidden');
-      overlay.classList.add('flex');
-      document.body.style.overflow = 'hidden';
-    }
-    function fecharModal() {
-      var overlay = document.getElementById('modal-overlay');
-      overlay.classList.add('hidden');
-      overlay.classList.remove('flex');
-      document.body.style.overflow = '';
-    }
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') fecharModal(); });
-
-    function brl(valor) {
-      return 'R$ ' + Number(valor).toFixed(2).replace('.', ',');
-    }
-    function dataBR(iso) {
-      if (!iso) return '';
-      var d = new Date(iso + 'T00:00:00');
-      return ('0' + d.getDate()).slice(-2) + '/' + ('0' + (d.getMonth()+1)).slice(-2) + '/' + d.getFullYear();
-    }
-
+    /* ── Roteador ── */
     function mostrarTela(id) {
-      document.querySelectorAll('[data-tela]').forEach(function(s) {
+      document.querySelectorAll('[data-tela]').forEach(function(s){
         s.classList.toggle('hidden', s.dataset.tela !== id);
       });
-      document.querySelectorAll('[data-nav]').forEach(function(b) {
+      document.querySelectorAll('[data-nav]').forEach(function(b){
         b.classList.toggle('ativo', b.dataset.nav === id);
       });
       window.scrollTo({ top: 0 });
     }
 
-    function montarApp() {
-      var isMobile = window.innerWidth < 640;
-      var container = isMobile ? document.getElementById('app-movel') : document.getElementById('app-moldura');
-      container.innerHTML = '';
-
-      var navItens = [
-        { id: 'vitrine',         icone: '<path d="M3 12L12 3l9 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v7h7v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 7v10h4V14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>', rotulo: 'Vitrine', visivel: true },
-        { id: 'detalhe-do-produto', icone: '<rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="9" r="2" fill="currentColor"/><path d="M3 16l5-5 4 4 4-3 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>', rotulo: 'Produto', visivel: true },
-        { id: 'carrinho',        icone: '<circle cx="9" cy="20" r="1.5" fill="currentColor"/><circle cx="17" cy="20" r="1.5" fill="currentColor"/><path d="M2 3h2.5l2.2 12.5a1.5 1.5 0 001.48 1.2h9.6a1.5 1.5 0 001.48-1.2L20.5 6H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>', rotulo: 'Carrinho', visivel: true },
-        { id: 'checkout',        icone: '<rect x="2" y="4" width="20" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M2 8h20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M6 2v3M18 2v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 17h.01M12 17h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>', rotulo: 'Checkout', visivel: true },
-        { id: 'meus-pedidos',    icone: '<rect x="3" y="2" width="18" height="20" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M7 7h10M7 11h7M7 15h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M17 15l2 2 2-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>', rotulo: 'Pedidos', visivel: true },
-        { id: 'notificacoes',    icone: '<path d="M12 2a5 5 0 015 5v3l1.5 2H5.5L7 10V7a5 5 0 015-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 19a2 2 0 004 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>', rotulo: 'Alertas', visivel: true },
-        { id: 'painel-admin',    icone: '<path d="M3 4h18v2.5H3zM3 11.5h18V14H3zM3 19h18v2.5H3z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>', rotulo: 'Admin', visivel: true },
-        { id: 'gerenciar-produtos', icone: '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="9" r="1.5" fill="currentColor"/><circle cx="15" cy="9" r="1.5" fill="currentColor"/><circle cx="12" cy="15" r="1.5" fill="currentColor"/>', rotulo: 'Produtos', visivel: true },
-      ];
-
-      container.innerHTML =
-        '<main id="conteudo" class="flex-1 overflow-y-auto bg-marca-50 relative">' +
-          '<div class="flex flex-col items-center justify-center py-20 px-6 text-center">' +
-            '<svg width="56" height="56" viewBox="0 0 56 56" fill="none" class="mb-5 opacity-30"><circle cx="28" cy="28" r="26" fill="#7C2D12"/><path d="M20 20h16l-8 18L20 20z" fill="#F97316"/></svg>' +
-            '<p class="text-marca-800/50 text-sm font-body leading-relaxed max-w-[240px]">As telas do protótipo serão inseridas aqui.</p>' +
-          '</div>' +
-        '</main>' +
-        '<nav class="flex-shrink-0 bg-marca-800 shadow-nav flex items-start justify-around px-1 pt-[5px] pb-[env(safe-area-inset-bottom)] relative z-30">' +
-          navItens.map(function(item) {
-            if (!item.visivel) return '';
-            return '<button data-nav="' + item.id + '" onclick="mostrarTela(\'' + item.id + '\')" class="relative flex flex-col items-center gap-[3px] pt-1 pb-2 px-2.5 min-w-[52px] text-white/50 hover:text-white/80 transition-colors" aria-label="' + item.rotulo + '">' +
-              '<svg width="22" height="22" viewBox="0 0 24 24" fill="none">' + item.icone + '</svg>' +
-              '<span class="text-[10px] font-bold tracking-wide">' + item.rotulo + '</span>' +
-            '</button>';
-          }).join('') +
-        '</nav>';
-
-      container.style.cssText = isMobile
-        ? 'position:fixed;inset:0;width:100%;height:100%;border-radius:0;border:none;flex-direction:column;'
-        : 'width:390px;height:844px;border-radius:28px;overflow:hidden;flex-direction:column;';
-
-      if (!isMobile) {
-        var notch = document.createElement('div');
-        notch.className = 'flex-shrink-0 bg-marca-900 flex items-center justify-center relative z-20';
-        notch.style.cssText = 'height:30px;border-radius:0;';
-        notch.innerHTML = '<div class="w-[100px] h-[22px] bg-black rounded-b-[16px]"></div>';
-        container.insertBefore(notch, container.firstChild);
-
-        var timeEl = document.getElementById('hora');
-        if (timeEl) {
-          timeEl.style.display = 'none';
-        }
-      } else {
-        var timeEl2 = document.getElementById('hora');
-        if (timeEl2) timeEl2.style.display = '';
-      }
-
-      var navEls = container.querySelectorAll('[data-nav]');
-      navEls.forEach(function(b) { b.classList.remove('ativo'); });
-      if (navEls.length) navEls[0].classList.add('ativo');
+    /* ── Toast ── */
+    function toast(mensagem, tipo) {
+      var c = document.getElementById('toasts');
+      var el = document.createElement('div');
+      var cores = { ok:'bg-green-600', erro:'bg-red-600', info:'bg-marca-800' };
+      var icones = {
+        ok:   '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>',
+        erro: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>',
+        info: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="11"/></svg>',
+      };
+      el.className = 'toast-entrando pointer-events-auto flex items-center gap-2.5 ' + (cores[tipo]||cores.info) + ' text-white text-sm font-semibold px-4 py-3 rounded-xl shadow-toast';
+      el.innerHTML = (icones[tipo]||icones.info) + '<span>' + mensagem + '</span>';
+      c.appendChild(el);
+      setTimeout(function(){
+        el.classList.remove('toast-entrando');
+        el.classList.add('toast-saindo');
+        setTimeout(function(){ el.remove(); }, 240);
+      }, 3000);
     }
 
-    function atualizarHora() {
-      var h = document.getElementById('hora');
-      if (!h) return;
-      var d = new Date();
-      h.textContent = ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
+    /* ── Modal ── */
+    function abrirModal(html, titulo) {
+      var o = document.getElementById('modal-overlay');
+      document.getElementById('modal-titulo').textContent = titulo || '';
+      document.getElementById('modal-conteudo').innerHTML = html;
+      o.classList.remove('hidden');
+      o.classList.add('flex');
+    }
+    function fecharModal() {
+      var o = document.getElementById('modal-overlay');
+      o.classList.add('hidden');
+      o.classList.remove('flex');
+    }
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') fecharModal(); });
+
+    /* ── Formatação monetária ── */
+    function brl(valor) {
+      return 'R$ ' + valor.toFixed(2).replace('.', ',');
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      montarApp();
-      mostrarTela('vitrine');
-      atualizarHora();
-      setInterval(atualizarHora, 30000);
+    /* ── Data BR ── */
+    function dataBR(iso) {
+      var p = iso.split('-');
+      return p[2] + '/' + p[1] + '/' + p[0];
+    }
+
+    /* ── Inicialização ── */
+    document.addEventListener('DOMContentLoaded', function(){
+      mostrarTela('vitrine-home');
     });
-    window.addEventListener('resize', function() { montarApp(); });
   </script>
 </body>
 </html>
