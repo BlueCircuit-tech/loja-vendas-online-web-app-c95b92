@@ -482,6 +482,402 @@
   </script>
 </section>
 
+    <section data-tela="catalogo-completo" class="hidden">
+        <!-- Mobile filter toggle -->
+        <button onclick="catalogo_completo_toggleFiltros()" class="lg:hidden fixed bottom-6 right-6 z-40 bg-marca-700 text-white p-3.5 rounded-full shadow-lg active:scale-90 transition-all">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 01.79 1.33L13 15.41V20l-3-1.5L5.21 16.1A1 1 0 014.79 15.1l.58-1.66L3.21 6A1 1 0 014 5h2a1 1 0 011 .88l.15 1.14L8.5 9.5h7L12.6 6.88A1 1 0 0113.5 6h2a1 1 0 011 1v.13l1.5 5.33a1 1 0 01-.2.92l-1.1 1.31A1 1 0 0117 17h-.59l-3.41 3.41V17h5.59a1 1 0 01.79 1.33L19.79 19.1A1 1 0 0120 20h1a1 1 0 011 1v.17a1 1 0 01-.29.71L18.55 23.55A1 1 0 0117.71 24H3a1 1 0 01-.71-1.29L4.38 20.1A1 1 0 015 20h.59l3.41-3.41V17H3.41a1 1 0 01-.79-1.33L4.21 14.9A1 1 0 014 14H3a1 1 0 01-1-1v-.17a1 1 0 01.29-.71l1.71-1.71A1 1 0 014.79 10H7l-.15-1.14L6.7 7.88A1 1 0 015.5 8H3a1 1 0 01-1-1V5.88A1 1 0 013.29 5.05L5 3.33 6.71 5.05A1 1 0 017 5.88V7h.5l2.46-5.89A1 1 0 0110 0h5a1 1 0 01.79.38L18.79 5H21a1 1 0 011 1v3a1 1 0 01-1 1h-.79l-2.63 5.26A1 1 0 0116 16h-2a1 1 0 01-.96-1.26l1.5-4.5h-5l-1.5 4.5A1 1 0 017 19H5a1 1 0 01-1-1v-4a1 1 0 011-1h.79l2.63-5.26z"/></svg>
+        </button>
+        <!-- Main layout -->
+        <div class="flex gap-0">
+            <!-- Sidebar Filters -->
+            <aside id="catalogo-filtros-sidebar" class="hidden lg:block w-64 flex-shrink-0 border-r border-marca-100/30 pr-5 py-2">
+                <div class="flex items-center justify-between mb-5">
+                    <h3 class="font-display font-semibold text-marca-900 text-sm tracking-wide uppercase">Filtros</h3>
+                    <button onclick="catalogo_completo_limparFiltros()" class="text-xs text-marca-500 hover:text-marca-700 transition-colors">Limpar</button>
+                </div>
+                <!-- Categories -->
+                <div class="mb-6">
+                    <h4 class="text-xs font-semibold text-marca-600 mb-2.5 uppercase tracking-wider">Categoria</h4>
+                    <div class="space-y-1.5">
+                        <label class="flex items-center gap-2.5 cursor-pointer group">
+                            <input type="checkbox" value="desenvolvimento-pessoal" onchange="catalogo_completo_aplicarFiltros()" class="catalogo-filtro-categoria w-4 h-4 rounded border-marca-300 text-marca-700 focus:ring-marca-500 accent-marca-700">
+                            <span class="text-sm text-marca-800 group-hover:text-marca-900 transition-colors">Desenvolvimento Pessoal</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer group">
+                            <input type="checkbox" value="habitos" onchange="catalogo_completo_aplicarFiltros()" class="catalogo-filtro-categoria w-4 h-4 rounded border-marca-300 text-marca-700 focus:ring-marca-500 accent-marca-700">
+                            <span class="text-sm text-marca-800 group-hover:text-marca-900 transition-colors">Hábitos</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer group">
+                            <input type="checkbox" value="produtividade" onchange="catalogo_completo_aplicarFiltros()" class="catalogo-filtro-categoria w-4 h-4 rounded border-marca-300 text-marca-700 focus:ring-marca-500 accent-marca-700">
+                            <span class="text-sm text-marca-800 group-hover:text-marca-900 transition-colors">Produtividade</span>
+                        </label>
+                    </div>
+                </div>
+                <!-- Price Range -->
+                <div class="mb-6">
+                    <h4 class="text-xs font-semibold text-marca-600 mb-2.5 uppercase tracking-wider">Faixa de Preço</h4>
+                    <div class="space-y-1.5">
+                        <label class="flex items-center gap-2.5 cursor-pointer group">
+                            <input type="radio" name="preco" value="todos" onchange="catalogo_completo_aplicarFiltros()" checked class="catalogo-filtro-preco w-4 h-4 border-marca-300 text-marca-700 focus:ring-marca-500 accent-marca-700">
+                            <span class="text-sm text-marca-800 group-hover:text-marca-900 transition-colors">Todos</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer group">
+                            <input type="radio" name="preco" value="ate50" onchange="catalogo_completo_aplicarFiltros()" class="catalogo-filtro-preco w-4 h-4 border-marca-300 text-marca-700 focus:ring-marca-500 accent-marca-700">
+                            <span class="text-sm text-marca-800 group-hover:text-marca-900 transition-colors">Até R$ 50</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer group">
+                            <input type="radio" name="preco" value="50a100" onchange="catalogo_completo_aplicarFiltros()" class="catalogo-filtro-preco w-4 h-4 border-marca-300 text-marca-700 focus:ring-marca-500 accent-marca-700">
+                            <span class="text-sm text-marca-800 group-hover:text-marca-900 transition-colors">R$ 50 – R$ 100</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer group">
+                            <input type="radio" name="preco" value="acima100" onchange="catalogo_completo_aplicarFiltros()" class="catalogo-filtro-preco w-4 h-4 border-marca-300 text-marca-700 focus:ring-marca-500 accent-marca-700">
+                            <span class="text-sm text-marca-800 group-hover:text-marca-900 transition-colors">Acima de R$ 100</span>
+                        </label>
+                    </div>
+                </div>
+                <!-- Sort -->
+                <div>
+                    <h4 class="text-xs font-semibold text-marca-600 mb-2.5 uppercase tracking-wider">Ordenar por</h4>
+                    <select onchange="catalogo_completo_ordenar(this.value)" class="w-full text-sm border border-marca-200 rounded-lg px-3 py-2 bg-white text-marca-800 focus:ring-2 focus:ring-marca-500 focus:border-marca-500 outline-none transition-all">
+                        <option value="popularidade">Popularidade</option>
+                        <option value="nome-az">Nome (A–Z)</option>
+                        <option value="nome-za">Nome (Z–A)</option>
+                        <option value="preco-menor">Menor Preço</option>
+                        <option value="preco-maior">Maior Preço</option>
+                        <option value="avaliacao">Melhor Avaliação</option>
+                    </select>
+                </div>
+            </aside>
+            <!-- Products area -->
+            <div class="flex-1 min-w-0 px-4 py-4 lg:pl-6 lg:pr-2">
+                <!-- Active filters chips -->
+                <div id="catalogo-filtros-ativos" class="hidden flex-wrap gap-2 mb-3"></div>
+                <!-- Results header -->
+                <div class="flex items-center justify-between mb-4">
+                    <p id="catalogo-contador" class="text-xs text-marca-500 font-medium"></p>
+                    <button onclick="catalogo_completo_toggleFiltros()" class="lg:hidden flex items-center gap-1.5 text-xs font-medium text-marca-700 bg-marca-100 px-3 py-1.5 rounded-full active:scale-95 transition-all">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 01.79 1.33L13 15.41V20l-3-1.5L5.21 16.1A1 1 0 014.79 15.1l.58-1.66L3.21 6A1 1 0 014 5h2a1 1 0 011 .88l.15 1.14L8.5 9.5h7L12.6 6.88A1 1 0 0113.5 6h2a1 1 0 011 1v.13l1.5 5.33a1 1 0 01-.2.92l-1.1 1.31A1 1 0 0117 17h-.59l-3.41 3.41V17h5.59a1 1 0 01.79 1.33L19.79 19.1A1 1 0 0120 20h1a1 1 0 011 1v.17a1 1 0 01-.29.71L18.55 23.55A1 1 0 0117.71 24H3a1 1 0 01-.71-1.29L4.38 20.1A1 1 0 015 20h.59l3.41-3.41V17H3.41a1 1 0 01-.79-1.33L4.21 14.9A1 1 0 014 14H3a1 1 0 01-1-1v-.17a1 1 0 01.29-.71l1.71-1.71A1 1 0 014.79 10H7l-.15-1.14L6.7 7.88A1 1 0 015.5 8H3a1 1 0 01-1-1V5.88A1 1 0 013.29 5.05L5 3.33 6.71 5.05A1 1 0 017 5.88V7h.5l2.46-5.89A1 1 0 0110 0h5a1 1 0 01.79.38L18.79 5H21a1 1 0 011 1v3a1 1 0 01-1 1h-.79l-2.63 5.26A1 1 0 0116 16h-2a1 1 0 01-.96-1.26l1.5-4.5h-5l-1.5 4.5A1 1 0 017 19H5a1 1 0 01-1-1v-4a1 1 0 011-1h.79l2.63-5.26z"/></svg>
+                        Filtros
+                    </button>
+                </div>
+                <!-- Product grid -->
+                <div id="catalogo-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
+                <!-- Skeleton grid -->
+                <div id="catalogo-skeleton" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
+                <!-- Empty state -->
+                <div id="catalogo-vazio" class="hidden text-center py-16">
+                    <svg class="w-16 h-16 mx-auto text-marca-200 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <h3 class="font-display font-semibold text-marca-800 text-base mb-1">Nenhum produto encontrado</h3>
+                    <p class="text-sm text-marca-500 mb-4">Tente ajustar seus filtros ou termo de busca.</p>
+                    <button onclick="catalogo_completo_limparFiltros()" class="btn btn-primary text-sm px-5 py-2 rounded-xl active:scale-95 transition-all">Limpar filtros</button>
+                </div>
+                <!-- Scroll sentinel -->
+                <div id="catalogo-sentinel" class="h-4"></div>
+            </div>
+        </div>
+        <!-- Mobile filters overlay -->
+        <div id="catalogo-overlay-filtros" class="fixed inset-0 bg-black/50 z-50 hidden" onclick="catalogo_completo_toggleFiltros()"></div>
+        <div id="catalogo-modal-filtros" class="fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl z-50 max-h-[70vh] overflow-y-auto transform translate-y-full transition-transform duration-300 lg:hidden">
+            <div class="sticky top-0 bg-white border-b border-marca-100 px-4 py-3 flex items-center justify-between rounded-t-2xl">
+                <h3 class="font-display font-semibold text-marca-900 text-sm">Filtros</h3>
+                <button onclick="catalogo_completo_toggleFiltros()" class="p-1 text-marca-500 hover:text-marca-700 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="p-4 space-y-5">
+                <div>
+                    <h4 class="text-xs font-semibold text-marca-600 mb-2 uppercase tracking-wider">Categoria</h4>
+                    <div class="space-y-2" id="catalogo-filtros-mobile-cat"></div>
+                </div>
+                <div>
+                    <h4 class="text-xs font-semibold text-marca-600 mb-2 uppercase tracking-wider">Faixa de Preço</h4>
+                    <div class="space-y-2" id="catalogo-filtros-mobile-preco"></div>
+                </div>
+                <div>
+                    <h4 class="text-xs font-semibold text-marca-600 mb-2 uppercase tracking-wider">Ordenar por</h4>
+                    <select onchange="catalogo_completo_ordenar(this.value)" class="w-full text-sm border border-marca-200 rounded-lg px-3 py-2.5 bg-white text-marca-800 focus:ring-2 focus:ring-marca-500 outline-none">
+                        <option value="popularidade">Popularidade</option>
+                        <option value="nome-az">Nome (A–Z)</option>
+                        <option value="nome-za">Nome (Z–A)</option>
+                        <option value="preco-menor">Menor Preço</option>
+                        <option value="preco-maior">Maior Preço</option>
+                        <option value="avaliacao">Melhor Avaliação</option>
+                    </select>
+                </div>
+                <div class="flex gap-2 pt-2 pb-4">
+                    <button onclick="catalogo_completo_limparFiltros(); catalogo_completo_toggleFiltros();" class="flex-1 btn btn-outline text-sm py-2.5 rounded-xl">Limpar</button>
+                    <button onclick="catalogo_completo_toggleFiltros()" class="flex-1 btn btn-primary text-sm py-2.5 rounded-xl">Aplicar</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            (function() {
+                const PRODUTOS = [
+                    { id: 'p1', nome: 'Método Foco Total', categoria: 'produtividade', autor: 'Dr. Ricardo Mendes', preco: 49.90, nota: 4.8, avaliacoes: 2341, cor: '#7C2D12', icone: '🎯', descricao: 'Um sistema passo a passo para eliminar distrações e manter o foco no que realmente importa.', paginas: 142, formato: 'PDF + EPUB', atualizacao: '2025-09-15' },
+                    { id: 'p2', nome: 'Hábitos Atômicos na Prática', categoria: 'habitos', autor: 'Ana Beatriz Costa', preco: 37.90, nota: 4.7, avaliacoes: 1893, cor: '#B45309', icone: '⚡', descricao: 'Guia prático com exercícios diários para construir hábitos duradouros em 21 dias.', paginas: 98, formato: 'PDF', atualizacao: '2025-08-20' },
+                    { id: 'p3', nome: 'Mindset de Crescimento', categoria: 'desenvolvimento-pessoal', autor: 'Prof. Carlos Eduardo', preco: 59.90, nota: 4.9, avaliacoes: 3205, cor: '#92400E', icone: '🧠', descricao: 'Transforme sua mentalidade e aprenda a ver desafios como oportunidades de crescimento.', paginas: 186, formato: 'PDF + EPUB + Áudio', atualizacao: '2025-10-01' },
+                    { id: 'p4', nome: 'Rotina de Alta Performance', categoria: 'produtividade', autor: 'Mariana Oliveira', preco: 45.00, nota: 4.6, avaliacoes: 987, cor: '#9A3412', icone: '📋', descricao: 'Estruture sua rotina matinal e noturna para maximizar energia e resultados.', paginas: 112, formato: 'PDF + Planilha', atualizacao: '2025-07-30' },
+                    { id: 'p5', nome: 'Quebrando Ciclos', categoria: 'habitos', autor: 'Dr. Ricardo Mendes', preco: 29.90, nota: 4.5, avaliacoes: 1567, cor: '#C2410C', icone: '🔄', descricao: 'Identifique e elimine padrões repetitivos que sabotam seu progresso pessoal.', paginas: 76, formato: 'PDF', atualizacao: '2025-06-10' },
+                    { id: 'p6', nome: 'Inteligência Emocional Prática', categoria: 'desenvolvimento-pessoal', autor: 'Dra. Fernanda Lima', preco: 67.90, nota: 4.8, avaliacoes: 4120, cor: '#EA580C', icone: '💡', descricao: 'Domine suas emoções e construa relacionamentos mais saudáveis e produtivos.', paginas: 210, formato: 'PDF + EPUB + Áudio', atualizacao: '2025-09-28' },
+                    { id: 'p7', nome: 'GTD para Brasileiros', categoria: 'produtividade', autor: 'Paulo Henrique Alves', preco: 54.90, nota: 4.4, avaliacoes: 876, cor: '#7C2D12', icone: '✅', descricao: 'Método GTD adaptado à cultura brasileira para organizar projetos e compromissos.', paginas: 134, formato: 'PDF + EPUB', atualizacao: '2025-05-15' },
+                    { id: 'p8', nome: '30 Dias de Transformação', categoria: 'habitos', autor: 'Ana Beatriz Costa', preco: 39.90, nota: 4.6, avaliacoes: 2104, cor: '#B45309', icone: '📅', descricao: 'Desafio de 30 dias com planilhas diárias e acompanhamento para criar novos hábitos.', paginas: 88, formato: 'PDF + Planilha', atualizacao: '2025-08-05' },
+                    { id: 'p9', nome: 'Propósito e Carreira', categoria: 'desenvolvimento-pessoal', autor: 'Prof. Carlos Eduardo', preco: 72.90, nota: 4.7, avaliacoes: 1876, cor: '#92400E', icone: '🌟', descricao: 'Descubra seu propósito profissional e alinhe sua carreira com seus valores.', paginas: 168, formato: 'PDF + EPUB', atualizacao: '2025-10-10' },
+                    { id: 'p10', nome: 'Pomodoro Avançado', categoria: 'produtividade', autor: 'Mariana Oliveira', preco: 27.90, nota: 4.3, avaliacoes: 654, cor: '#9A3412', icone: '⏱️', descricao: 'Técnica Pomodoro com variações avançadas para diferentes perfis de trabalho.', paginas: 64, formato: 'PDF', atualizacao: '2025-04-20' }
+                ];
+
+                const INDICADORES_CAT = { 'desenvolvimento-pessoal': 'Desenvolvimento Pessoal', 'habitos': 'Hábitos', 'produtividade': 'Produtividade' };
+
+                let estadoFiltros = { busca: '', categorias: [], preco: 'todos', ordenacao: 'popularidade' };
+                let carrinhoCount = 0;
+                let filmando = false;
+                let filmTimer = null;
+
+                window.catalogo_completo_toggleFiltros = function() {
+                    const overlay = document.getElementById('catalogo-overlay-filtros');
+                    const modal = document.getElementById('catalogo-modal-filtros');
+                    const isOpen = !overlay.classList.contains('hidden');
+                    if (isOpen) {
+                        overlay.classList.add('hidden');
+                        modal.style.transform = 'translateY(100%)';
+                        setTimeout(() => modal.classList.add('hidden'), 300);
+                    } else {
+                        modal.classList.remove('hidden');
+                        requestAnimationFrame(() => { modal.style.transform = 'translateY(0)'; });
+                        overlay.classList.remove('hidden');
+                    }
+                };
+
+                window.catalogo_completo_aplicarFiltros = function() {
+                    const cats = [];
+                    document.querySelectorAll('.catalogo-filtro-categoria:checked').forEach(cb => cats.push(cb.value));
+                    const precoEl = document.querySelector('.catalogo-filtro-preco:checked');
+                    estadoFiltros.categorias = cats;
+                    estadoFiltros.preco = precoEl ? precoEl.value : 'todos';
+                    renderizarProdutos();
+                };
+
+                window.catalogo_completo_limparFiltros = function() {
+                    estadoFiltros = { busca: '', categorias: [], preco: 'todos', ordenacao: estadoFiltros.ordenacao };
+                    document.querySelectorAll('.catalogo-filtro-categoria').forEach(cb => cb.checked = false);
+                    document.querySelectorAll('.catalogo-filtro-preco').forEach(r => r.checked = r.value === 'todos');
+                    const buscaInput = document.getElementById('catalogo-busca');
+                    if (buscaInput) buscaInput.value = '';
+                    renderizarProdutos();
+                };
+
+                window.catalogo_completo_ordenar = function(criterio) {
+                    estadoFiltros.ordenacao = criterio;
+                    renderizarProdutos();
+                };
+
+                window.catalogo_completo_buscar = function(termo) {
+                    estadoFiltros.busca = termo.toLowerCase().trim();
+                    renderizarProdutos();
+                };
+
+                window.catalogo_completo_abrirDetalhe = function(produtoId) {
+                    const p = PRODUTOS.find(x => x.id === produtoId);
+                    if (!p) return;
+                    const estrelas = gerarEstrelasSVG(p.nota);
+                    const estrelasCheias = Math.floor(p.nota);
+                    const estrelasVazias = 5 - estrelasCheias;
+                    const html = '<div class="space-y-5">' +
+                        '<div class="flex gap-4 items-start">' +
+                            '<div class="w-24 h-32 rounded-xl flex-shrink-0 flex items-center justify-center text-4xl" style="background: linear-gradient(135deg, ' + p.cor + ', ' + escurecerCor(p.cor, 25) + ')">' + p.icone + '</div>' +
+                            '<div class="min-w-0">' +
+                                '<h3 class="font-display font-bold text-marca-900 text-lg leading-tight">' + p.nome + '</h3>' +
+                                '<p class="text-sm text-marca-500 mt-0.5">por ' + p.autor + '</p>' +
+                                '<div class="flex items-center gap-1 mt-1.5">' + estrelas + '<span class="text-xs text-marca-500 ml-1">' + p.nota.toFixed(1) + ' (' + p.avaliacoes.toLocaleString('pt-BR') + ')</span></div>' +
+                            '</div>' +
+                        '</div>' +
+                        '<p class="text-sm text-marca-700 leading-relaxed">' + p.descricao + '</p>' +
+                        '<div class="grid grid-cols-2 gap-2.5">' +
+                            '<div class="bg-marca-50 rounded-lg p-3"><p class="text-[10px] text-marca-500 uppercase tracking-wider mb-0.5">Formato</p><p class="text-sm font-semibold text-marca-800">' + p.formato + '</p></div>' +
+                            '<div class="bg-marca-50 rounded-lg p-3"><p class="text-[10px] text-marca-500 uppercase tracking-wider mb-0.5">Páginas</p><p class="text-sm font-semibold text-marca-800">' + p.paginas + ' págs.</p></div>' +
+                            '<div class="bg-marca-50 rounded-lg p-3"><p class="text-[10px] text-marca-500 uppercase tracking-wider mb-0.5">Categoria</p><p class="text-sm font-semibold text-marca-800">' + (INDICADORES_CAT[p.categoria] || p.categoria) + '</p></div>' +
+                            '<div class="bg-marca-50 rounded-lg p-3"><p class="text-[10px] text-marca-500 uppercase tracking-wider mb-0.5">Atualizado</p><p class="text-sm font-semibold text-marca-800">' + dataBR(p.atualizacao) + '</p></div>' +
+                        '</div>' +
+                        '<div class="bg-gradient-to-r from-marca-50 to-white border border-marca-100 rounded-xl p-4 flex items-center justify-between">' +
+                            '<div><p class="text-xs text-marca-500">Preço</p><p class="text-2xl font-display font-bold text-marca-900">' + brl(p.preco) + '</p></div>' +
+                            '<button onclick="catalogo_completo_adicionarCarrinho(\'' + p.id + '\'); fecharModal();" class="btn btn-primary px-5 py-3 rounded-xl text-sm font-semibold active:scale-95 transition-all">Adicionar</button>' +
+                        '</div>' +
+                    '</div>';
+                    abrirModal(html, p.nome);
+                };
+
+                window.catalogo_completo_adicionarCarrinho = function(produtoId) {
+                    const p = PRODUTOS.find(x => x.id === produtoId);
+                    if (!p) return;
+                    carrinhoCount++;
+                    const badge = document.getElementById('carrinho-badge');
+                    if (badge) {
+                        badge.textContent = carrinhoCount;
+                        badge.classList.remove('hidden');
+                        badge.classList.add 'scale-125');
+                        setTimeout(() => badge.classList.remove('scale-125'), 200);
+                    }
+                    toast(p.nome + ' adicionado ao carrinho!', 'ok');
+                    const btn = document.querySelector('[data-add-id="' + produtoId + '"]');
+                    if (btn) {
+                        btn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>';
+                        btn.classList.remove('btn-primary');
+                        btn.classList.add('bg-green-600', 'text-white');
+                        btn.disabled = true;
+                    }
+                };
+
+                function gerarEstrelasSVG(nota) {
+                    let s = '';
+                    for (let i = 1; i <= 5; i++) {
+                        if (i <= Math.floor(nota)) s += '<svg class="w-3.5 h-3.5 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
+                        else if (i - nota < 1) s += '<svg class="w-3.5 h-3.5 text-yellow-400" viewBox="0 0 20 20"><defs><linearGradient id="half"><stop offset="50%" stop-color="currentColor"/><stop offset="50%" stop-color="#D1D5DB"/></linearGradient></defs><path fill="url(#half)" stroke="currentColor" stroke-width="0.5" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
+                        else s += '<svg class="w-3.5 h-3.5 text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
+                    }
+                    return s;
+                }
+
+                function escurecerCor(hex, quantidade) {
+                    const num = parseInt(hex.replace('#', ''), 16);
+                    const r = Math.max(0, (num >> 16) - quantidade);
+                    const g = Math.max(0, ((num >> 8) & 0x00FF) - quantidade);
+                    const b = Math.max(0, (num & 0x0000FF) - quantidade);
+                    return '#' + (r << 16 | g << 8 | b).toString(16).padStart(6, '0');
+                }
+
+                function filtrarProdutos() {
+                    let lista = [...PRODUTOS];
+                    if (estadoFiltros.busca) {
+                        const t = estadoFiltros.busca;
+                        lista = lista.filter(p => p.nome.toLowerCase().includes(t) || p.autor.toLowerCase().includes(t) || p.descricao.toLowerCase().includes(t));
+                    }
+                    if (estadoFiltros.categorias.length > 0) {
+                        lista = lista.filter(p => estadoFiltros.categorias.includes(p.categoria));
+                    }
+                    if (estadoFiltros.preco !== 'todos') {
+                        switch (estadoFiltros.preco) {
+                            case 'ate50': lista = lista.filter(p => p.preco <= 50); break;
+                            case '50a100': lista = lista.filter(p => p.preco > 50 && p.preco <= 100); break;
+                            case 'acima100': lista = lista.filter(p => p.preco > 100); break;
+                        }
+                    }
+                    switch (estadoFiltros.ordenacao) {
+                        case 'nome-az': lista.sort((a, b) => a.nome.localeCompare(b.nome)); break;
+                        case 'nome-za': lista.sort((a, b) => b.nome.localeCompare(a.nome)); break;
+                        case 'preco-menor': lista.sort((a, b) => a.preco - b.preco); break;
+                        case 'preco-maior': lista.sort((a, b) => b.preco - a.preco); break;
+                        case 'avaliacao': lista.sort((a, b) => b.nota - a.nota); break;
+                        default: lista.sort((a, b) => b.avaliacoes - a.avaliacoes); break;
+                    }
+                    return lista;
+                }
+
+                function renderizarProdutos() {
+                    const grid = document.getElementById('catalogo-grid');
+                    const vazio = document.getElementById('catalogo-vazio');
+                    const contador = document.getElementById('catalogo-contador');
+                    const lista = filtrarProdutos();
+                    if (lista.length === 0) {
+                        grid.innerHTML = '';
+                        vazio.classList.remove('hidden');
+                        if (contador) contador.textContent = '0 resultado(s)';
+                        return;
+                    }
+                    vazio.classList.add('hidden');
+                    if (contador) contador.textContent = lista.length + ' produto(s)' + (estadoFiltros.busca ? ' para "' + estadoFiltros.busca + '"' : '');
+                    grid.innerHTML = lista.map(p => {
+                        const starsHTML = gerarEstrelasSVG(p.nota);
+                        const isWide = p.preco >= 60;
+                        return '<div class="card card-interactive rounded-2xl overflow-hidden bg-white border border-marca-100/40 hover:shadow-lg hover:border-marca-200/60 transition-all duration-300 cursor-pointer" onclick="catalogo_completo_abrirDetalhe(\'' + p.id + '\')">' +
+                            '<div class="relative aspect-[4/3] flex items-center justify-center text-5xl" style="background: linear-gradient(135deg, ' + p.cor + '22, ' + escurecerCor(p.cor, 15) + '33)">' +
+                                '<span class="relative z-10">' + p.icone + '</span>' +
+                                '<div class="absolute inset-0 opacity-10" style="background: radial-gradient(circle at 30% 30%, ' + p.cor + ' 0%, transparent 70%)"></div>' +
+                            '</div>' +
+                            '<div class="p-3 space-y-2">' +
+                                '<span class="badge badge-categoria text-[10px]">' + (INDICADORES_CAT[p.categoria] || p.categoria) + '</span>' +
+                                '<h3 class="font-display font-semibold text-marca-900 text-sm leading-tight line-clamp-2">' + p.nome + '</h3>' +
+                                '<p class="text-[11px] text-marca-500">' + p.autor + '</p>' +
+                                '<div class="flex items-center gap-1">' + starsHTML + '<span class="text-[10px] text-marca-500 ml-0.5">' + p.nota.toFixed(1) + '</span></div>' +
+                                '<div class="flex items-center justify-between pt-1.5 border-t border-marca-50">' +
+                                    '<span class="text-base font-display font-bold text-marca-900">' + brl(p.preco) + '</span>' +
+                                    '<button data-add-id="' + p.id + '" onclick="event.stopPropagation(); catalogo_completo_adicionarCarrinho(\'' + p.id + '\')" class="btn btn-primary text-[11px] px-3 py-1.5 rounded-lg font-medium active:scale-95 transition-all flex items-center gap-1">' +
+                                        '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>' +
+                                        'Add' +
+                                    '</button>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
+                    }).join('');
+                    atualizarChips();
+                }
+
+                function mostrarSkeletons() {
+                    const sk = document.getElementById('catalogo-skeleton');
+                    let h = '';
+                    for (let i = 0; i < 6; i++) {
+                        h += '<div class="card rounded-2xl overflow-hidden bg-white border border-marca-100/30"><div class="aspect-[4/3] bg-marca-100/60 animate-pulse"></div><div class="p-3 space-y-2.5"><div class="h-4 bg-marca-100/60 rounded-lg animate-pulse w-3/4"></div><div class="h-3 bg-marca-100/40 rounded-md animate-pulse w-1/2"></div><div class="h-3 bg-marca-100/40 rounded-md animate-pulse w-1/3"></div><div class="h-7 bg-marca-100/60 rounded-lg animate-pulse w-1/2 mt-2"></div></div></div>';
+                    }
+                    sk.innerHTML = h;
+                }
+
+                function esconderSkeletons() {
+                    document.getElementById('catalogo-skeleton').innerHTML = '';
+                }
+
+                function atualizarChips() {
+                    const container = document.getElementById('catalogo-filtros-ativos');
+                    const chips = [];
+                    if (estadoFiltros.busca) chips.push({ label: 'Busca: ' + estadoFiltros.busca, clear: 'estadoFiltros.busca = ""; document.getElementById("catalogo-busca").value = ""; renderizarProdutos();' });
+                    estadoFiltros.categorias.forEach(c => chips.push({ label: INDICADORES_CAT[c] || c, clear: 'estadoFiltros.categorias = estadoFiltros.categorias.filter(x => x !== "' + c + '"); renderizarProdutos(); atualizarChips();' }));
+                    if (estadoFiltros.preco !== 'todos') {
+                        const labels = { 'ate50': 'Até R$ 50', '50a100': 'R$ 50 – R$ 100', 'acima100': 'Acima de R$ 100' };
+                        chips.push({ label: labels[estadoFiltros.preco], clear: 'document.querySelector(".catalogo-filtro-preco[value=todos]").checked = true; estadoFiltros.preco = "todos"; renderizarProdutos(); atualizarChips();' });
+                    }
+                    if (chips.length === 0) { container.classList.add('hidden'); container.innerHTML = ''; return; }
+                    container.classList.remove('hidden');
+                    container.innerHTML = chips.map(c => '<span class="inline-flex items-center gap-1 bg-marca-100 text-marca-700 text-xs px-2.5 py-1 rounded-full"><span>' + c.label + '</span><button onclick="' + c.clear + '" class="hover:text-marca-900 transition-colors"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg></button></span>').join('');
+                }
+
+                function init() {
+                    const buscaInput = document.getElementById('catalogo-busca');
+                    if (buscaInput) {
+                        buscaInput.addEventListener('input', function() { catalogo_completo_buscar(this.value); });
+                    }
+                    const skeletonContainer = document.getElementById('catalogo-skeleton');
+                    const grid = document.getElementById('catalogo-grid');
+                    grid.innerHTML = '';
+                    skeletonContainer.innerHTML = '';
+                    mostrarSkeletons();
+                    setTimeout(() => { esconderSkeletons(); renderizarProdutos(); }, 1200);
+                    const sentinel = document.getElementById('catalogo-sentinel');
+                    if (sentinel && 'IntersectionObserver' in window) {
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting && !filmando) {
+                                    filmando = true;
+                                    mostrarSkeletons();
+                                    clearTimeout(filmTimer);
+                                    filmTimer = setTimeout(() => { esconderSkeletons(); filmando = false; }, 800);
+                                }
+                            });
+                        }, { rootMargin: '100px' });
+                        observer.observe(sentinel);
+                    }
+                    const mobileFilterContent = document.getElementById('catalogo-filtros-mobile-cat');
+                    if (mobileFilterContent) {
+                        const cats = [{ v: 'desenvolvimento-pessoal', l: 'Desenvolvimento Pessoal' }, { v: 'habitos', l: 'Hábitos' }, { v: 'produtividade', l: 'Produtividade' }];
+                        mobileFilterContent.innerHTML = cats.map(c => '<label class="flex items-center gap-2.5 cursor-pointer"><input type="checkbox" value="' + c.v + '" class="catalogo-filtro-categoria-mobile w-4 h-4 rounded border-marca-300 accent-marca-700" onchange="catalogo_completo_aplicarFiltros()"><span class="text-sm text-marca-800">' + c.l + '</span></label>').join('');
+                    }
+                    const mobilePrecoContent = document.getElementById('catalogo-filtros-mobile-preco');
+                    if (mobilePrecoContent) {
+                        const precos = [{ v: 'todos', l: 'Todos' }, { v: 'ate50', l: 'Até R$ 50' }, { v: '50a100', l: 'R$ 50 – R$ 100' }, { v: 'acima100', l: 'Acima de R$ 100' }];
+                        mobilePrecoContent.innerHTML = precos.map(p => '<label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="preco-mobile" value="' + p.v + '" ' + (p.v === 'todos' ? 'checked' : '') + ' class="catalogo-filtro-preco-mobile w-4 h-4 border-marca-300 accent-marca-700" onchange="catalogo_completo_aplicarFiltros()"><span class="text-sm text-marca-800">' + p.l + '</span></label>').join('');
+                    }
+                }
+                if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+            })();
+        </script>
+    </section>
+
     <!-- TELAS -->
     </main>
 
