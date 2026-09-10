@@ -1486,6 +1486,199 @@
       </script>
     </section>
 
+    <section data-tela="meus-pedidos" class="hidden">
+  <div class="px-5 pt-6 pb-4">
+    <div>
+      <h1 class="font-display text-2xl font-bold text-marca-900 tracking-tight">Meus Pedidos</h1>
+      <p class="text-sm text-marca-800/60 mt-1 font-body">Acompanhe seus pedidos e acesse downloads</p>
+    </div>
+  </div>
+
+  <div id="mp-resumo" class="px-5 mb-4 grid grid-cols-3 gap-3">
+    <div class="bg-white rounded-2xl p-3 shadow-sm border border-marca-900/5 text-center">
+      <span id="mp-total" class="block font-display text-xl font-bold text-marca-900">8</span>
+      <span class="text-[11px] text-marca-800/50 mt-0.5">Total</span>
+    </div>
+    <div class="bg-white rounded-2xl p-3 shadow-sm border border-marca-900/5 text-center">
+      <span id="mp-concluidos" class="block font-display text-xl font-bold text-green-600">5</span>
+      <span class="text-[11px] text-marca-800/50 mt-0.5">Concluídos</span>
+    </div>
+    <div class="bg-white rounded-2xl p-3 shadow-sm border border-marca-900/5 text-center">
+      <span id="mp-processando" class="block font-display text-xl font-bold text-yellow-600">2</span>
+      <span class="text-[11px] text-marca-800/50 mt-0.5">Processando</span>
+    </div>
+  </div>
+
+  <div class="px-5 mb-4">
+    <div class="flex bg-white rounded-xl p-1 shadow-sm border border-marca-900/5">
+      <button onclick="meus_pedidos_filtrar(7)" id="mp-f-7" class="flex-1 py-2 text-xs font-semibold rounded-lg transition-all duration-200 bg-marca-900 text-white">Últimos 7 dias</button>
+      <button onclick="meus_pedidos_filtrar(30)" id="mp-f-30" class="flex-1 py-2 text-xs font-semibold rounded-lg transition-all duration-200 text-marca-800/60 hover:text-marca-900">Último mês</button>
+      <button onclick="meus_pedidos_filtrar(0)" id="mp-f-0" class="flex-1 py-2 text-xs font-semibold rounded-lg transition-all duration-200 text-marca-800/60 hover:text-marca-900">Todos</button>
+    </div>
+  </div>
+
+  <div id="mp-lista" class="px-5 space-y-3 pb-28"></div>
+  <div id="mp-vazio" class="hidden px-5 pb-28 text-center pt-10">
+    <div class="w-16 h-16 mx-auto bg-marca-100 rounded-full flex items-center justify-center mb-4">
+      <svg class="w-8 h-8 text-marca-800/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+    </div>
+    <p class="font-display font-semibold text-marca-900 text-sm">Nenhum pedido encontrado</p>
+    <p class="text-xs text-marca-800/50 mt-1 mb-4">Nenhum pedido corresponde ao período selecionado.</p>
+    <button onclick="mostrarTela('catalogo')" class="bg-marca-900 text-white text-sm font-semibold py-3 px-6 rounded-xl active:scale-95 transition-transform duration-150">Explorar Catálogo</button>
+  </div>
+
+<script>
+(function(){
+  const PEDIDOS = [
+    { id:"BC-1024", data:"2026-01-20", produto:"E-book: Sistema de Metas Diárias", categoria:"Produtividade", valor:97.00, status:"Concluído", pagamento:"Cartão de Crédito (**** 4521)", downloadUrl:"#download-1024" },
+    { id:"BC-1023", data:"2026-01-18", produto:"Curso Completo: Hábitos Atômicos na Prática", categoria:"Desenvolvimento Pessoal", valor:297.00, status:"Concluído", pagamento:"PIX", downloadUrl:"#download-1023" },
+    { id:"BC-1022", data:"2026-01-15", produto:"Workshop: Planejamento Semanal Estratégico", categoria:"Produtividade", valor:147.00, status:"Disponível", pagamento:"Cartão de Crédito (**** 8832)", downloadUrl:"#download-1022" },
+    { id:"BC-1021", data:"2026-01-12", produto:"E-book: Mindset de Alta Performance", categoria:"Desenvolvimento Pessoal", valor:67.00, status:"Concluído", pagamento:"PIX", downloadUrl:"#download-1021" },
+    { id:"BC-1020", data:"2026-01-10", produto:"Mentoria em Grupo — Janeiro 2026", categoria:"Mentoria", valor:497.00, status:"Processando", pagamento:"Cartão de Crédito (**** 1109)", downloadUrl:null },
+    { id:"BC-1019", data:"2026-01-08", produto:"E-book: Sistema de Metas Diárias", categoria:"Produtividade", valor:97.00, status:"Concluído", pagamento:"PIX", downloadUrl:"#download-1019" },
+    { id:"BC-1018", data:"2026-01-05", produto:"Curso: Rotina Matinal de Sucesso", categoria:"Hábitos", valor:127.00, status:"Disponível", pagamento:"Cartão de Crédito (**** 7733)", downloadUrl:"#download-1018" },
+    { id:"BC-1017", data:"2025-12-28", produto:"Pack: 3 E-books — Coleção Produtividade", categoria:"Produtividade", valor:197.00, status:"Concluído", pagamento:"PIX", downloadUrl:"#download-1017" }
+  ];
+
+  const COR_PRODUTO = {"Produtividade":"#F97316","Desenvolvimento Pessoal":"#7C2D12","Mentoria":"#92400E","Hábitos":"#C2410C"};
+  const COR_STATUS = {"Concluído":"bg-green-100 text-green-700","Processando":"bg-yellow-100 text-yellow-700","Disponível":"bg-blue-100 text-blue-700"};
+  const ICONE_STATUS = {"Concluído":"M5 13l4 4L19 7","Processando":"M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z","Disponível":"M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"};
+  const ICONE_STATUS_BG = {"Concluído":"text-green-600","Processando":"text-yellow-600","Disponível":"text-blue-600"};
+
+  let filtroAtual = 7;
+  let idSelecionado = null;
+
+  function corCategoria(cat){ return COR_PRODUTO[cat] || "#7C2D12"; }
+
+  function statusBadge(s){
+    return `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-semibold ${COR_STATUS[s]||'bg-gray-100 text-gray-700'}"><svg class="w-3 h-3 ${ICONE_STATUS_BG[s]||'text-gray-500'}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="${ICONE_STATUS[s]||'M12 8v4l3 3'}"/></svg>${s}</span>`;
+  }
+
+  function avatarCor(str){
+    const c = ["#7C2D12","#F97316","#92400E","#C2410C","#EA580C","#9A3412"];
+    let h = 0; for(let i=0;i<str.length;i++) h = str.charCodeAt(i) + ((h<<5)-h);
+    const idx = Math.abs(h) % c.length;
+    return c[idx];
+  }
+
+  function inicial(str){
+    if(!str) return "?";
+    const p = str.trim().split(" ");
+    return (p[0][0] + (p.length>1 ? p[p.length-1][0] : "")).toUpperCase();
+  }
+
+  function trilhaProduto(p){
+    const c = corCategoria(p.categoria);
+    return `<div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:${c}15"><svg class="w-5 h-5" style="color:${c}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>`;
+  }
+
+  function renderizarLista(lista){
+    const el = document.getElementById("mp-lista");
+    const vz = document.getElementById("mp-vazio");
+    const rv = document.getElementById("mp-resumo");
+    if(!lista.length){
+      el.classList.add("hidden"); vz.classList.remove("hidden"); rv.classList.add("hidden");
+      return;
+    }
+    el.classList.remove("hidden"); vz.classList.add("hidden"); rv.classList.remove("hidden");
+
+    el.innerHTML = lista.map((p,i) => {
+      const dia = new Date(p.data+"T00:00:00");
+      const diabr = dia.toLocaleDateString("pt-BR",{day:"2-digit",month:"short",year:"numeric"});
+      const cor = corCategoria(p.categoria);
+      const sel = idSelecionado === p.id ? "ring-2 ring-marca-900/20" : "";
+      const isProc = p.status === "Processando";
+      return `
+      <div onclick="meus_pedidos_selecionar('${p.id}')" class="card bg-white rounded-2xl p-4 shadow-sm border border-marca-900/5 active:scale-[0.98] transition-all duration-150 cursor-pointer ${sel}" style="animation-delay:${i*60}ms">
+        <div class="flex items-start gap-3">
+          ${trilhaProduto(p)}
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <span class="text-[11px] font-semibold text-marca-800/40 tracking-wide">${p.id}</span>
+              ${isProc ? `<span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span></span>` : ""}
+            </div>
+            <p class="font-display font-semibold text-marca-900 text-sm leading-tight truncate">${p.produto}</p>
+            <p class="text-xs text-marca-800/50 mt-0.5">${diabr} · ${p.pagamento}</p>
+            <div class="flex items-center justify-between mt-2.5 pt-2.5 border-t border-marca-900/5">
+              ${statusBadge(p.status)}
+              <span class="font-display font-bold text-marca-900 text-sm">${brl(p.valor)}</span>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    }).join("");
+  }
+
+  window.meus_pedidos_filtrar = function(dias){
+    filtroAtual = dias;
+    idSelecionado = null;
+    ["7","30","0"].forEach(k => {
+      const b = document.getElementById("mp-f-"+k);
+      if(k == String(dias)){ b.classList.add("bg-marca-900","text-white"); b.classList.remove("text-marca-800/60"); }
+      else { b.classList.remove("bg-marca-900","text-white"); b.classList.add("text-marca-800/60"); }
+    });
+    const hoje = new Date(); hoje.setHours(0,0,0,0);
+    const filtrados = PEDIDOS.filter(p => {
+      if(!dias) return true;
+      const d = new Date(p.data+"T00:00:00");
+      const diff = Math.floor((hoje - d) / 86400000);
+      return diff <= dias;
+    });
+    renderizarLista(filtrados);
+  };
+
+  window.meus_pedidos_selecionar = function(id){
+    idSelecionado = id;
+    const p = PEDIDOS.find(x => x.id === id);
+    if(!p) return;
+    const cor = corCategoria(p.categoria);
+    const hoje = new Date(p.data+"T00:00:00");
+    const diabr = hoje.toLocaleDateString("pt-BR",{day:"2-digit",month:"long",year:"numeric"});
+    const statusExtra = p.status === "Concluído" || p.status === "Disponível" ? `<button onclick="meus_pedidos_download('${p.id}'); fecharModal();" class="w-full bg-marca-900 text-white font-semibold text-sm py-3.5 rounded-xl active:scale-95 transition-all duration-150 flex items-center justify-center gap-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>Baixar E-book</button>` : "";
+    const procInfo = p.status === "Processando" ? `<div class="bg-yellow-50 border border-yellow-200 rounded-xl p-3 mt-3"><p class="text-xs text-yellow-700 font-medium">Seu pedido está sendo processado. Você receberá o acesso por e-mail e WhatsApp em até 24 horas.</p></div>` : "";
+    const html = `
+      <div class="space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:${cor}15">${trilhaProduto(p)}</div>
+          <div class="flex-1 min-w-0">
+            <span class="text-[11px] font-semibold text-marca-800/40">${p.id}</span>
+            <p class="font-display font-bold text-marca-900 text-sm leading-tight">${p.produto}</p>
+          </div>
+        </div>
+        <div class="bg-marca-50 rounded-xl p-4 space-y-2.5">
+          <div class="flex justify-between text-sm"><span class="text-marca-800/60">Data do pedido</span><span class="font-semibold text-marca-900">${diabr}</span></div>
+          <div class="flex justify-between text-sm"><span class="text-marca-800/60">Categoria</span><span class="font-semibold text-marca-900">${p.categoria}</span></div>
+          <div class="flex justify-between text-sm"><span class="text-marca-800/60">Pagamento</span><span class="font-semibold text-marca-900">${p.pagamento}</span></div>
+          <div class="flex justify-between text-sm"><span class="text-marca-800/60">Status</span>${statusBadge(p.status)}</div>
+          <div class="border-t border-marca-900/5 pt-2.5 flex justify-between text-sm"><span class="text-marca-800/60 font-medium">Valor total</span><span class="font-display font-bold text-marca-900 text-base">${brl(p.valor)}</span></div>
+        </div>
+        ${procInfo}
+        <div class="bg-marca-900/5 rounded-xl p-3 flex items-center gap-2.5">
+          <svg class="w-5 h-5 text-marca-800/40 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <span class="text-xs text-marca-800/60">Compra segura · Acesso vitalício ao conteúdo</span>
+        </div>
+        <div class="flex gap-2.5 pt-1">
+          ${statusExtra}
+          <button onclick="fecharModal(); mostrarTela('notificacoes');" class="flex-1 border-2 border-marca-900 text-marca-900 font-semibold text-sm py-3.5 rounded-xl active:scale-95 transition-all duration-150">Suporte</button>
+        </div>
+      </div>`;
+    abrirModal(html, "Detalhes do Pedido · " + p.id);
+    renderizarLista(PEDIDOS.filter(p2 => {
+      if(!filtroAtual) return true;
+      const d2 = new Date(p2.data+"T00:00:00");
+      return Math.floor((hoje - d2) / 86400000) <= filtroAtual;
+    }));
+  };
+
+  window.meus_pedidos_download = function(id){
+    toast("Download iniciado! Verifique sua pasta de Downloads.", "ok");
+  };
+
+  meus_pedidos_filtrar(7);
+})();
+</script>
+</section>
+
     <!-- TELAS -->
 
       <!-- ══════════════ NAVEGAÇÃO INFERIOR ══════════════ -->
