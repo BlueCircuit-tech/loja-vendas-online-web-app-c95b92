@@ -878,6 +878,430 @@
         </script>
     </section>
 
+    <section data-tela="detalhe-do-produto" class="hidden">
+    <div class="fade-in">
+        <!-- Hero do Produto -->
+        <div class="relative" style="background:linear-gradient(160deg,#7C2D12 0%,#9A3412 40%,#C2410C 100%);">
+            <div class="p-5 pb-8">
+                <div class="flex items-center justify-between mb-5">
+                    <button onclick="detalhe_do_produto_voltar()" class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-all duration-200 active:scale-95">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button onclick="detalhe_do_produto_compartilhar()" class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-all duration-200 active:scale-95">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 111.024 5.435l-6.632 3.316"/></svg>
+                    </button>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-52 h-72 rounded-2xl shadow-2xl overflow-hidden relative flex-shrink-0" style="background:linear-gradient(145deg,#FFF7ED 0%,#F97316 50%,#7C2D12 100%);">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                            <div class="w-14 h-14 rounded-xl mb-3 flex items-center justify-center" style="background:#FFFF00;">
+                                <svg class="w-8 h-8" style="color:#7C2D12;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                            <h3 class="font-display text-xl font-bold leading-tight" style="color:#7C2D12;">Método Execução<br>Consciente</h3>
+                            <div class="w-12 h-0.5 mt-3 mb-2" style="background:#7C2D12;"></div>
+                            <p class="text-xs font-medium" style="color:#9A3412;">Metas → Hábitos →<br>Resultados</p>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-16" style="background:linear-gradient(to top,#7C2D12,transparent);"></div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <span class="badge bg-yellow-300 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full">Mais Vendido</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 -mt-3 relative z-10" style="background:#FFF7ED;border-radius:24px 24px 0 0;">
+            <div class="pt-5">
+                <h1 class="font-display text-2xl font-bold leading-tight" style="color:#7C2D12;">Método Execução Consciente</h1>
+                <p class="text-sm mt-1.5 font-medium" style="color:#9A3412;">Transformando Metas em Hábitos e Hábitos em Resultados</p>
+
+                <div class="flex items-center gap-2 mt-3">
+                    <div class="flex items-center gap-0.5">
+                        <svg class="w-4 h-4" style="color:#F97316;" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4" style="color:#F97316;" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4" style="color:#F97316;" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4" style="color:#F97316;" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4" style="color:#F97316;" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <span class="text-sm font-bold" style="color:#7C2D12;">4.8</span>
+                    <span class="text-sm" style="color:#9A3412;">(247 avaliações)</span>
+                    <span class="text-sm" style="color:#F97316;">·</span>
+                    <span class="text-sm" style="color:#9A3412;">1.832 alunos</span>
+                </div>
+
+                <div class="flex items-baseline gap-3 mt-4">
+                    <span class="font-display text-3xl font-bold" style="color:#7C2D12;">R$ 67,90</span>
+                    <span class="text-base line-through" style="color:#9A3412;">R$ 147,00</span>
+                    <span class="text-xs font-bold px-2 py-0.5 rounded-full" style="background:#F97316;color:white;">54% OFF</span>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 mt-4">
+                    <div class="card p-3 text-center" style="background:white;border:1px solid #FED7AA;">
+                        <svg class="w-5 h-5 mx-auto" style="color:#F97316;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <span class="text-xs font-medium mt-1 block" style="color:#7C2D12;">Acesso<br>Vitalício</span>
+                    </div>
+                    <div class="card p-3 text-center" style="background:white;border:1px solid #FED7AA;">
+                        <svg class="w-5 h-5 mx-auto" style="color:#F97316;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        <span class="text-xs font-medium mt-1 block" style="color:#7C2D12;">PDF<br>Incluso</span>
+                    </div>
+                    <div class="card p-3 text-center" style="background:white;border:1px solid #FED7AA;">
+                        <svg class="w-5 h-5 mx-auto" style="color:#F97316;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        <span class="text-xs font-medium mt-1 block" style="color:#7C2D12;">Garantia<br>7 dias</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Descrição -->
+            <div class="mt-6">
+                <h2 class="font-display text-lg font-bold mb-2" style="color:#7C2D12;">Sobre o Material</h2>
+                <p class="text-sm leading-relaxed" style="color:#7C2D12;opacity:0.8;">Você escreve metas, faz planos, se motiva… mas não consegue executar todos os dias? O problema não é falta de vontade. É que você está tentando mudar o resultado sem mudar o sistema.</p>
+                <p class="text-sm leading-relaxed mt-3" style="color:#7C2D12;opacity:0.8;">Neste e-book, você vai aprender o método passo a passo que ajuda pessoas comuns a transformar objetivos vagos em ações diárias concretas. Um sistema simples, prático e validado por mais de 1.800 alunos.</p>
+                <p class="text-sm leading-relaxed mt-3" style="color:#7C2D12;opacity:0.8;">Indicado para profissionais, estudantes, empreendedores e qualquer pessoa que quer parar de apenas planejar e começar a executar de verdade.</p>
+            </div>
+
+            <!-- O que você vai aprender -->
+            <div class="mt-7">
+                <h2 class="font-display text-lg font-bold mb-4" style="color:#7C2D12;">O que você vai aprender</h2>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#F97316;">
+                            <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <p class="text-sm leading-relaxed" style="color:#7C2D12;">Definir metas claras com o método SMART aplicado à vida pessoal e profissional</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#F97316;">
+                            <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <p class="text-sm leading-relaxed" style="color:#7C2D12;">Criar um sistema de execução diária sem depender de motivação</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#F97316;">
+                            <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <p class="text-sm leading-relaxed" style="color:#7C2D12;">Transformar ações repetidas em hábitos automáticos e sustentáveis</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#F97316;">
+                            <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <p class="text-sm leading-relaxed" style="color:#7C2D12;">Eliminar a procrastinação com técnicas de foco e priorização</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#F97316;">
+                            <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <p class="text-sm leading-relaxed" style="color:#7C2D12;">Medir e acompanhar progresso com indicadores simples e práticos</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#F97316;">
+                            <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <p class="text-sm leading-relaxed" style="color:#7C2D12;">Construir identidade de alta performance com o método de identidade-first</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Índice do Conteúdo -->
+            <div class="mt-7">
+                <h2 class="font-display text-lg font-bold mb-4" style="color:#7C2D12;">Conteúdo do E-book</h2>
+                <div class="space-y-2.5">
+                    <div class="card p-3.5 flex items-center gap-3 cursor-pointer" style="background:white;border:1px solid #FED7AA;" onclick="detalhe_do_produto_abrirCapitulo(1)">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 font-display font-bold text-sm" style="background:#7C2D12;color:white;">01</div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-bold truncate" style="color:#7C2D12;">Por Que Você Não Executa</p>
+                            <p class="text-xs" style="color:#9A3412;">O sistema atual está sabotando você</p>
+                        </div>
+                        <svg class="w-4 h-4 flex-shrink-0" style="color:#9A3412;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                    <div class="card p-3.5 flex items-center gap-3 cursor-pointer" style="background:white;border:1px solid #FED7AA;" onclick="detalhe_do_produto_abrirCapitulo(2)">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 font-display font-bold text-sm" style="background:#7C2D12;color:white;">02</div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-bold truncate" style="color:#7C2D12;">Metas Que Funcionam de Verdade</p>
+                            <p class="text-xs" style="color:#9A3412;">Aplicando SMART na prática</p>
+                        </div>
+                        <svg class="w-4 h-4 flex-shrink-0" style="color:#9A3412;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                    <div class="card p-3.5 flex items-center gap-3 cursor-pointer" style="background:white;border:1px solid #FED7AA;" onclick="detalhe_do_produto_abrirCapitulo(3)">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 font-display font-bold text-sm" style="background:#7C2D12;color:white;">03</div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-bold truncate" style="color:#7C2D12;">O Poder dos Hábitos Atômicos</p>
+                            <p class="text-xs" style="color:#9A3412;">Pequenas mudanças, grandes resultados</p>
+                        </div>
+                        <svg class="w-4 h-4 flex-shrink-0" style="color:#9A3412;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                    <div class="card p-3.5 flex items-center gap-3 cursor-pointer" style="background:white;border:1px solid #FED7AA;" onclick="detalhe_do_produto_abrirCapitulo(4)">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 font-display font-bold text-sm" style="background:#7C2D12;color:white;">04</div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-bold truncate" style="color:#7C2D12;">Sistema de Execução Diária</p>
+                            <p class="text-xs" style="color:#9A3412;">Rotinas que geram momentum</p>
+                        </div>
+                        <svg class="w-4 h-4 flex-shrink-0" style="color:#9A3412;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                    <div class="card p-3.5 flex items-center gap-3 cursor-pointer" style="background:white;border:1px solid #FED7AA;" onclick="detalhe_do_produto_abrirCapitulo(5)">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 font-display font-bold text-sm" style="background:#7C2D12;color:white;">05</div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-bold truncate" style="color:#7C2D12;">Superando a Procrastinação</p>
+                            <p class="text-xs" style="color:#9A3412;">Técnicas de foco e disciplina</p>
+                        </div>
+                        <svg class="w-4 h-4 flex-shrink-0" style="color:#9A3412;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                    <div class="card p-3.5 flex items-center gap-3 cursor-pointer" style="background:white;border:1px solid #FED7AA;" onclick="detalhe_do_produto_abrirCapitulo(6)">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 font-display font-bold text-sm" style="background:#7C2D12;color:white;">06</div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-bold truncate" style="color:#7C2D12;">Medindo Seu Progresso</p>
+                            <p class="text-xs" style="color:#9A3412;">Indicadores que realmente importam</p>
+                        </div>
+                        <svg class="w-4 h-4 flex-shrink-0" style="color:#9A3412;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                    <div class="card p-3.5 flex items-center gap-3 cursor-pointer" style="background:white;border:1px solid #FED7AA;" onclick="detalhe_do_produto_abrirCapitulo(7)">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 font-display font-bold text-sm" style="background:#7C2D12;color:white;">07</div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-bold truncate" style="color:#7C2D12;">Construindo a Identidade de Alta Performance</p>
+                            <p class="text-xs" style="color:#9A3412;">O método identity-first</p>
+                        </div>
+                        <svg class="w-4 h-4 flex-shrink-0" style="color:#9A3412;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Depoimentos Carrossel -->
+            <div class="mt-7">
+                <h2 class="font-display text-lg font-bold mb-4" style="color:#7C2D12;">O que dizem os alunos</h2>
+                <div id="depoimentos-container" class="overflow-hidden">
+                    <div id="depoimentos-track" class="flex transition-transform duration-300 ease-out" style="gap:12px;">
+                    </div>
+                </div>
+                <div class="flex items-center justify-center gap-2 mt-4" id="depoimentos-dots">
+                </div>
+            </div>
+
+            <!-- Avaliações -->
+            <div class="mt-7">
+                <h2 class="font-display text-lg font-bold mb-4" style="color:#7C2D12;">Avaliações e Comentários</h2>
+                <div class="card p-4" style="background:white;border:1px solid #FED7AA;">
+                    <div class="flex items-center gap-4">
+                        <div class="text-center">
+                            <span class="font-display text-4xl font-bold" style="color:#7C2D12;">4.8</span>
+                            <div class="flex items-center mt-1">
+                                <svg class="w-4 h-4" style="color:#F97316;" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-4 h-4" style="color:#F97316;" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-4 h-4" style="color:#F97316;" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-4 h-4" style="color:#F97316;" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-4 h-4" style="color:#F97316;" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            </div>
+                            <p class="text-xs mt-1" style="color:#9A3412;">247 avaliações</p>
+                        </div>
+                        <div class="flex-1 space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs w-5 text-right" style="color:#7C2D12;">5</span>
+                                <div class="flex-1 h-2 rounded-full overflow-hidden" style="background:#FED7AA;"><div class="h-full rounded-full" style="background:#F97316;width:82%;"></div></div>
+                                <span class="text-xs w-8" style="color:#9A3412;">82%</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs w-5 text-right" style="color:#7C2D12;">4</span>
+                                <div class="flex-1 h-2 rounded-full overflow-hidden" style="background:#FED7AA;"><div class="h-full rounded-full" style="background:#F97316;width:13%;"></div></div>
+                                <span class="text-xs w-8" style="color:#9A3412;">13%</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs w-5 text-right" style="color:#7C2D12;">3</span>
+                                <div class="flex-1 h-2 rounded-full overflow-hidden" style="background:#FED7AA;"><div class="h-full rounded-full" style="background:#F97316;width:3%;"></div></div>
+                                <span class="text-xs w-8" style="color:#9A3412;">3%</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs w-5 text-right" style="color:#7C2D12;">2</span>
+                                <div class="flex-1 h-2 rounded-full overflow-hidden" style="background:#FED7AA;"><div class="h-full rounded-full" style="background:#F97316;width:1%;"></div></div>
+                                <span class="text-xs w-8" style="color:#9A3412;">1%</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs w-5 text-right" style="color:#7C2D12;">1</span>
+                                <div class="flex-1 h-2 rounded-full overflow-hidden" style="background:#FED7AA;"><div class="h-full rounded-full" style="background:#F97316;width:1%;"></div></div>
+                                <span class="text-xs w-8" style="color:#9A3412;">1%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-3 mt-4" id="avaliacoes-list">
+                </div>
+            </div>
+
+            <!-- Spacer para o botão fixo -->
+            <div class="h-24"></div>
+        </div>
+    </div>
+
+    <!-- Botões Fixos -->
+    <div class="fixed bottom-0 left-0 right-0 p-4 z-40" style="background:linear-gradient(to top,#FFF7ED 70%,transparent);">
+        <div class="max-w-[430px] mx-auto">
+            <button onclick="detalhe_do_produto_comprar()" class="btn w-full py-4 rounded-2xl font-bold text-base active:scale-95 transition-all duration-200" style="background:#7C2D12;color:white;box-shadow:0 4px 20px rgba(124,45,18,0.3);">
+                Comprar Agora — R$ 67,90
+            </button>
+            <button onclick="detalhe_do_produto_carrinho()" class="w-full py-3 rounded-2xl font-bold text-base mt-2 active:scale-95 transition-all duration-200" style="background:white;color:#7C2D12;border:2px solid #7C2D12;">
+                Adicionar ao Carrinho
+            </button>
+            <button onclick="detalhe_do_produto_duvidas()" class="w-full py-3 rounded-2xl font-medium text-sm mt-2 flex items-center justify-center gap-2 active:scale-95 transition-all duration-200" style="color:#9A3412;">
+                <svg class="w-4 h-4" style="color:#25D366;" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                Tirar Dúvidas
+            </button>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        var depoimentos = [
+            { nome: 'Mariana Costa', iniciais: 'MC', cor: '#F97316', estrelas: 5, texto: 'Mudou minha forma de enxergar produtividade. Hoje tenho uma rotina sólida e já alcancei metas que achei impossíveis. Material direto e aplicável.', data: '15/01/2025' },
+            { nome: 'Rafael Almeida', iniciais: 'RA', cor: '#7C2D12', estrelas: 5, texto: 'Finalmente um material que ensina execução e não apenas teoria. O capítulo sobre hábitos atômicos foi um divisor de águas para mim. Recomendo muito!', data: '28/12/2024' },
+            { nome: 'Fernanda Souza', iniciais: 'FS', cor: '#C2410C', estrelas: 5, texto: 'Eu estava perdida com tantas metas e nenhum resultado. Com o método, aprendi a focar no que realmente importa. Meu faturamento cresceu 40% em 3 meses.', data: '10/12/2024' },
+            { nome: 'André Oliveira', iniciais: 'AO', cor: '#9A3412', estrelas: 4, texto: 'Conteúdo excelente e muito bem estruturado. Gostaria que tivesse mais exemplos práticos no capítulo 4, mas no geral o livro superou minhas expectativas.', data: '05/12/2024' },
+            { nome: 'Juliana Pereira', iniciais: 'JP', cor: '#F97316', estrelas: 5, texto: 'Estudante de medicina e precisava de um método para organizar meus estudos. O sistema de execução diária me ajudou a passar na residência!', data: '22/11/2024' }
+        ];
+
+        var avaliacoes = [
+            { nome: 'Camila R.', iniciais: 'CR', cor: '#F97316', estrelas: 5, texto: 'Conteúdo transformador! Eu já tinha lido livros de hábitos antes, mas o método aqui apresentado é muito mais prático e direto. Em duas semanas já estava aplicando.', data: '18/01/2025', util: 34 },
+            { nome: 'Thiago M.', iniciais: 'TM', cor: '#7C2D12', estrelas: 5, texto: 'Investimento que valeu cada centavo. A metodologia é simples, mas extremamente eficaz. Minha produtividade disparou e finalmente estou conseguindo executar meus projetos.', data: '03/01/2025', util: 28 },
+            { nome: 'Patrícia L.', iniciais: 'PL', cor: '#C2410C', estrelas: 5, texto: 'Muito bem escrito e fácil de aplicar. As ferramentas do capítulo 6 me ajudaram a criar meu próprio sistema de medição. Estou acompanhando meu progresso há 30 dias.', data: '20/12/2024', util: 21 },
+            { nome: 'Lucas B.', iniciais: 'LB', cor: '#9A3412', estrelas: 4, texto: 'Bom material para quem está começando. Gostei especialmente da parte sobre identidade e hábitos. Só achei o capítulo final um pouco curto, poderia aprofundar mais.', data: '14/12/2024', util: 15 },
+            { nome: 'Ana Beatriz', iniciais: 'AB', cor: '#F97316', estrelas: 5, texto: 'Eu já tinha tentado de tudo para criar hábitos e sempre fracassava. O e-book me mostrou que o erro estava no sistema, não em mim. Mudou minha mentalidade completamente.', data: '01/12/2024', util: 42 },
+            { nome: 'Ricardo D.', iniciais: 'RD', cor: '#7C2D12', estrelas: 5, texto: 'Empreendedor com 3 empresas e ainda assim eu não conseguia ser consistente. Esse material me ajudou a criar sistemas que funcionam mesmo nos dias difíceis.', data: '18/11/2024', util: 19 }
+        ];
+
+        function renderEstrelas(qtd) {
+            var s = '';
+            for (var i = 0; i < 5; i++) {
+                s += '<svg class="w-3.5 h-3.5" style="color:#F97316;" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
+            }
+            return s;
+        }
+
+        var track = document.getElementById('depoimentos-track');
+        var dotsContainer = document.getElementById('depoimentos-dots');
+
+        depoimentos.forEach(function(d, i) {
+            var card = document.createElement('div');
+            card.className = 'flex-shrink-0';
+            card.style.width = 'calc(100% - 24px)';
+            card.innerHTML =
+                '<div class="card p-5" style="background:white;border:1px solid #FED7AA;">' +
+                    '<div class="flex items-center gap-3 mb-3">' +
+                        '<div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 font-display font-bold text-sm text-white" style="background:' + d.cor + ';">' + d.iniciais + '</div>' +
+                        '<div class="min-w-0">' +
+                            '<p class="text-sm font-bold truncate" style="color:#7C2D12;">' + d.nome + '</p>' +
+                            '<div class="flex items-center gap-0.5">' + renderEstrelas(d.estrelas) + '</div>' +
+                        '</div>' +
+                    '</div>' +
+                    '<p class="text-sm leading-relaxed" style="color:#7C2D12;opacity:0.8;">' + d.texto + '</p>' +
+                    '<p class="text-xs mt-2.5" style="color:#9A3412;">' + d.data + '</p>' +
+                '</div>';
+            track.appendChild(card);
+
+            var dot = document.createElement('button');
+            dot.className = 'w-2 h-2 rounded-full transition-all duration-200';
+            dot.style.background = i === 0 ? '#7C2D12' : '#FED7AA';
+            dot.onclick = (function(idx) { return function() { detalhe_do_produto_irDepoimento(idx); }; })(i);
+            dotsContainer.appendChild(dot);
+        });
+
+        var currentSlide = 0;
+        var totalSlides = depoimentos.length;
+
+        window.detalhe_do_produto_irDepoimento = function(idx) {
+            currentSlide = idx;
+            track.style.transform = 'translateX(-' + (idx * (100 + 8)) + '%)';
+            var dots = dotsContainer.children;
+            for (var i = 0; i < dots.length; i++) {
+                dots[i].style.background = i === idx ? '#7C2D12' : '#FED7AA';
+                dots[i].style.width = i === idx ? '20px' : '8px';
+            }
+        };
+
+        var avContainer = document.getElementById('avaliacoes-list');
+        avaliacoes.forEach(function(a) {
+            var el = document.createElement('div');
+            el.className = 'card p-4';
+            el.style.cssText = 'background:white;border:1px solid #FED7AA;';
+            el.innerHTML =
+                '<div class="flex items-start gap-3">' +
+                    '<div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 font-display font-bold text-xs text-white" style="background:' + a.cor + ';">' + a.iniciais + '</div>' +
+                    '<div class="flex-1 min-w-0">' +
+                        '<div class="flex items-center justify-between">' +
+                            '<p class="text-sm font-bold" style="color:#7C2D12;">' + a.nome + '</p>' +
+                            '<span class="text-xs" style="color:#9A3412;">' + a.data + '</span>' +
+                        '</div>' +
+                        '<div class="flex items-center gap-0.5 mt-1">' + renderEstrelas(a.estrelas) + '</div>' +
+                        '<p class="text-sm mt-2 leading-relaxed" style="color:#7C2D12;opacity:0.8;">' + a.texto + '</p>' +
+                        '<div class="flex items-center gap-1 mt-2.5">' +
+                            '<svg class="w-3.5 h-3.5" style="color:#9A3412;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m0 0h4.5"/></svg>' +
+                            '<span class="text-xs font-medium" style="color:#9A3412;">Útil (' + a.util + ')</span>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>';
+            avContainer.appendChild(el);
+        });
+
+        window.detalhe_do_produto_voltar = function() {
+            mostrarTela('vitrine-inicial');
+        };
+
+        window.detalhe_do_produto_compartilhar = function() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Método Execução Consciente',
+                    text: 'Transformando Metas em Hábitos e Hábitos em Resultados — confira este e-book que já ajudou mais de 1.800 pessoas!',
+                    url: window.location.href
+                }).catch(function() {});
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(function() {
+                    toast('Link copiado para a área de transferência!', 'ok');
+                }).catch(function() {
+                    toast('Não foi possível compartilhar.', 'erro');
+                });
+            }
+        };
+
+        window.detalhe_do_produto_comprar = function() {
+            mostrarTela('checkout-e-pagamento');
+        };
+
+        window.detalhe_do_produto_carrinho = function() {
+            toast('Produto adicionado ao carrinho!', 'ok');
+            setTimeout(function() { mostrarTela('meu-carrinho'); }, 600);
+        };
+
+        window.detalhe_do_produto_duvidas = function() {
+            var texto = encodeURIComponent('Olá! Tenho interesse no e-book "Método Execução Consciente" e gostaria de tirar algumas dúvidas antes de comprar.');
+            window.open('https://wa.me/5511999999999?text=' + texto, '_blank');
+        };
+
+        window.detalhe_do_produto_abrirCapitulo = function(num) {
+            var capitulos = [
+                'Capítulo 1 — Por Que Você Não Executa',
+                'Capítulo 2 — Metas Que Funcionam de Verdade',
+                'Capítulo 3 — O Poder dos Hábitos Atômicos',
+                'Capítulo 4 — Sistema de Execução Diária',
+                'Capítulo 5 — Superando a Procrastinação',
+                'Capítulo 6 — Medindo Seu Progresso',
+                'Capítulo 7 — Construindo a Identidade de Alta Performance'
+            ];
+            abrirModal(
+                '<div class="p-5">' +
+                    '<div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:#F97322;background:#FFF7ED;">' +
+                        '<svg class="w-6 h-6" style="color:#7C2D12;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>' +
+                    '</div>' +
+                    '<h3 class="font-display text-lg font-bold" style="color:#7C2D12;">' + capitulos[num - 1] + '</h3>' +
+                    '<p class="text-sm mt-2 leading-relaxed" style="color:#7C2D12;opacity:0.8;">Este capítulo está disponível no e-book completo. Adquira o material para acessar todo o conteúdo em PDF com exemplos práticos, exercícios e planilhas complementares.</p>' +
+                    '<div class="mt-4 p-3 rounded-xl" style="background:#FFF7ED;border:1px dashed #F97316;">' +
+                        '<p class="text-xs font-medium" style="color:#9A3412;">Disponível no e-book completo</p>' +
+                    '</div>' +
+                '</div>',
+                capitulos[num - 1]
+            );
+        };
+
+        detalhe_do_produto_irDepoimento(0);
+    })();
+    </script>
+</section>
+
     <!-- TELAS -->
     </main>
 
