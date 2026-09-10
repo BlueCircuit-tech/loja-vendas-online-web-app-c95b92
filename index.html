@@ -2335,6 +2335,206 @@
   </script>
 </section>
 
+    <section data-tela="painel-admin" class="hidden">
+      <div class="mb-6">
+        <h1 class="text-2xl font-display font-bold text-marca-900">Painel Administrativo</h1>
+        <p class="text-sm text-marca-700/70 mt-1">Visão geral do desempenho da loja</p>
+      </div>
+
+      <div id="painel-admin-kpis" class="grid grid-cols-2 gap-3 mb-6">
+        <div class="bg-white rounded-xl p-4 shadow-sm border border-marca-900/5">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-medium text-marca-700/60 uppercase tracking-wider">Total Vendas</span>
+            <svg class="w-5 h-5 text-marca" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
+          <p class="text-xl font-display font-bold text-marca-900">R$ 24.580</p>
+          <span class="text-xs text-green-600 font-medium">↑ 12,3% vs mês anterior</span>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow-sm border border-marca-900/5">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-medium text-marca-700/60 uppercase tracking-wider">Novos Clientes</span>
+            <svg class="w-5 h-5 text-marca" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <p class="text-xl font-display font-bold text-marca-900">142</p>
+          <span class="text-xs text-green-600 font-medium">↑ 8,7% este mês</span>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow-sm border border-marca-900/5">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-medium text-marca-700/60 uppercase tracking-wider">Pedidos Pendentes</span>
+            <svg class="w-5 h-5 text-marca" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h6"/></svg>
+          </div>
+          <p class="text-xl font-display font-bold text-marca-900">8</p>
+          <span class="text-xs text-yellow-600 font-medium">Aguardando aprovação</span>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow-sm border border-marca-900/5">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-medium text-marca-700/60 uppercase tracking-wider">Taxa Conversão</span>
+            <svg class="w-5 h-5 text-marca" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <p class="text-xl font-display font-bold text-marca-900">3,2%</p>
+          <span class="text-xs text-green-600 font-medium">↑ 0,4% vs semana anterior</span>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-marca-900/5 mb-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-sm font-display font-bold text-marca-900">Vendas — Últimos 7 dias</h2>
+          <span class="text-xs text-marca-700/50">R$ por dia</span>
+        </div>
+        <svg id="grafico-vendas" viewBox="0 0 340 150" class="w-full" style="max-height:150px">
+          <defs>
+            <linearGradient id="grad-barras" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#F97316"/>
+              <stop offset="100%" stop-color="#7C2D12"/>
+            </linearGradient>
+          </defs>
+          <line x1="30" y1="10" x2="30" y2="130" stroke="#e5e5e5" stroke-width="1"/>
+          <line x1="30" y1="130" x2="330" y2="130" stroke="#e5e5e5" stroke-width="1"/>
+          <g id="barras-grupo">
+            <rect x="40" y="55" width="28" height="75" rx="4" fill="url(#grad-barras)" class="transition-all duration-300"/>
+            <rect x="86" y="70" width="28" height="60" rx="4" fill="url(#grad-barras)" class="transition-all duration-300"/>
+            <rect x="132" y="40" width="28" height="90" rx="4" fill="url(#grad-barras)" class="transition-all duration-300"/>
+            <rect x="178" y="60" width="28" height="70" rx="4" fill="url(#grad-barras)" class="transition-all duration-300"/>
+            <rect x="224" y="30" width="28" height="100" rx="4" fill="url(#grad-barras)" class="transition-all duration-300"/>
+            <rect x="270" y="50" width="28" height="80" rx="4" fill="url(#grad-barras)" class="transition-all duration-300"/>
+            <rect x="316" y="25" width="28" height="105" rx="4" fill="url(#grad-barras)" class="transition-all duration-300"/>
+          </g>
+          <g class="text-[9px] fill-marca-700/40 font-body" id="labels-dias">
+            <text x="54" y="145" text-anchor="middle">Seg</text>
+            <text x="100" y="145" text-anchor="middle">Ter</text>
+            <text x="146" y="145" text-anchor="middle">Qua</text>
+            <text x="192" y="145" text-anchor="middle">Qui</text>
+            <text x="238" y="145" text-anchor="middle">Sex</text>
+            <text x="284" y="145" text-anchor="middle">Sáb</text>
+            <text x="330" y="145" text-anchor="middle">Dom</text>
+          </g>
+        </svg>
+        <div class="grid grid-cols-7 gap-1 mt-1 text-center">
+          <div><span class="text-[10px] text-marca-700/40">R$ 1.2k</span></div>
+          <div><span class="text-[10px] text-marca-700/40">R$ 980</span></div>
+          <div><span class="text-[10px] text-marca-700/40">R$ 1.5k</span></div>
+          <div><span class="text-[10px] text-marca-700/40">R$ 1.1k</span></div>
+          <div><span class="text-[10px] text-marca-700/40">R$ 1.8k</span></div>
+          <div><span class="text-[10px] text-marca-700/40">R$ 1.3k</span></div>
+          <div><span class="text-[10px] text-marca-700/40">R$ 2.0k</span></div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm border border-marca-900/5 mb-6 overflow-hidden">
+        <div class="p-4 pb-2 flex items-center justify-between">
+          <h2 class="text-sm font-display font-bold text-marca-900">Pedidos Recentes</h2>
+          <span class="text-xs text-marca font-medium cursor-pointer hover:underline" onclick="mostrarTela('meus-pedidos')">Ver todos</span>
+        </div>
+        <div id="lista-pedidos-admin" class="divide-y divide-marca-900/5"></div>
+      </div>
+
+      <div class="mb-8">
+        <h2 class="text-sm font-display font-bold text-marca-900 mb-3">Acessos Rápidos</h2>
+        <div class="grid grid-cols-3 gap-3">
+          <button onclick="mostrarTela('catalogo')" class="flex flex-col items-center gap-2 p-4 bg-marca rounded-xl active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg">
+            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+            <span class="text-xs font-medium text-white">Produtos</span>
+          </button>
+          <button onclick="painel_admin_abrirRelatorios()" class="flex flex-col items-center gap-2 p-4 bg-marca-900 rounded-xl active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg">
+            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            <span class="text-xs font-medium text-white">Relatórios</span>
+          </button>
+          <button onclick="mostrarTela('meu-perfil')" class="flex flex-col items-center gap-2 p-4 bg-white rounded-xl border border-marca-900/10 active:scale-95 transition-all duration-200 shadow-sm hover:shadow-md">
+            <svg class="w-6 h-6 text-marca" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            <span class="text-xs font-medium text-marca-900">Clientes</span>
+          </button>
+        </div>
+      </div>
+
+      <script>
+        var painel_admin_pedidos = [
+          { id:'PED-1024', cliente:'Marina Costa', avatar:'MC', cor:'#F97316', produto:'E-book: Mente em Ação', valor:197, status:'pago', data:'2026-01-15', pagamento:'Cartão' },
+          { id:'PED-1023', cliente:'Rafael Lima', avatar:'RL', cor:'#7C2D12', produto:'Curso: Hábitos Inquebráveis', valor:497, status:'pendente', data:'2026-01-15', pagamento:'Pix' },
+          { id:'PED-1022', cliente:'Ana Beatriz', avatar:'AB', cor:'#F97316', produto:'E-book: Mente em Ação', valor:197, status:'pago', data:'2026-01-14', pagamento:'Cartão' },
+          { id:'PED-1021', cliente:'Carlos Eduardo', avatar:'CE', cor:'#7C2D12', produto:'Mentoria Individual', valor:1200, status:'processando', data:'2026-01-14', pagamento:'Cartão' },
+          { id:'PED-1020', cliente:'Fernanda Reis', avatar:'FR', cor:'#F97316', produto:'Workshop Online', valor:347, status:'pago', data:'2026-01-13', pagamento:'Pix' },
+          { id:'PED-1019', cliente:'João Pedro', avatar:'JP', cor:'#7C2D12', produto:'E-book: Mente em Ação', valor:197, status:'cancelado', data:'2026-01-13', pagamento:'Cartão' },
+          { id:'PED-1018', cliente:'Luciana Moura', avatar:'LM', cor:'#F97316', produto:'Curso: Hábitos Inquebráveis', valor:497, status:'pago', data:'2026-01-12', pagamento:'Pix' },
+          { id:'PED-1017', cliente:'Thiago Neves', avatar:'TN', cor:'#7C2D12', produto:'Mentoria Individual', valor:1200, status:'pago', data:'2026-01-12', pagamento:'Cartão' }
+        ];
+
+        function painel_admin_init() {
+          renderizarPedidosAdmin(painel_admin_pedidos);
+        }
+
+        function renderizarPedidosAdmin(lista) {
+          var el = document.getElementById('lista-pedidos-admin');
+          if (!lista.length) {
+            el.innerHTML = '<div class="p-6 text-center text-marca-700/50 text-sm">Nenhum pedido encontrado.</div>';
+            return;
+          }
+          el.innerHTML = lista.map(function(p) {
+            var badgeCor = {pago:'bg-green-100 text-green-700',pendente:'bg-yellow-100 text-yellow-700',processando:'bg-blue-100 text-blue-700',cancelado:'bg-red-100 text-red-700'};
+            var statusLabel = {pago:'Pago',pendente:'Pendente',processando:'Processando',cancelado:'Cancelado'};
+            var bg = p.status==='pago'?'bg-green-50':'bg-white';
+            return '<div class="p-3 mx-3 my-2 rounded-lg '+bg+' cursor-pointer active:scale-[0.98] transition-all duration-150" onclick="painel_admin_detalhePedido(\''+p.id+'\')">'+
+              '<div class="flex items-center gap-3">'+
+                '<div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0" style="background:'+p.cor+'">'+p.avatar+'</div>'+
+                '<div class="flex-1 min-w-0">'+
+                  '<div class="flex items-center justify-between">'+
+                    '<span class="text-sm font-medium text-marca-900 truncate">'+p.cliente+'</span>'+
+                    '<span class="text-sm font-bold text-marca ml-2">'+brl(p.valor)+'</span>'+
+                  '</div>'+
+                  '<div class="flex items-center justify-between mt-1">'+
+                    '<span class="text-xs text-marca-700/50 truncate">'+p.produto+'</span>'+
+                    '<span class="text-[10px] px-2 py-0.5 rounded-full font-medium '+badgeCor[p.status]+'">'+statusLabel[p.status]+'</span>'+
+                  '</div>'+
+                '</div>'+
+              '</div>'+
+            '</div>';
+          }).join('');
+        }
+
+        function painel_admin_detalhePedido(id) {
+          var p = painel_admin_pedidos.find(function(x){return x.id===id;});
+          if (!p) return;
+          var statusLabel = {pago:'Pago',pendente:'Pendente',processando:'Processando',cancelado:'Cancelado'};
+          var html = '<div class="p-4 space-y-4">'+
+            '<div class="flex items-center gap-3">'+
+              '<div class="w-12 h-12 rounded-full flex items-center justify-center text-white text-sm font-bold" style="background:'+p.cor+'">'+p.avatar+'</div>'+
+              '<div><p class="font-display font-bold text-marca-900">'+p.cliente+'</p><p class="text-xs text-marca-700/50">'+p.id+'</p></div>'+
+            '</div>'+
+            '<div class="grid grid-cols-2 gap-3">'+
+              '<div class="bg-marca/5 rounded-lg p-3"><p class="text-xs text-marca-700/60 mb-1">Produto</p><p class="text-sm font-medium text-marca-900">'+p.produto+'</p></div>'+
+              '<div class="bg-marca/5 rounded-lg p-3"><p class="text-xs text-marca-700/60 mb-1">Valor</p><p class="text-sm font-medium text-marca-900">'+brl(p.valor)+'</p></div>'+
+              '<div class="bg-marca/5 rounded-lg p-3"><p class="text-xs text-marca-700/60 mb-1">Pagamento</p><p class="text-sm font-medium text-marca-900">'+p.pagamento+'</p></div>'+
+              '<div class="bg-marca/5 rounded-lg p-3"><p class="text-xs text-marca-700/60 mb-1">Data</p><p class="text-sm font-medium text-marca-900">'+dataBR(p.data)+'</p></div>'+
+            '</div>'+
+            (p.status!=='pago'?'<button onclick="painel_admin_aprovarPedido(\''+p.id+'\')" class="w-full py-3 bg-marca text-white rounded-lg font-medium text-sm active:scale-95 transition-all">Aprovar Pedido</button>':'')+
+          '</div>';
+          abrirModal(html, 'Detalhe do Pedido');
+        }
+
+        function painel_admin_aprovarPedido(id) {
+          var p = painel_admin_pedidos.find(function(x){return x.id===id;});
+          if (p) { p.status = 'pago'; renderizarPedidosAdmin(painel_admin_pedidos); fecharModal(); toast('Pedido '+id+' aprovado com sucesso!', 'ok'); }
+        }
+
+        function painel_admin_abrirRelatorios() {
+          var html = '<div class="p-4 space-y-4">'+
+            '<div class="bg-marca/5 rounded-lg p-4"><h3 class="font-display font-bold text-marca-900 mb-2">Resumo do Período</h3>'+
+            '<p class="text-sm text-marca-700/70 mb-2">Receita total: <strong class="text-marca-900">R$ 24.580</strong></p>'+
+            '<p class="text-sm text-marca-700/70 mb-2">Pedidos: <strong class="text-marca-900">47</strong></p>'+
+            '<p class="text-sm text-marca-700/70">Ticket médio: <strong class="text-marca-900">R$ 523</strong></p></div>'+
+            '<div class="bg-marca/5 rounded-lg p-4"><h3 class="font-display font-bold text-marca-900 mb-2">Top Produtos</h3>'+
+            '<div class="space-y-2">'+
+            '<div class="flex justify-between text-sm"><span class="text-marca-700/70">E-book: Mente em Ação</span><span class="font-medium text-marca-900">32 vendas</span></div>'+
+            '<div class="flex justify-between text-sm"><span class="text-marca-700/70">Curso: Hábitos Inquebráveis</span><span class="font-medium text-marca-900">18 vendas</span></div>'+
+            '<div class="flex justify-between text-sm"><span class="text-marca-700/70">Mentoria Individual</span><span class="font-medium text-marca-900">8 vendas</span></div>'+
+            '<div class="flex justify-between text-sm"><span class="text-marca-700/70">Workshop Online</span><span class="font-medium text-marca-900">5 vendas</span></div>'+
+            '</div></div></div>';
+          abrirModal(html, 'Relatórios');
+        }
+
+        setTimeout(painel_admin_init, 50);
+      </script>
+    </section>
+
     <!-- TELAS -->
 
       <!-- ══════════════ NAVEGAÇÃO INFERIOR ══════════════ -->
