@@ -1302,6 +1302,354 @@
     </script>
 </section>
 
+    <section data-tela="meu-carrinho" class="hidden">
+      <div class="px-4 pt-2 pb-4">
+        <!-- Cabeçalho da tela -->
+        <div class="mb-5">
+          <h1 class="font-display text-2xl font-bold text-marca-900 leading-tight">Meu Carrinho</h1>
+          <p class="text-sm text-gray-500 mt-1" id="cart-item-count-header">3 itens no carrinho</p>
+        </div>
+
+        <!-- Lista de itens do carrinho -->
+        <div id="cart-items-list" class="space-y-3 mb-4">
+        </div>
+
+        <!-- Estado vazio (escondido por padrão) -->
+        <div id="cart-empty-state" class="hidden text-center py-16">
+          <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-marca-100 flex items-center justify-center">
+            <svg class="w-10 h-10 text-marca-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          </div>
+          <p class="font-display font-semibold text-marca-900 text-lg">Seu carrinho está vazio</p>
+          <p class="text-sm text-gray-500 mt-1 mb-5">Explore nosso catálogo e encontre conteúdos que vão transformar sua vida.</p>
+          <button onclick="mostrarTela('catalogo-completo')" class="inline-flex items-center gap-2 bg-marca-900 text-white px-6 py-3 rounded-xl font-semibold text-sm active:scale-95 transition-all hover:bg-marca-800">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            Explorar Catálogo
+          </button>
+        </div>
+
+        <!-- Cupom de desconto -->
+        <div id="cart-coupon-section" class="mt-4">
+          <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Cupom de Desconto</p>
+          <div class="flex gap-2">
+            <input
+              type="text"
+              id="coupon-input"
+              placeholder="Digite o cupom"
+              class="flex-1 bg-white border border-gray-200 rounded-xl px-3 py-2.5 text-sm font-body text-marca-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent transition-all uppercase tracking-wide"
+            />
+            <button
+              onclick="meu_carrinho_aplicarCupom()"
+              class="bg-marca-900 text-white px-4 py-2.5 rounded-xl text-sm font-semibold active:scale-95 transition-all hover:bg-marca-800 whitespace-nowrap"
+            >
+              Aplicar
+            </button>
+          </div>
+          <p id="coupon-message" class="text-xs mt-1.5 hidden"></p>
+        </div>
+      </div>
+
+      <!-- Rodapé fixo com resumo -->
+      <div id="cart-footer" class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-100 z-40">
+        <div class="max-w-[430px] mx-auto px-4 pt-3 pb-5">
+          <!-- Resumo financeiro -->
+          <div class="space-y-1.5 mb-3">
+            <div class="flex justify-between text-sm text-gray-500">
+              <span>Subtotal</span>
+              <span id="cart-subtotal" class="font-medium text-gray-700">R$ 0,00</span>
+            </div>
+            <div id="cart-discount-row" class="flex justify-between text-sm hidden">
+              <span class="text-green-600">Desconto</span>
+              <span id="cart-discount-value" class="font-medium text-green-600">- R$ 0,00</span>
+            </div>
+            <div class="flex justify-between text-base font-bold text-marca-900 pt-1.5 border-t border-gray-100">
+              <span>Total</span>
+              <span id="cart-total">R$ 0,00</span>
+            </div>
+          </div>
+          <div class="flex gap-2.5">
+            <button
+              onclick="mostrarTela('catalogo-completo')"
+              class="flex-1 bg-gray-100 text-marca-900 py-3.5 rounded-xl text-sm font-semibold active:scale-95 transition-all hover:bg-gray-200 flex items-center justify-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              Continuar Comprando
+            </button>
+            <button
+              onclick="meu_carrinho_irParaPagamento()"
+              id="cart-checkout-btn"
+              class="flex-[2] bg-marca-900 text-white py-3.5 rounded-xl text-sm font-bold active:scale-95 transition-all hover:bg-marca-800 flex items-center justify-center gap-2"
+            >
+              Ir para Pagamento
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal de confirmação de remoção -->
+      <div id="cart-remove-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="meu_carrinho_fecharModalRemocao()"></div>
+        <div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl p-6 max-w-[430px] mx-auto transform transition-transform">
+          <div class="w-10 h-1 bg-gray-300 rounded-full mx-auto mb-5"></div>
+          <h3 class="font-display font-bold text-lg text-marca-900 text-center">Remover item?</h3>
+          <p class="text-sm text-gray-500 text-center mt-1 mb-6">Este item será removido do seu carrinho.</p>
+          <div class="flex gap-3">
+            <button onclick="meu_carrinho_fecharModalRemocao()" class="flex-1 py-3 rounded-xl border border-gray-200 text-marca-900 font-semibold text-sm active:scale-95 transition-all hover:bg-gray-50">Cancelar</button>
+            <button onclick="meu_carrinho_confirmarRemocao()" class="flex-1 py-3 rounded-xl bg-red-600 text-white font-semibold text-sm active:scale-95 transition-all hover:bg-red-700">Remover</button>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function() {
+          var carrinhoItens = [
+            {
+              id: 1,
+              nome: 'E-book: Método dos 7 Hábitos',
+              preco: 4790,
+              qtd: 1,
+              cor: 'bg-marca-700',
+              inicial: 'MH',
+              slug: 'metodo-7-habitos'
+            },
+            {
+              id: 2,
+              nome: 'Curso: Produtividade Inabalável',
+              preco: 19700,
+              qtd: 1,
+              cor: 'bg-orange-600',
+              inicial: 'PI',
+              slug: 'produtividade-inabalavel'
+            },
+            {
+              id: 3,
+              nome: 'E-book: Mentalidade de Crescimento',
+              preco: 3790,
+              qtd: 2,
+              cor: 'bg-amber-600',
+              inicial: 'MC',
+              slug: 'mentalidade-crescimento'
+            }
+          ];
+
+          var cupomAplicado = null;
+          var itemParaRemover = null;
+          var touchStartX = 0;
+          var touchCurrentX = 0;
+          var swipingEl = null;
+
+          function renderizarCarrinho() {
+            var listEl = document.getElementById('cart-items-list');
+            var emptyEl = document.getElementById('cart-empty-state');
+            var footerEl = document.getElementById('cart-footer');
+            var couponSection = document.getElementById('cart-coupon-section');
+
+            if (carrinhoItens.length === 0) {
+              listEl.innerHTML = '';
+              emptyEl.classList.remove('hidden');
+              footerEl.classList.add('hidden');
+              couponSection.classList.add('hidden');
+              document.getElementById('cart-item-count-header').textContent = 'Nenhum item no carrinho';
+              return;
+            }
+
+            emptyEl.classList.add('hidden');
+            footerEl.classList.remove('hidden');
+            couponSection.classList.remove('hidden');
+
+            var html = '';
+            carrinhoItens.forEach(function(item, index) {
+              var subtotal = item.preco * item.qtd;
+              html += '<div class="cart-item-servicerelative overflow-hidden rounded-2xl bg-white border border-gray-100 shadow-sm" data-index="' + index + '">';
+              html += '  <div class="cart-item-swipe-bg absolute inset-y-0 right-0 bg-red-50 flex items-center justify-end px-5">';
+              html += '    <button onclick="meu_carrinho_removerItem(' + index + ')" class="flex items-center gap-1.5 text-red-600 active:scale-90 transition-transform">';
+              html += '      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>';
+              html += '      <span class="text-xs font-semibold">Remover</span>';
+              html += '    </button>';
+              html += '  </div>';
+              html += '  <div class="cart-item-content relative bg-white p-3 flex gap-3 transition-transform duration-200">';
+              html += '    <div class="' + item.cor + ' w-16 h-16 rounded-xl flex items-center justify-center text-white font-display font-bold text-sm flex-shrink-0 shadow-md">';
+              html += '      ' + item.inicial;
+              html += '    </div>';
+              html += '    <div class="flex-1 min-w-0">';
+              html += '      <h3 class="font-display font-semibold text-sm text-marca-900 leading-snug line-clamp-2">' + item.nome + '</h3>';
+              html += '      <p class="text-xs text-gray-400 mt-0.5">Acesso vitalício</p>';
+              html += '      <div class="flex items-center justify-between mt-2.5">';
+              html += '        <div class="flex items-center gap-0 bg-gray-50 rounded-lg overflow-hidden border border-gray-200">';
+              html += '          <button onclick="meu_carrinho_alterarQtd(' + index + ', -1)" class="w-8 h-8 flex items-center justify-center text-marca-900 active:bg-gray-200 transition-colors">';
+              html += '            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20 12H4"/></svg>';
+              html += '          </button>';
+              html += '          <span class="w-7 text-center text-sm font-bold text-marca-900 select-none">' + item.qtd + '</span>';
+              html += '          <button onclick="meu_carrinho_alterarQtd(' + index + ', 1)" class="w-8 h-8 flex items-center justify-center text-marca-900 active:bg-gray-200 transition-colors">';
+              html += '            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>';
+              html += '          </button>';
+              html += '        </div>';
+              html += '        <span class="text-sm font-bold text-marca-900">' + brl(subtotal) + '</span>';
+              html += '      </div>';
+              html += '    </div>';
+              html += '  </div>';
+              html += '</div>';
+            });
+
+            listEl.innerHTML = html;
+            document.getElementById('cart-item-count-header').textContent = carrinhoItens.length + ' ' + (carrinhoItens.length === 1 ? 'item' : 'itens') + ' no carrinho';
+
+            atualizarTotais();
+            configurarSwipe();
+          }
+
+          function atualizarTotais() {
+            var subtotal = 0;
+            carrinhoItens.forEach(function(item) {
+              subtotal += item.preco * item.qtd;
+            });
+
+            var desconto = 0;
+            if (cupomAplicado) {
+              if (cupomAplicado.tipo === 'percentual') {
+                desconto = Math.round(subtotal * cupomAplicado.valor / 100);
+              } else {
+                desconto = cupomAplicado.valor;
+              }
+            }
+
+            var total = subtotal - desconto;
+
+            document.getElementById('cart-subtotal').textContent = brl(subtotal);
+            document.getElementById('cart-total').textContent = brl(total);
+
+            var discountRow = document.getElementById('cart-discount-row');
+            if (cupomAplicado && desconto > 0) {
+              discountRow.classList.remove('hidden');
+              document.getElementById('cart-discount-value').textContent = '-' + brl(desconto);
+            } else {
+              discountRow.classList.add('hidden');
+            }
+          }
+
+          window.meu_carrinho_alterarQtd = function(index, delta) {
+            var item = carrinhoItens[index];
+            var novaQtd = item.qtd + delta;
+            if (novaQtd < 1) {
+              itemParaRemover = index;
+              document.getElementById('cart-remove-modal').classList.remove('hidden');
+              return;
+            }
+            if (novaQtd > 99) {
+              toast('Quantidade máxima: 99', 'erro');
+              return;
+            }
+            item.qtd = novaQtd;
+            renderizarCarrinho();
+          };
+
+          window.meu_carrinho_removerItem = function(index) {
+            itemParaRemover = index;
+            document.getElementById('cart-remove-modal').classList.remove('hidden');
+          };
+
+          window.meu_carrinho_fecharModalRemocao = function() {
+            document.getElementById('cart-remove-modal').classList.add('hidden');
+            itemParaRemover = null;
+          };
+
+          window.meu_carrinho_confirmarRemocao = function() {
+            if (itemParaRemover !== null) {
+              var nome = carrinhoItens[itemParaRemover].nome;
+              carrinhoItens.splice(itemParaRemover, 1);
+              itemParaRemover = null;
+              document.getElementById('cart-remove-modal').classList.add('hidden');
+              renderizarCarrinho();
+              toast('"' + nome + '" removido do carrinho', 'info');
+            }
+          };
+
+          window.meu_carrinho_aplicarCupom = function() {
+            var input = document.getElementById('coupon-input');
+            var msgEl = document.getElementById('coupon-message');
+            var codigo = input.value.trim().toUpperCase();
+
+            if (!codigo) {
+              msgEl.textContent = 'Digite um código de cupom.';
+              msgEl.className = 'text-xs mt-1.5 text-red-500';
+              msgEl.classList.remove('hidden');
+              return;
+            }
+
+            var cuponsValidos = {
+              'DESCONTO10': { tipo: 'percentual', valor: 10, descricao: '10% de desconto' },
+              'PRIMEIRA20': { tipo: 'percentual', valor: 20, descricao: '20% de desconto' },
+              'FIXO50': { tipo: 'fixo', valor: 5000, descricao: 'R$ 50,00 de desconto' },
+              'BLACK30': { tipo: 'percentual', valor: 30, descricao: '30% de desconto' }
+            };
+
+            if (cuponsValidos[codigo]) {
+              cupomAplicado = cuponsValidos[codigo];
+              msgEl.textContent = 'Cupom aplicado: ' + cupomAplicado.descricao;
+              msgEl.className = 'text-xs mt-1.5 text-green-600 font-medium';
+              msgEl.classList.remove('hidden');
+              input.disabled = true;
+              input.classList.add('bg-gray-50', 'text-gray-500');
+              atualizarTotais();
+              toast('Cupom ' + codigo + ' aplicado com sucesso!', 'ok');
+            } else {
+              cupomAplicado = null;
+              msgEl.textContent = 'Cupom inválido ou expirado.';
+              msgEl.className = 'text-xs mt-1.5 text-red-500';
+              msgEl.classList.remove('hidden');
+              atualizarTotais();
+              toast('Cupom inválido.', 'erro');
+            }
+          };
+
+          window.meu_carrinho_irParaPagamento = function() {
+            if (carrinhoItens.length === 0) {
+              toast('Adicione itens ao carrinho antes de continuar.', 'erro');
+              return;
+            }
+            mostrarTela('checkout-e-pagamento');
+          };
+
+          function configurarSwipe() {
+            var wrappers = document.querySelectorAll('.cart-item-wrapper');
+            wrappers.forEach(function(wrapper) {
+              var content = wrapper.querySelector('.cart-item-content');
+              var bg = wrapper.querySelector('.cart-item-swipe-bg');
+
+              wrapper.addEventListener('touchstart', function(e) {
+                touchStartX = e.touches[0].clientX;
+                touchCurrentX = touchStartX;
+                swipingEl = wrapper;
+                content.style.transition = 'none';
+              }, { passive: true });
+
+              wrapper.addEventListener('touchmove', function(e) {
+                if (!swipingEl || swipingEl !== wrapper) return;
+                touchCurrentX = e.touches[0].clientX;
+                var diff = touchCurrentX - touchStartX;
+                var clamped = Math.max(diff, -100);
+                content.style.transform = 'translateX(' + clamped + 'px)';
+              }, { passive: true });
+
+              wrapper.addEventListener('touchend', function() {
+                if (!swipingEl || swipingEl !== wrapper) return;
+                content.style.transition = 'transform 0.2s ease';
+                var diff = touchCurrentX - touchStartX;
+                if (diff < -50) {
+                  content.style.transform = 'translateX(-100px)';
+                } else {
+                  content.style.transform = 'translateX(0)';
+                }
+                swipingEl = null;
+              });
+            });
+          }
+
+          renderizarCarrinho();
+        })();
+      </script>
+    </section>
+
     <!-- TELAS -->
     </main>
 
