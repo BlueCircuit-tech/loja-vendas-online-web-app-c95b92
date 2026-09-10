@@ -1911,6 +1911,430 @@
 </script>
 </section>
 
+    <section data-tela="meu-perfil" class="hidden">
+      <div class="px-5 pt-2 pb-24 space-y-4">
+
+        <!-- Perfil Header -->
+        <div class="flex flex-col items-center pt-6 pb-4">
+          <div class="w-20 h-20 rounded-full bg-gradient-to-br from-marca-600 to-marca-800 flex items-center justify-center shadow-lg ring-4 ring-marca-200">
+            <span class="font-display text-2xl text-white font-bold">RM</span>
+          </div>
+          <h1 class="font-display text-xl font-bold text-marca-900 mt-4">Rafael Mendes</h1>
+          <p class="text-sm text-gray-500 mt-0.5">rafael.mendes@email.com</p>
+          <div class="flex items-center gap-1.5 mt-3 bg-marca-50 border border-marca-200 rounded-full px-3 py-1">
+            <svg class="w-4 h-4 text-marca-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span class="text-xs font-semibold text-marca-700">Cliente desde Jan/2024</span>
+          </div>
+        </div>
+
+        <!-- Estatística -->
+        <div class="bg-gradient-to-r from-marca-700 to-marca-800 rounded-2xl p-5 text-white shadow-lg">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-marca-200 text-xs font-medium uppercase tracking-wider">Biblioteca</p>
+              <p class="font-display text-3xl font-bold mt-1">3</p>
+              <p class="text-marca-200 text-sm mt-0.5">e-books adquiridos</p>
+            </div>
+            <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center">
+              <svg class="w-7 h-7 text-destaque" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A9.969 9.969 0 016 18c2.757 0 5.262-.905 7.313-2.478M12 6.042A8.967 8.967 0 0118 3.75c1.052 0 2.062.18 3 .512v14.25A9.969 9.969 0 0118 18c-2.757 0-5.262-.905-7.313-2.478M15.75 9v3.75a.75.75 0 01-.75.75h-3.75a.75.75 0 01-.75-.75V9"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Meus Dados -->
+        <div class="card">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 bg-marca-100 rounded-lg flex items-center justify-center">
+                <svg class="w-4 h-4 text-marca-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.25h15a1.5 1.5 0 001.5-1.5V19a5.25 5.25 0 00-10.5 0v.75a1.5 1.5 0 01-1.5 1.5H4.5z"/></svg>
+              </div>
+              <h2 class="font-display font-bold text-marca-900">Meus Dados</h2>
+            </div>
+            <button id="btn-editar-dados" class="text-sm font-semibold text-marca-600 hover:text-marca-700 flex items-center gap-1 transition-colors active:scale-95">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg>
+              Editar
+            </button>
+          </div>
+          <div id="dados-container" class="space-y-3">
+            <div class="bg-gray-50 rounded-xl p-3.5 border border-gray-100">
+              <label class="text-xs font-medium text-gray-400 uppercase tracking-wider">Nome completo</label>
+              <p id="campo-nome" class="text-sm font-semibold text-gray-800 mt-0.5">Rafael Mendes da Silva</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-3.5 border border-gray-100">
+              <label class="text-xs font-medium text-gray-400 uppercase tracking-wider">CPF</label>
+              <p id="campo-cpf" class="text-sm font-semibold text-gray-800 mt-0.5">123.456.789-00</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-3.5 border border-gray-100">
+              <label class="text-xs font-medium text-gray-400 uppercase tracking-wider">Telefone</label>
+              <p id="campo-telefone" class="text-sm font-semibold text-gray-800 mt-0.5">(11) 98765-4321</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-3.5 border border-gray-100">
+              <label class="text-xs font-medium text-gray-400 uppercase tracking-wider">E-mail</label>
+              <p id="campo-email" class="text-sm font-semibold text-gray-800 mt-0.5">rafael.mendes@email.com</p>
+            </div>
+          </div>
+          <div id="dados-form" class="hidden space-y-3">
+            <div>
+              <label class="text-xs font-medium text-gray-500 mb-1 block">Nome completo</label>
+              <input id="input-nome" type="text" value="Rafael Mendes da Silva" class="w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent transition-all" />
+            </div>
+            <div>
+              <label class="text-xs font-medium text-gray-500 mb-1 block">CPF</label>
+              <input id="input-cpf" type="text" value="123.456.789-00" class="w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent transition-all" />
+            </div>
+            <div>
+              <label class="text-xs font-medium text-gray-500 mb-1 block">Telefone</label>
+              <input id="input-telefone" type="text" value="(11) 98765-4321" class="w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent transition-all" />
+            </div>
+            <div>
+              <label class="text-xs font-medium text-gray-500 mb-1 block">E-mail</label>
+              <input id="input-email" type="email" value="rafael.mendes@email.com" class="w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent transition-all" />
+            </div>
+            <div class="flex gap-2 pt-1">
+              <button id="btn-salvar-dados" class="btn flex-1 text-center justify-center">Salvar</button>
+              <button id="btn-cancelar-dados" class="flex-1 text-center justify-center px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors active:scale-95">Cancelar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Meus Downloads -->
+        <div class="card cursor-pointer" id="card-downloads">
+          <div class="flex items-center gap-2.5 mb-4">
+            <div class="w-8 h-8 bg-marca-100 rounded-lg flex items-center justify-center">
+              <svg class="w-4 h-4 text-marca-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+            </div>
+            <h2 class="font-display font-bold text-marca-900">Meus Downloads</h2>
+            <span class="badge ml-auto">3 itens</span>
+          </div>
+          <div class="space-y-2.5">
+            <div class="flex items-center gap-3.5 p-3 bg-gray-50 rounded-xl border border-gray-100 hover:border-marca-200 hover:bg-marca-50/50 transition-all active:scale-[0.98]" data-download-id="1">
+              <div class="w-10 h-14 bg-gradient-to-br from-marca-600 to-marca-700 rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h2.25c.621 0 1.125-.504 1.125-1.125V11.25a2.25 2.25 0 012.25-2.25h2.25a2.25 2.25 0 012.25 2.25v6.75c0 .621-.504 1.125-1.125 1.125h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a2.25 2.25 0 00-2.25-2.25h-2.25"/></svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-semibold text-gray-800 truncate">O Poder do Hábito</p>
+                <p class="text-xs text-gray-400 mt-0.5">PDF · 2.4 MB · 12/01/2024</p>
+              </div>
+              <svg class="w-5 h-5 text-gray-300 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+            </div>
+            <div class="flex items-center gap-3.5 p-3 bg-gray-50 rounded-xl border border-gray-100 hover:border-marca-200 hover:bg-marca-50/50 transition-all active:scale-[0.98]" data-download-id="2">
+              <div class="w-10 h-14 bg-gradient-to-br from-marca-600 to-marca-700 rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h2.25c.621 0 1.125-.504 1.125-1.125V11.25a2.25 2.25 0 012.25-2.25h2.25a2.25 2.25 0 012.25 2.25v6.75c0 .621-.504 1.125-1.125 1.125h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a2.25 2.25 0 00-2.25-2.25h-2.25"/></svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-semibold text-gray-800 truncate">Hábitos Atômicos</p>
+                <p class="text-xs text-gray-400 mt-0.5">PDF · 3.1 MB · 25/03/2024</p>
+              </div>
+              <svg class="w-5 h-5 text-gray-300 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+            </div>
+            <div class="flex items-center gap-3.5 p-3 bg-gray-50 rounded-xl border border-gray-100 hover:border-marca-200 hover:bg-marca-50/50 transition-all active:scale-[0.98]" data-download-id="3">
+              <div class="w-10 h-14 bg-gradient-to-br from-marca-600 to-marca-700 rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h2.25c.621 0 1.125-.504 1.125-1.125V11.25a2.25 2.25 0 012.25-2.25h2.25a2.25 2.25 0 012.25 2.25v6.75c0 .621-.504 1.125-1.125 1.125h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a2.25 2.25 0 00-2.25-2.25h-2.25"/></svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-semibold text-gray-800 truncate">Mindset Milionário</p>
+                <p class="text-xs text-gray-400 mt-0.5">PDF · 1.8 MB · 08/06/2024</p>
+              </div>
+              <svg class="w-5 h-5 text-gray-300 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Meus Cupons -->
+        <div class="card">
+          <div class="flex items-center gap-2.5 mb-4">
+            <div class="w-8 h-8 bg-destaque/20 rounded-lg flex items-center justify-center">
+              <svg class="w-4 h-4 text-yellow-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 14.25l6-6m4.5-3.493V18.75a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18.75V6.257m14.25-3.493L9 14.25"/></svg>
+            </div>
+            <h2 class="font-display font-bold text-marca-900">Meus Cupons</h2>
+            <span class="badge badge-warning ml-auto">2 disponíveis</span>
+          </div>
+          <div class="space-y-2.5">
+            <div class="relative flex items-center border-2 border-dashed border-marca-200 rounded-xl p-3.5 bg-marca-50/50 hover:border-marca-300 transition-colors cursor-pointer" data-coupon="BEMVINDO25">
+              <div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-4 h-4 bg-white rounded-full border-2 border-marca-200"></div>
+              <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-4 h-4 bg-white rounded-full border-2 border-marca-200"></div>
+              <div class="flex-1 text-center">
+                <p class="font-display font-bold text-marca-800 text-lg tracking-wide">BEMVINDO25</p>
+                <p class="text-xs text-gray-500 mt-0.5">25% de desconto · Válido até 31/12/2025</p>
+              </div>
+            </div>
+            <div class="relative flex items-center border-2 border-dashed border-marca-200 rounded-xl p-3.5 bg-marca-50/50 hover:border-marca-300 transition-colors cursor-pointer" data-coupon="FOCO2025">
+              <div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-4 h-4 bg-white rounded-full border-2 border-marca-200"></div>
+              <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-4 h-4 bg-white rounded-full border-2 border-marca-200"></div>
+              <div class="flex-1 text-center">
+                <p class="font-display font-bold text-marca-800 text-lg tracking-wide">FOCO2025</p>
+                <p class="text-xs text-gray-500 mt-0.5">R$ 15 OFF · Válido até 15/02/2025</p>
+              </div>
+            </div>
+          </div>
+          <button id="btn-usar-cupom" class="w-full mt-3 py-2.5 rounded-xl bg-marca-600 text-white text-sm font-semibold hover:bg-marca-700 transition-colors active:scale-95">
+            Usar cupom na loja
+          </button>
+        </div>
+
+        <!-- Suporte -->
+        <div class="card">
+          <div class="flex items-center gap-2.5 mb-4">
+            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+              <svg class="w-4 h-4 text-green-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 013 21V12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/></svg>
+            </div>
+            <h2 class="font-display font-bold text-marca-900">Suporte</h2>
+          </div>
+          <div class="space-y-2">
+            <button id="btn-whatsapp" class="w-full flex items-center gap-3.5 p-3.5 bg-green-50 hover:bg-green-100 rounded-xl border border-green-100 transition-colors active:scale-[0.98]">
+              <div class="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </div>
+              <div class="text-left">
+                <p class="text-sm font-semibold text-gray-800">WhatsApp</p>
+                <p class="text-xs text-gray-400 mt-0.5">Atendimento em até 2h</p>
+              </div>
+              <svg class="w-5 h-5 text-gray-300 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+            </button>
+            <button id="btn-chat" class="w-full flex items-center gap-3.5 p-3.5 bg-gray-50 hover:bg-gray-100 rounded-xl border border-gray-100 transition-colors active:scale-[0.98]">
+              <div class="w-10 h-10 bg-marca-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-marca-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 013 21V12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/></svg>
+              </div>
+              <div class="text-left">
+                <p class="text-sm font-semibold text-gray-800">Chat ao vivo</p>
+                <p class="text-xs text-gray-400 mt-0.5">Seg–Sex, 9h às 18h</p>
+              </div>
+              <span class="badge badge-success ml-auto">Online</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Configurações de Notificação -->
+        <div class="card">
+          <div class="flex items-center gap-2.5 mb-4">
+            <div class="w-8 h-8 bg-marca-100 rounded-lg flex items-center justify-center">
+              <svg class="w-4 h-4 text-marca-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/></svg>
+            </div>
+            <h2 class="font-display font-bold text-marca-900">Notificações</h2>
+            <button id="btn-notificacoes" class="text-sm font-semibold text-marca-600 hover:text-marca-700 ml-auto transition-colors">Ver todas</button>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-semibold text-gray-800">E-mail</p>
+                <p class="text-xs text-gray-400">Novidades e promoções</p>
+              </div>
+              <button data-toggle="notif-email" class="toggle-btn w-11 h-6 rounded-full bg-marca-500 relative transition-colors duration-300 flex-shrink-0" data-active="true">
+                <span class="absolute top-0.5 left-5 w-5 h-5 bg-white rounded-full shadow transition-all duration-300"></span>
+              </button>
+            </div>
+            <div class="h-px bg-gray-100"></div>
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-semibold text-gray-800">WhatsApp</p>
+                <p class="text-xs text-gray-400">Confirmações e suporte</p>
+              </div>
+              <button data-toggle="notif-whatsapp" class="toggle-btn w-11 h-6 rounded-full bg-marca-500 relative transition-colors duration-300 flex-shrink-0" data-active="true">
+                <span class="absolute top-0.5 left-5 w-5 h-5 bg-white rounded-full shadow transition-all duration-300"></span>
+              </button>
+            </div>
+            <div class="h-px bg-gray-100"></div>
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-semibold text-gray-800">Push</p>
+                <p class="text-xs text-gray-400">Lembretes e atualizações</p>
+              </div>
+              <button data-toggle="notif-push" class="toggle-btn w-11 h-6 rounded-full bg-gray-300 relative transition-colors duration-300 flex-shrink-0" data-active="false">
+                <span class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-all duration-300"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sair -->
+        <button id="btn-sair" class="w-full flex items-center justify-center gap-2.5 p-4 bg-red-50 hover:bg-red-100 rounded-xl border border-red-100 transition-colors active:scale-[0.98]">
+          <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"/></svg>
+          <span class="text-sm font-semibold text-red-600">Sair da conta</span>
+        </button>
+
+        <p class="text-center text-xs text-gray-300 pt-2">BlueCircuit · v2.4.1</p>
+      </div>
+
+      <!-- WhatsApp Float -->
+      <button id="btn-whatsapp-float" class="fixed bottom-6 right-5 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-xl hover:bg-green-600 transition-all active:scale-90 z-50" style="display:none;">
+        <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </button>
+
+      <script>
+        function meu_perfil_inicializar() {
+          var editando = false;
+
+          document.getElementById('btn-editar-dados').addEventListener('click', function() {
+            editando = !editando;
+            var container = document.getElementById('dados-container');
+            var form = document.getElementById('dados-form');
+            var btn = document.getElementById('btn-editar-dados');
+
+            if (editando) {
+              container.classList.add('hidden');
+              form.classList.remove('hidden');
+              btn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg> Cancelar';
+            } else {
+              container.classList.remove('hidden');
+              form.classList.add('hidden');
+              btn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg> Editar';
+            }
+          });
+
+          document.getElementById('btn-salvar-dados').addEventListener('click', function() {
+            var nome = document.getElementById('input-nome').value;
+            var cpf = document.getElementById('input-cpf').value;
+            var telefone = document.getElementById('input-telefone').value;
+            var email = document.getElementById('input-email').value;
+
+            if (!nome || !cpf || !telefone || !email) {
+              toast('Preencha todos os campos', 'erro');
+              return;
+            }
+
+            document.getElementById('campo-nome').textContent = nome;
+            document.getElementById('campo-cpf').textContent = cpf;
+            document.getElementById('campo-telefone').textContent = telefone;
+            document.getElementById('campo-email').textContent = email;
+
+            editando = false;
+            document.getElementById('dados-container').classList.remove('hidden');
+            document.getElementById('dados-form').classList.add('hidden');
+            document.getElementById('btn-editar-dados').innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg> Editar';
+
+            toast('Dados atualizados com sucesso', 'ok');
+          });
+
+          document.getElementById('btn-cancelar-dados').addEventListener('click', function() {
+            editando = false;
+            document.getElementById('dados-container').classList.remove('hidden');
+            document.getElementById('dados-form').classList.add('hidden');
+            document.getElementById('btn-editar-dados').innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg> Editar';
+          });
+
+          document.getElementById('btn-sair').addEventListener('click', function() {
+            abrirModal(
+              '<div class="text-center py-4"><div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4"><svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"/></svg></div><p class="text-gray-700 font-medium mb-1">Deseja realmente sair?</p><p class="text-sm text-gray-400">Você precisará fazer login novamente.</p></div>',
+              'Confirmar saída'
+            );
+            setTimeout(function() {
+              var btnConfirmar = document.getElementById('modal-confirmar');
+              if (btnConfirmar) {
+                btnConfirmar.onclick = function() {
+                  fecharModal();
+                  toast('Você saiu da sua conta', 'info');
+                  setTimeout(function() {
+                    mostrarTela('vitrine-home');
+                  }, 800);
+                };
+              }
+            }, 50);
+          });
+
+          document.querySelectorAll('#card-downloads [data-download-id]').forEach(function(item) {
+            item.addEventListener('click', function() {
+              var id = this.getAttribute('data-download-id');
+              var nome = this.querySelector('.truncate').textContent;
+              var info = this.querySelector('.text-xs.text-gray-400').textContent;
+              abrirModal(
+                '<div class="space-y-4"><div class="w-16 h-20 bg-gradient-to-br from-marca-600 to-marca-700 rounded-lg flex items-center justify-center mx-auto shadow"><svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h2.25c.621 0 1.125-.504 1.125-1.125V11.25a2.25 2.25 0 012.25-2.25h2.25a2.25 2.25 0 012.25 2.25v6.75c0 .621-.504 1.125-1.125 1.125h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a2.25 2.25 0 00-2.25-2.25h-2.25"/></svg></div><div class="text-center"><p class="font-display font-bold text-lg text-gray-900">' + nome + '</p><p class="text-sm text-gray-400 mt-1">' + info + '</p></div><div class="flex gap-2 pt-2"><button id="btn-download-arquivo" class="btn flex-1 justify-center">Baixar arquivo</button><button onclick="fecharModal()" class="flex-1 text-center justify-center px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors">Fechar</button></div></div>',
+                nome
+              );
+              setTimeout(function() {
+                var btnDl = document.getElementById('btn-download-arquivo');
+                if (btnDl) {
+                  btnDl.onclick = function() {
+                    toast('Download iniciado: ' + nome, 'ok');
+                    fecharModal();
+                  };
+                }
+              }, 50);
+            });
+          });
+
+          document.querySelectorAll('[data-coupon]').forEach(function(coupon) {
+            coupon.addEventListener('click', function() {
+              var codigo = this.getAttribute('data-coupon');
+              navigator.clipboard.writeText(codigo).then(function() {
+                toast('Cupom <strong>' + codigo + '</strong> copiado!', 'ok');
+              }).catch(function() {
+                toast('Cupom: ' + codigo, 'info');
+              });
+            });
+          });
+
+          document.getElementById('btn-usar-cupom').addEventListener('click', function() {
+            mostrarTela('vitrine-home');
+            toast('Vá para o carrinho e aplique o cupom', 'info');
+          });
+
+          document.getElementById('btn-whatsapp').addEventListener('click', function() {
+            window.open('https://wa.me/5511999999999?text=Olá!%20Preciso%20de%20ajuda%20com%20meu%20pedido.', '_blank');
+          });
+
+          document.getElementById('btn-chat').addEventListener('click', function() {
+            abrirModal(
+              '<div class="space-y-4"><div class="flex items-center gap-3 pb-4 border-b border-gray-100"><div class="w-10 h-10 bg-marca-100 rounded-full flex items-center justify-center"><span class="font-display font-bold text-marca-700 text-sm">BC</span></div><div><p class="font-semibold text-gray-900">BlueCircuit Suporte</p><span class="badge badge-success">Online agora</span></div></div><div class="bg-gray-50 rounded-xl p-4"><p class="text-sm text-gray-600">Olá, Rafael! 👋 Como posso ajudar você hoje?</p><p class="text-xs text-gray-400 mt-1">Tempo médio de resposta: 5 minutos</p></div><div class="pt-2"><input type="text" placeholder="Digite sua mensagem..." class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500" onkeydown="if(event.key===\'Enter\'){toast(\'Mensagem enviada!\',\'ok\');fecharModal();}" /></div></div>',
+              'Chat de suporte'
+            );
+          });
+
+          document.getElementById('btn-notificacoes').addEventListener('click', function() {
+            mostrarTela('notificacoes');
+          });
+
+          document.querySelectorAll('.toggle-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+              var ativo = this.getAttribute('data-active') === 'true';
+              var circle = this.querySelector('span');
+              if (ativo) {
+                this.setAttribute('data-active', 'false');
+                this.classList.remove('bg-marca-500');
+                this.classList.add('bg-gray-300');
+                circle.classList.remove('left-5');
+                circle.classList.add('left-0.5');
+              } else {
+                this.setAttribute('data-active', 'true');
+                this.classList.remove('bg-gray-300');
+                this.classList.add('bg-marca-500');
+                circle.classList.remove('left-0.5');
+                circle.classList.add('left-5');
+              }
+              var label = this.getAttribute('data-toggle');
+              var estado = ativo ? 'desativadas' : 'ativadas';
+              toast('Notificações ' + estado, 'info');
+            });
+          });
+
+          document.getElementById('card-downloads').addEventListener('click', function(e) {
+            if (!e.target.closest('[data-download-id]')) {
+              mostrarTela('catalogo');
+            }
+          });
+
+          var floatBtn = document.getElementById('btn-whatsapp-float');
+          var scrollEl = document.querySelector('[data-tela="meu-perfil"]');
+          if (scrollEl) {
+        scrollEl.addEventListener('scroll', function() {
+          if (this.scrollTop > 200) {
+            floatBtn.style.display = 'flex';
+          } else {
+            floatBtn.style.display = 'none';
+          }
+        });
+      }
+
+      floatBtn.addEventListener('click', function() {
+        window.open('https://wa.me/5511999999999?text=Olá!%20Preciso%20de%20ajuda.', '_blank');
+      });
+    }
+
+    if (document.querySelector('[data-tela="meu-perfil"]')) {
+      meu_perfil_inicializar();
+    }
+  </script>
+</section>
+
     <!-- TELAS -->
 
       <!-- ══════════════ NAVEGAÇÃO INFERIOR ══════════════ -->
