@@ -2291,6 +2291,210 @@
 })();
 </script>
 
+    <section data-tela="gestao-de-produtos" class="hidden">
+      <div class="px-4 py-4 space-y-4 animate-fade-in">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="font-display text-lg font-bold text-marca-900">Gestão de Produtos</h2>
+            <p class="text-xs text-stone-500 mt-0.5">Gerencie seus infoprodutos cadastrados</p>
+          </div>
+          <button onclick="gestao_de_produtos_abrirFormulario()" class="active:scale-95 transition-transform bg-marca-800 text-white text-xs font-semibold px-3.5 py-2 rounded-lg flex items-center gap-1.5 shadow-md hover:bg-marca-900">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+            Novo Produto
+          </button>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2.5">
+          <div class="bg-white rounded-xl p-3 shadow-sm border border-stone-100">
+            <div class="flex items-center gap-1.5 mb-1">
+              <svg class="w-3.5 h-3.5 text-marca-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+              <span class="text-[10px] text-stone-500 font-medium uppercase tracking-wide">Total</span>
+            </div>
+            <span id="gestao-de-produtos-total" class="font-display text-xl font-bold text-marca-900">8</span>
+          </div>
+          <div class="bg-white rounded-xl p-3 shadow-sm border border-stone-100">
+            <div class="flex items-center gap-1.5 mb-1">
+              <svg class="w-3.5 h-3.5 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span class="text-[10px] text-stone-500 font-medium uppercase tracking-wide">Ativos</span>
+            </div>
+            <span id="gestao-de-produtos-ativos" class="font-display text-xl font-bold text-green-700">6</span>
+          </div>
+          <div class="bg-white rounded-xl p-3 shadow-sm border border-stone-100">
+            <div class="flex items-center gap-1.5 mb-1">
+              <svg class="w-3.5 h-3.5 text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span class="text-[10px] text-stone-500 font-medium uppercase tracking-wide">Inativos</span>
+            </div>
+            <span id="gestao-de-produtos-inativos" class="font-display text-xl font-bold text-amber-600">2</span>
+          </div>
+        </div>
+
+        <svg class="w-full h-28 -mx-1" viewBox="0 0 320 100" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="barraGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#7C2D12" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#F97316" stop-opacity="0.3"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="60" width="24" height="40" rx="3" fill="url(#barraGrad)"/>
+          <rect x="44" y="30" width="24" height="70" rx="3" fill="url(#barraGrad)"/>
+          <rect x="88" y="45" width="24" height="55" rx="3" fill="url(#barraGrad)"/>
+          <rect x="132" y="15" width="24" height="85" rx="3" fill="#7C2D12"/>
+          <rect x="176" y="25" width="24" height="75" rx="3" fill="url(#barraGrad)"/>
+          <rect x="220" y="35" width="24" height="65" rx="3" fill="url(#barraGrad)"/>
+          <rect x="264" y="20" width="24" height="80" rx="3" fill="#F97316"/>
+          <rect x="308" y="40" width="24" height="60" rx="3" fill="url(#barraGrad)"/>
+          <text x="16" y="56" text-anchor="middle" font-size="7" fill="#78716c" font-family="sans-serif">Jan</text>
+          <text x="56" y="26" text-anchor="middle" font-size="7" fill="#78716c" font-family="sans-serif">Fev</text>
+          <text x="100" y="41" text-anchor="middle" font-size="7" fill="#78716c" font-family="sans-serif">Mar</text>
+          <text x="144" y="11" text-anchor="middle" font-size="7" fill="#78716c" font-family="sans-serif" font-weight="bold">Abr</text>
+          <text x="188" y="21" text-anchor="middle" font-size="7" fill="#78716c" font-family="sans-serif">Mai</text>
+          <text x="232" y="31" text-anchor="middle" font-size="7" fill="#78716c" font-family="sans-serif">Jun</text>
+          <text x="276" y="16" text-anchor="middle" font-size="7" fill="#78716c" font-family="sans-serif" font-weight="bold">Jul</text>
+          <text x="320" y="36" text-anchor="middle" font-size="7" fill="#78716c" font-family="sans-serif">Ago</text>
+        </svg>
+        <p class="text-center text-[10px] text-stone-400 -mt-2">Vendas por mês (unidades)</p>
+
+        <div class="flex gap-2">
+          <div class="relative flex-1">
+            <svg class="w-4 h-4 absolute left-2.5 top-1/2 -translate-y-1/2 text-stone-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input id="gestao-produtos-busca" oninput="gestao_de_produtos_filtrar()" type="text" placeholder="Buscar produtos..." class="w-full pl-9 pr-3 py-2.5 bg-white rounded-lg border border-stone-200 text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:border-marca-600 focus:ring-1 focus:ring-marca-200 transition-colors">
+          </div>
+          <select id="gestao-produtos-filtro-categoria" onchange="gestao_de_produtos_filtrar()" class="bg-white rounded-lg border border-stone-200 px-2.5 py-2 text-xs text-stone-700 focus:outline-none focus:border-marca-600">
+            <option value="">Todas</option>
+            <option value="Produtividade">Produtividade</option>
+            <option value="Hábitos">Hábitos</option>
+            <option value="Mentalidade">Mentalidade</option>
+            <option value="Carreira">Carreira</option>
+          </select>
+          <select id="gestao-produtos-filtro-status" onchange="gestao_de_produtos_filtrar()" class="bg-white rounded-lg border border-stone-200 px-2.5 py-2 text-xs text-stone-700 focus:outline-none focus:border-marca-600">
+            <option value="">Todos</option>
+            <option value="Ativo">Ativo</option>
+            <option value="Inativo">Inativo</option>
+          </select>
+        </div>
+
+        <div id="gestao-produtos-lista" class="space-y-2.5"></div>
+
+        <div id="gestao-produtos-vazio" class="hidden text-center py-12">
+          <svg class="w-12 h-12 text-stone-300 mx-auto mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          <p class="text-sm text-stone-500 font-medium">Nenhum produto encontrado</p>
+          <p class="text-xs text-stone-400 mt-1">Tente ajustar os filtros ou adicione um novo produto</p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+    (function(){
+      var produtos=[{id:1,nome:"Método 5D: Metas que Funcionam",descricao:"Guia completo para transformar objetivos vagos em metas executáveis usando o método dos 5 Ds: Definir, Dividir, Delegar, Disciplinar e Destacar.",preco:19700,categoria:"Produtividade",status:"Ativo",dataCriacao:"2025-11-10",vendas:342,avaliacao:4.8,capaCor:"#7C2D12",tipo:"E-book",visibilidade:"publico"},{id:2,nome:"Hábitos Atômicos Aplicados",descricao:"Curso prático que adapta o melhor dos livros de hábitos para a realidade brasileira, com planilhas e exercícios diários.",preco:14700,categoria:"Hábitos",status:"Ativo",dataCriacao:"2025-10-22",vendas:518,avaliacao:4.9,capaCor:"#F97316",tipo:"Curso",visibilidade:"publico"},{id:3,nome:"Do Círculo de Ouro ao Resultado",descricao:"Workshop gravado sobre a metodologia do Círculo de Ouro aplicada a negócios e carreira para profissionais que querem mais impacto.",preco:29700,categoria:"Carreira",status:"Ativo",dataCriacao:"2025-09-15",vendas:189,avaliacao:4.7,capaCor:"#92400E",tipo:"Workshop",visibilidade:"publico"},{id:4,nome:"Reinvente sua Mentalidade em 21 Dias",descricao:"Desafio guiado com áudio e PDF para reprogramar crenças limitantes e construir uma mentalidade de crescimento.",preco:9700,categoria:"Mentalidade",status:"Ativo",dataCriacao:"2025-12-01",vendas:761,avaliacao:4.6,capaCor:"#EA580C",tipo:"Desafio",visibilidade:"publico"},{id:5,nome:"Matriz do Foco — Planner Digital",descricao:"Planner digital em PDF para organizar tarefas com a Matriz de Eisenhower e o Método Pomodoro combinados.",preco:4900,categoria:"Produtividade",status:"Ativo",dataCriacao:"2025-11-28",vendas:1203,avaliacao:4.8,capaCor:"#C2410C",tipo:"Planner",visibilidade:"publico"},{id:6,nome:"Rotina de Alta Performance",descricao:"Guia para montar sua rotina matinal e noturna baseado em hábitos de CEOs e atletas olímpicos adaptados ao Brasil.",preco:12700,categoria:"Hábitos",status:"Ativo",dataCriacao:"2025-08-10",vendas:445,avaliacao:4.5,capaCor:"#9A3412",tipo:"E-book",visibilidade:"publico"},{id:7,nome:"Venda sua Ideia com Storytelling",descricao:"Curso de comunicação para quem quer aprender a estruturar narrativas persuasivas em reuniões e apresentações.",preco:22700,categoria:"Carreira",status:"Ativo",dataCriacao:"2025-12-10",vendas:97,avaliacao:4.4,capaCor:"#7C2D12",tipo:"Curso",visibilidade:"privado"},{id:8,nome:"Mindset Empreendedor: Primeiros Passos",descricao:"Material introdutório para quem quer sair do emprego e começar no empreendedorismo digital com segurança.",preco:0,categoria:"Mentalidade",status:"Inativo",dataCriacao:"2025-07-20",vendas:2100,avaliacao:4.3,capaCor:"#F97316",tipo:"E-book Gratuito",visibilidade:"publico"}];
+
+      function brl(v){return(v/100).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});}
+      function dataBR(iso){var p=iso.split('-');return p[2]+'/'+p[1]+'/'+p[0];}
+      function toast(m,t){if(window.toast)window.toast(m,t);}
+
+      function gestao_de_produtos_filtrar(){
+        var busca=document.getElementById('gestao-produtos-busca').value.toLowerCase().trim();
+        var cat=document.getElementById('gestao-produtos-filtro-categoria').value;
+        var st=document.getElementById('gestao-produtos-filtro-status').value;
+        var itens=document.querySelectorAll('.gp-item');
+        var vis=0;itens.forEach(function(el){var nome=el.dataset.nome.toLowerCase(),categ=el.dataset.categoria,stat=el.dataset.status;var ok=true;if(busca&&nome.indexOf(busca)===-1)ok=false;if(cat&&categ!==cat)ok=false;if(st&&stat!==st)ok=false;el.style.display=ok?'':'none';if(ok)vis++;});document.getElementById('gestao-produtos-vazio').classList.toggle('hidden',vis>0);
+      }
+
+      function gestao_de_produtos_toggleStatus(id){
+        var p=produtos.find(function(x){return x.id===id;});if(!p)return;
+        p.status=p.status==='Ativo'?'Inativo':'Ativo';
+        gestao_de_produtos_render();
+        toast(p.status==='Ativo'?('"'+p.nome+'" ativado com sucesso'):('"'+p.nome+'" pausado'),'info');
+        gestao_de_produtos_atualizarContadores();
+      }
+
+      function gestao_de_produtos_remover(id){
+        var p=produtos.find(function(x){return x.id===id;});if(!p)return;
+        if(window.abrirModal){
+          window.abrirModal('<div class="text-center py-4"><div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3"><svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg></div><p class="text-sm text-stone-700 mb-1">Remover permanentemente?</p><p class="text-xs text-stone-500 mb-5">"'+p.nome+'" será excluído e não poderá ser recuperado.</p><div class="flex gap-2 justify-center"><button onclick="gestao_de_produtos_confirmarRemocao('+id+')" class="active:scale-95 transition-transform bg-red-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg">Sim, excluir</button><button onclick="fecharModal()" class="active:scale-95 transition-transform bg-stone-100 text-stone-700 text-sm font-medium px-5 py-2.5 rounded-lg">Cancelar</button></div></div>','Confirmar Exclusão');
+        }
+      }
+
+      function gestao_de_produtos_confirmarRemocao(id){
+        produtos=produtos.filter(function(x){return x.id!==id;});
+        fecharModal();
+        gestao_de_produtos_render();
+        toast('Produto removido com sucesso','ok');
+        gestao_de_produtos_atualizarContadores();
+      }
+
+      function gestao_de_produtos_editar(id){
+        var p=produtos.find(function(x){return x.id===id;});if(!p)return;
+        gestao_de_produtos_abrirFormulario(p);
+      }
+
+      function gestao_de_produtos_atualizarContadores(){
+        var t=produtos.length,a=produtos.filter(function(x){return x.status==='Ativo';}).length,i=produtos.filter(function(x){return x.status==='Inativo';}).length;
+        var elT=document.getElementById('gestao-de-produtos-total'),elA=document.getElementById('gestao-de-produtos-ativos'),elI=document.getElementById('gestao-de-produtos-inativos');
+        if(elT)elT.textContent=t;if(elA)elA.textContent=a;if(elI)elI.textContent=i;
+      }
+
+      function gestao_de_produtos_abrirFormulario(p){
+        var e=p||{},isEdit=!!p.id;
+        var cats=['Produtividade','Hábitos','Mentalidade','Carreira'];
+        var catOpts=cats.map(function(c){return'<option value="'+c+'"'+(e.categoria===c?' selected':'')+'>'+c+'</option>';}).join('');
+        var visSel='<select id="gp-form-visibilidade" class="w-full bg-white rounded-lg border border-stone-200 px-3 py-2.5 text-sm text-stone-700 focus:outline-none focus:border-marca-600"><option value="publico"'+(e.visibilidade==='publico'?' selected':'')+'>Público</option><option value="privado"'+(e.visibilidade==='privado'?' selected':'')+'>Privado</option></select>';
+        if(window.abrirModal){
+          window.abrirModal('<form id="form-novo-produto" onsubmit="event.preventDefault();gestao_de_produtos_salvar('+(isEdit?e.id:0)+');" class="space-y-3.5 pt-1"><div><label class="block text-xs font-semibold text-stone-700 mb-1">Nome do produto <span class="text-red-500">*</span></label><input id="gp-form-nome" value="'+(e.nome||'')+'" required placeholder="Ex: Método 5D" class="w-full bg-white rounded-lg border border-stone-200 px-3 py-2.5 text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:border-marca-600 transition-colors"></div><div><label class="block text-xs font-semibold text-stone-700 mb-1">Descrição <span class="text-red-500">*</span></label><textarea id="gp-form-descricao" required rows="3" placeholder="Descreva o produto..." class="w-full bg-white rounded-lg border border-stone-200 px-3 py-2.5 text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:border-marca-600 resize-none transition-colors">'+(e.descricao||'')+'</textarea></div><div class="grid grid-cols-2 gap-3"><div><label class="block text-xs font-semibold text-stone-700 mb-1">Preço (R$) <span class="text-red-500">*</span></label><input id="gp-form-preco" type="text" inputmode="numeric" value="'+(e.preco>0?(e.preco/100).toLocaleString('pt-BR',{minimumFractionDigits:2}):'')+'" oninput="gestao_de_produtos_mascaraPreco(this)" required placeholder="0,00" class="w-full bg-white rounded-lg border border-stone-200 px-3 py-2.5 text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:border-marca-600 transition-colors"></div><div><label class="block text-xs font-semibold text-stone-700 mb-1">Categoria <span class="text-red-500">*</span></label><select id="gp-form-categoria" required class="w-full bg-white rounded-lg border border-stone-200 px-3 py-2.5 text-sm text-stone-700 focus:outline-none focus:border-marca-600"><option value="">Selecione</option>'+catOpts+'</select></div></div><div><label class="block text-xs font-semibold text-stone-700 mb-1">Imagem de capa</label><div id="gp-upload-capa" class="border-2 border-dashed border-stone-300 rounded-lg p-4 text-center cursor-pointer hover:border-marca-500 transition-colors" onclick="document.getElementById(\'gp-file-capa\').click()"><svg class="w-6 h-6 text-stone-400 mx-auto mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><p class="text-xs text-stone-500">Toque para enviar imagem</p><input type="file" id="gp-file-capa" accept="image/*" class="hidden" onchange="gestao_de_produtos_previewCapa(this)"></div><div id="gp-preview-capa" class="hidden mt-2"><div class="w-20 h-20 rounded-lg shadow-sm mx-auto" style="background:linear-gradient(135deg,#7C2D12,#F97316)"></div><p class="text-[10px] text-green-600 text-center mt-1">Imagem enviada</p></div></div><div><label class="block text-xs font-semibold text-stone-700 mb-1">Arquivo do produto</label><div class="flex gap-2"><div class="flex-1 border-2 border-dashed border-stone-300 rounded-lg p-3 text-center cursor-pointer hover:border-marca-500 transition-colors" onclick="document.getElementById(\'gp-file-produto\').click()"><svg class="w-5 h-5 text-stone-400 mx-auto mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg><p class="text-[10px] text-stone-500">PDF/E-book</p><input type="file" id="gp-file-produto" accept=".pdf" class="hidden" onchange="gestao_de_produtos_previewArquivo(this)"></div><div class="flex-1"><label class="block text-xs text-stone-500 mb-1">Ou link de acesso</label><input id="gp-form-link" type="url" placeholder="https://..." value="'+(e.link||'')+'" class="w-full bg-white rounded-lg border border-stone-200 px-3 py-2.5 text-xs text-stone-800 placeholder-stone-400 focus:outline-none focus:border-marca-600"></div></div></div><div><label class="block text-xs font-semibold text-stone-700 mb-1">Visibilidade</label>'+visSel+'</div><div class="bg-amber-50 rounded-lg p-3 border border-amber-200"><p class="text-xs text-amber-800 font-medium mb-1">Pré-visualização</p><div class="bg-white rounded-lg p-3 border border-stone-100 shadow-sm"><div class="flex gap-3"><div id="gp-preview-capa-form" class="w-14 h-14 rounded-lg flex-shrink-0 shadow-sm" style="background:linear-gradient(135deg,'+(e.capaCor||'#7C2D12')+','+(e.capaCor||'#7C2D12')+',#F97316)"></div><div><p id="gp-preview-nome" class="text-sm font-bold text-stone-900">'+(e.nome||'Nome do Produto')+'</p><p id="gp-preview-cat" class="text-xs text-stone-500">'+(e.categoria||'Categoria')+'</p><p id="gp-preview-preco" class="text-sm font-bold text-marca-800 mt-0.5">'+(e.preco>0?brl(e.preco):'Grátis')+'</p></div></div></div></div></div><div class="flex gap-2 pt-1"><button type="submit" class="active:scale-95 transition-transform flex-1 bg-marca-800 text-white text-sm font-semibold py-3 rounded-lg shadow-md hover:bg-marca-900">'+(isEdit?'Salvar Alterações':'Cadastrar Produto')+'</button><button type="button" onclick="fecharModal()" class="active:scale-95 transition-transform bg-stone-100 text-stone-700 text-sm font-medium py-3 px-5 rounded-lg">Cancelar</button></div></form>',isEdit?'Editar Produto':'Novo Produto');
+      }
+
+      function gestao_de_produtos_mascaraPreco(el){
+        var v=el.value.replace(/\D/g,'');if(v){v=(parseInt(v)/100).toLocaleString('pt-BR',{minimumFractionDigits:2});}el.value=v;
+      }
+
+      function gestao_de_produtos_previewCapa(input){
+        if(input.files&&input.files[0]){document.getElementById('gp-preview-capa').classList.remove('hidden');}
+      }
+
+      function gestao_de_produtos_previewArquivo(input){
+        if(input.files&&input.files[0]){toast('Arquivo selecionado: '+input.files[0].name,'info');}
+      }
+
+      function gestao_de_produtos_salvar(id){
+        var nome=document.getElementById('gp-form-nome').value.trim();
+        var desc=document.getElementById('gp-form-descricao').value.trim();
+        var precoRaw=document.getElementById('gp-form-preco').value.replace(/\./g,'').replace(',','.');
+        var preco=parseFloat(precoRaw)*100;
+        var categoria=document.getElementById('gp-form-categoria').value;
+        var visibilidade=document.getElementById('gp-form-visibilidade').value;
+        if(!nome||!desc||!categoria||isNaN(preco)){toast('Preencha todos os campos obrigatórios','erro');return;}
+        if(id){
+          var p=produtos.find(function(x){return x.id===id;});if(p){p.nome=nome;p.descricao=desc;p.preco=preco;p.categoria=categoria;p.visibilidade=visibilidade;}
+        }else{
+          var nc=['#7C2D12','#F97316','#92400E','#EA580C','#C2410C','#9A3412'];
+          produtos.push({id:Date.now(),nome:nome,descricao:desc,preco:preco,categoria:categoria,status:"Ativo",dataCriacao:new Date().toISOString().split('T')[0],vendas:0,avaliacao:0,capaCor:nc[Math.floor(Math.random()*nc.length)],tipo:"E-book",visibilidade:visibilidade});
+        }
+        fecharModal();
+        gestao_de_produtos_render();
+        gestao_de_produtos_atualizarContadores();
+        toast(id?'Produto atualizado com sucesso':'Produto cadastrado com sucesso','ok');
+      }
+
+      function gestao_de_produtos_verDetalhe(id){
+        var p=produtos.find(function(x){return x.id===id;});if(!p)return;
+        var estrelas='';for(var i=0;i<5;i++){estrelas+=i<Math.floor(p.avaliacao)?'<svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>':'<svg class="w-3.5 h-3.5 text-stone-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';}
+        if(window.abrirModal){
+          window.abrirModal('<div class="animate-fade-in"><div class="flex gap-3 mb-4"><div class="w-20 h-20 rounded-xl flex-shrink-0 shadow-md" style="background:linear-gradient(135deg,'+p.capaCor+','+p.capaCor+'cc,#F97316)"></div><div class="flex-1 min-w-0"><h3 class="font-display text-sm font-bold text-stone-900 leading-tight">'+p.nome+'</h3><p class="text-xs text-stone-500 mt-0.5">'+p.categoria+' · '+p.tipo+'</p><div class="flex items-center gap-1 mt-1">'+estrelas+'<span class="text-xs text-stone-600 font-medium">'+p.avaliacao+'</span></div></div></div><div class="bg-stone-50 rounded-lg p-3 mb-3"><p class="text-xs text-stone-600 leading-relaxed">'+p.descricao+'</p></div><div class="grid grid-cols-2 gap-2 mb-3"><div class="bg-white rounded-lg p-2.5 border border-stone-100"><p class="text-[10px] text-stone-500 uppercase tracking-wide">Preço</p><p class="font-display font-bold text-marca-900">'+brl(p.preco)+'</p></div><div class="bg-white rounded-lg p-2.5 border border-stone-100"><p class="text-[10px] text-stone-500 uppercase tracking-wide">Vendas</p><p class="font-display font-bold text-green-700">'+p.vendas.toLocaleString('pt-BR')+'</p></div><div class="bg-white rounded-lg p-2.5 border border-stone-100"><p class="text-[10px] text-stone-500 uppercase tracking-wide">Status</p><span class="badge '+(p.status==='Ativo'?'badge-green':'badge-amber')+'">'+p.status+'</span></div><div class="bg-white rounded-lg p-2.5 border border-stone-100"><p class="text-[10px] text-stone-500 uppercase tracking-wide">Visibilidade</p><p class="text-xs font-semibold text-stone-700 capitalize">'+(p.visibilidade==='publico'?'Público':'Privado')+'</p></div></div><div class="bg-white rounded-lg p-3 border border-stone-100 mb-4"><p class="text-[10px] text-stone-500 uppercase tracking-wide mb-1">Histórico de Vendas</p><svg class="w-full h-20" viewBox="0 0 260 60" preserveAspectRatio="none"><polyline fill="none" stroke="#7C2D12" stroke-width="2" points="0,50 30,35 60,42 90,20 120,28 150,10 180,18 210,8 240,15 260,5"/><polyline fill="url(#sparkGrad)" stroke="none" points="0,50 30,35 60,42 90,20 120,28 150,10 180,18 210,8 240,15 260,5 260,60 0,60"/><defs><linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F97316" stop-opacity="0.3"/><stop offset="100%" stop-color="#F97316" stop-opacity="0"/></linearGradient></defs></svg></div><div class="flex gap-2"><button onclick="fecharModal();gestao_de_produtos_editar('+p.id+')" class="active:scale-95 transition-transform flex-1 bg-marca-800 text-white text-sm font-semibold py-2.5 rounded-lg">Editar</button><button onclick="fecharModal()" class="active:scale-95 transition-transform bg-stone-100 text-stone-700 text-sm font-medium py-2.5 px-5 rounded-lg">Fechar</button></div></div>',p.nome);
+        }
+      }
+
+      function gestao_de_produtos_render(){
+        var cont=document.getElementById('gestao-produtos-lista');if(!cont)return;
+        var html='';produtos.forEach(function(p){
+          var inicial=p.nome.charAt(0).toUpperCase();
+          html+='<div class="gp-item bg-white rounded-xl p-3 shadow-sm border border-stone-100 hover:shadow-md hover:border-marca-200 transition-all cursor-pointer active:scale-[0.98]" data-nome="'+p.nome+'" data-categoria="'+p.categoria+'" data-status="'+p.status+'" onclick="gestao_de_produtos_verDetalhe('+p.id+')"><div class="flex items-center gap-3"><div class="w-11 h-11 rounded-lg flex-shrink-0 shadow-sm flex items-center justify-center" style="background:linear-gradient(135deg,'+p.capaCor+','+(p.capaCor)+'cc,#F97316)"><span class="text-white font-bold text-sm">'+inicial+'</span></div><div class="flex-1 min-w-0"><div class="flex items-center gap-2"><p class="text-sm font-bold text-stone-900 truncate">'+p.nome+'</p></div><div class="flex items-center gap-2 mt-0.5"><span class="text-[11px] text-stone-500">'+p.categoria+'</span><span class="text-stone-300">·</span><span class="text-[11px] text-stone-500">'+dataBR(p.dataCriacao)+'</span></div></div><div class="text-right flex-shrink-0"><p class="text-sm font-bold text-marca-900">'+brl(p.preco)+'</p><span class="badge '+(p.status==='Ativo'?'badge-green':'badge-amber')+' text-[10px] mt-0.5 inline-block">'+p.status+'</span></div></div><div class="flex items-center gap-1 mt-2.5 pt-2.5 border-t border-stone-100" onclick="event.stopPropagation()"><button onclick="gestao_de_produtos_editar('+p.id+')" class="active:scale-95 transition-transform flex items-center gap-1 text-xs text-marca-700 hover:text-marca-900 font-medium px-2 py-1.5 rounded-md hover:bg-marca-50"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg>Editar</button><button onclick="gestao_de_produtos_toggleStatus('+p.id+')" class="active:scale-95 transition-transform flex items-center gap-1 text-xs '+(p.status==='Ativo'?'text-amber-600 hover:text-amber-800':'text-green-600 hover:text-green-800')+' font-medium px-2 py-1.5 rounded-md hover:bg-'+(p.status==='Ativo'?'amber':'green')+'-50"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="'+(p.status==='Ativo'?'M15.75 5.25v13.5m-7.5-13.5v13.5':'M5.25 4.5h13.5m-13.5 0v13.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.5m-13.5 0h13.5')+'"/></svg>'+(p.status==='Ativo'?'Pausar':'Ativar')+'</button><button onclick="event.stopPropagation();gestao_de_produtos_remover('+p.id+')" class="active:scale-95 transition-transform flex items-center gap-1 text-xs text-red-600 hover:text-red-800 font-medium px-2 py-1.5 rounded-md hover:bg-red-50"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.061-.94-1.75-1.816-1.618l-3.04 1.44a1.125 1.125 0 01-1.304-.09l-.375-.375a1.125 1.125 0 00-1.304-.09l-3.04 1.44C6.69 7.41 5.75 8.1 5.75 9.161V9.75m7.5 0h.008v.008h-.008v-.008zm-7.5 0h.008v.008H5.25v-.008z"/></svg>Excluir</button></div></div>';
+        });cont.innerHTML=html;
+      }
+
+      gestao_de_produtos_render();
+      gestao_de_produtos_atualizarContadores();
+    })();
+    </script>
+
     <!-- TELAS -->
     </main>
 
