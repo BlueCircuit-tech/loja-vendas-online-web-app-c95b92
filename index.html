@@ -2495,6 +2495,266 @@
     })();
     </script>
 
+    <section data-tela="meus-pedidos" class="hidden">
+    <div class="px-5 pt-2 pb-6">
+        <div class="fade-in">
+            <h1 class="font-display text-2xl font-bold text-marca-900 leading-tight">Meus Pedidos</h1>
+            <p class="text-sm text-marca-700/70 mt-1 mb-5">Acompanhe suas compras e acesse seus materiais</p>
+
+            <div class="grid grid-cols-2 gap-3 mb-5">
+                <div class="card !p-3 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-marca-900 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                    </div>
+                    <div>
+                        <p class="text-xs text-marca-700/60 font-body">Total</p>
+                        <p class="text-lg font-bold text-marca-900 font-display" id="meus_pedidos_total">12</p>
+                    </div>
+                </div>
+                <div class="card !p-3 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-destaque flex items-center justify-center flex-shrink-0">
+                        <svg class="w-5 h-5 text-marca-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div>
+                        <p class="text-xs text-marca-700/60 font-body">Pendentes</p>
+                        <p class="text-lg font-bold text-marca-900 font-display" id="meus_pedidos_pendentes">2</p>
+                    </div>
+                </div>
+                <div class="card !p-3 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-green-600 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    </div>
+                    <div>
+                        <p class="text-xs text-marca-700/60 font-body">Concluídos</p>
+                        <p class="text-lg font-bold text-marca-900 font-display" id="meus_pedidos_concluidos">8</p>
+                    </div>
+                </div>
+                <div class="card !p-3 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-red-500 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </div>
+                    <div>
+                        <p class="text-xs text-marca-700/60 font-body">Cancelados</p>
+                        <p class="text-lg font-bold text-marca-900 font-display" id="meus_pedidos_cancelados">2</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-1.5 flex gap-1 mb-5 shadow-sm border border-marca-100">
+                <button onclick="meus_pedidos_filtrar('todos')" class="meus_pedidos-aba flex-1 py-2.5 text-xs font-semibold rounded-xl transition-all duration-200 bg-marca-900 text-white" data-aba="todos">Todos</button>
+                <button onclick="meus_pedidos_filtrar('pendentes')" class="meus_pedidos-aba flex-1 py-2.5 text-xs font-semibold rounded-xl transition-all duration-200 text-marca-700 hover:bg-marca-50" data-aba="pendentes">Pendentes</button>
+                <button onclick="meus_pedidos_filtrar('concluidos')" class="meus_pedidos-aba flex-1 py-2.5 text-xs font-semibold rounded-xl transition-all duration-200 text-marca-700 hover:bg-marca-50" data-aba="concluidos">Concluídos</button>
+                <button onclick="meus_pedidos_filtrar('cancelados')" class="meus_pedidos-aba flex-1 py-2.5 text-xs font-semibold rounded-xl transition-all duration-200 text-marca-700 hover:bg-marca-50" data-aba="cancelados">Cancelados</button>
+            </div>
+
+            <div class="flex items-center justify-between mb-4">
+                <p class="text-sm font-semibold text-marca-900 font-display" id="meus_pedidos_contagem">12 pedidos</p>
+                <button onclick="meus_pedidos_atualizar()" class="text-xs text-marca-700 flex items-center gap-1 hover:text-marca-900 transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                    Atualizar
+                </button>
+            </div>
+
+            <div id="meus_pedidos_lista" class="space-y-3"></div>
+
+            <div id="meus_pedidos_vazio" class="hidden text-center py-12">
+                <div class="w-16 h-16 mx-auto rounded-full bg-marca-100 flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8 text-marca-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/></svg>
+                </div>
+                <p class="text-sm font-semibold text-marca-800 font-display">Nenhum pedido encontrado</p>
+                <p class="text-xs text-marca-600 mt-1">Os pedidos aparecerão aqui quando você fizer uma compra</p>
+                <button onclick="mostrarTela('catalogo-completo')" class="btn mt-4 !text-sm !py-2.5 !px-6">Ver Catálogo</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+const meus_pedidos_dados = [
+    {id: 'BC-2048', data: '2025-01-15', produtos: 'E-book: Método 5S Pessoal', valor: 97.00, status: 'concluido', pagamento: 'Cartão de Crédito (final 4532)', entrega: 'Download imediato disponível', parcelas: '1x de R$ 97,00', img: '#F97316'},
+    {id: 'BC-2047', data: '2025-01-12', produtos: 'Curso: Hábitos Atômicos Prático', valor: 297.00, status: 'concluido', pagamento: 'PIX', entrega: 'Download imediato disponível', parcelas: '1x de R$ 297,00', img: '#7C2D12'},
+    {id: 'BC-2046', data: '2025-01-10', produtos: 'E-book: Planejamento Semanal Eficaz', valor: 67.00, status: 'concluido', pagamento: 'Cartão de Crédito (final 8810)', entrega: 'Download imediato disponível', parcelas: '2x de R$ 33,50', img: '#F97316'},
+    {id: 'BC-2045', data: '2025-01-08', produtos: 'Workshop: Rotina de Alta Performance', valor: 197.00, status: 'pendente', pagamento: 'Cartão de Crédito (final 3356)', entrega: 'Aguardando confirmação de pagamento', parcelas: '3x de R$ 65,67', img: '#7C2D12'},
+    {id: 'BC-2044', data: '2025-01-05', produtos: 'E-book: Método 5S Pessoal + Curso Hábitos Atômicos (Combo)', valor: 347.00, status: 'concluido', pagamento: 'PIX', entrega: 'Download imediato disponível', parcelas: '1x de R$ 347,00', img: '#FFFF00'},
+    {id: 'BC-2043', data: '2024-12-28', produtos: 'E-book: Planejamento Semanal Eficaz', valor: 67.00, status: 'cancelado', pagamento: 'Cartão de Crédito (final 7712)', entrega: 'Cancelado pelo cliente', parcelas: 'Cancelada', img: '#F97316'},
+    {id: 'BC-2042', data: '2024-12-20', produtos: 'Curso: Hábitos Atômicos Prático', valor: 297.00, status: 'concluido', pagamento: 'Boleto Bancário', entrega: 'Download imediato disponível', parcelas: '1x de R$ 297,00', img: '#7C2D12'},
+    {id: 'BC-2041', data: '2024-12-15', produtos: 'Workshop: Rotina de Alta Performance', valor: 197.00, status: 'concluido', pagamento: 'Cartão de Crédito (final 5534)', entrega: 'Download imediato disponível', parcelas: '2x de R$ 98,50', img: '#F97316'},
+    {id: 'BC-2040', data: '2024-12-10', produtos: 'E-book: Método 5S Pessoal', valor: 97.00, status: 'cancelado', pagamento: 'PIX', entrega: 'Reembolso processado em 15/12/2024', parcelas: 'Estornada', img: '#7C2D12'},
+    {id: 'BC-2039', data: '2024-12-01', produtos: 'Combo: E-book + Curso + Workshop (Pacote Completo)', valor: 497.00, status: 'concluido', pagamento: 'Cartão de Crédito (final 2209)', entrega: 'Download imediato disponível', parcelas: '5x de R$ 99,40', img: '#FFFF00'},
+    {id: 'BC-2038', data: '2024-11-25', produtos: 'Curso: Hábitos Atômicos Prático', valor: 297.00, status: 'pendente', pagamento: 'Cartão de Crédito (final 6641)', entrega: 'Aguardando confirmação de pagamento', parcelas: '1x de R$ 297,00', img: '#7C2D12'},
+    {id: 'BC-2037', data: '2024-11-18', produtos: 'E-book: Planejamento Semanal Eficaz', valor: 67.00, status: 'concluido', pagamento: 'PIX', entrega: 'Download imediato disponível', parcelas: '1x de R$ 67,00', img: '#F97316'}
+];
+
+let meus_pedidos_abaAtiva = 'todos';
+
+function meus_pedidos_badge(status) {
+    const map = {
+        pendente: '<span class="badge !bg-yellow-100 !text-yellow-800 !text-xs !px-2.5 !py-1"><span class="inline-block w-1.5 h-1.5 rounded-full bg-yellow-500 mr-1.5 animate-pulse"></span>Pendente</span>',
+        concluido: '<span class="badge !bg-green-100 !text-green-800 !text-xs !px-2.5 !py-1"><span class="inline-block w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5"></span>Concluído</span>',
+        cancelado: '<span class="badge !bg-red-100 !text-red-800 !text-xs !px-2.5 !py-1"><span class="inline-block w-1.5 h-1.5 rounded-full bg-red-500 mr-1.5"></span>Cancelado</span>'
+    };
+    return map[status] || status;
+}
+
+function meus_pedidos_iconeStatus(status) {
+    const map = {
+        pendente: '<svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+        concluido: '<svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+        cancelado: '<svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>'
+    };
+    return map[status] || '';
+}
+
+function meus_pedidos_formatarData(iso) {
+    const d = new Date(iso + 'T00:00:00');
+    return d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+}
+
+function meus_pedidos_abrirDetalhe(pedido) {
+    const podeBaixar = pedido.status === 'concluido';
+    const podeReembolsar = pedido.status === 'concluido' || pedido.status === 'pendente';
+    const html = `
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-5">
+                <div>
+                    <p class="text-xs text-marca-500 uppercase tracking-wider font-semibold">Pedido</p>
+                    <p class="text-xl font-bold text-marca-900 font-display">${pedido.id}</p>
+                </div>
+                ${meus_pedidos_badge(pedido.status)}
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-marca-50 rounded-xl p-4">
+                    <p class="text-xs text-marca-500 uppercase tracking-wider font-semibold mb-1">Produto</p>
+                    <p class="text-sm font-semibold text-marca-900">${pedido.produtos}</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-marca-50 rounded-xl p-3">
+                        <p class="text-xs text-marca-500 mb-0.5">Data do pedido</p>
+                        <p class="text-sm font-semibold text-marca-900">${meus_pedidos_formatarData(pedido.data)}</p>
+                    </div>
+                    <div class="bg-marca-50 rounded-xl p-3">
+                        <p class="text-xs text-marca-500 mb-0.5">Valor total</p>
+                        <p class="text-sm font-bold text-green-700">${brl(pedido.valor)}</p>
+                    </div>
+                </div>
+
+                <div class="bg-marca-50 rounded-xl p-4">
+                    <p class="text-xs text-marca-500 uppercase tracking-wider font-semibold mb-2">Pagamento</p>
+                    <p class="text-sm text-marca-800">${pedido.pagamento}</p>
+                    <p class="text-sm text-marca-800">${pedido.parcelas}</p>
+                </div>
+
+                <div class="bg-marca-50 rounded-xl p-4">
+                    <p class="text-xs text-marca-500 uppercase tracking-wider font-semibold mb-2">Entrega</p>
+                    <p class="text-sm text-marca-800">${pedido.entrega}</p>
+                </div>
+
+                ${pedido.status === 'cancelado' ? '<div class="bg-red-50 border border-red-200 rounded-xl p-3"><p class="text-xs text-red-700">Reembolso processado em 15/12/2024 via PIX. Valor creditado em até 3 dias úteis.</p></div>' : ''}
+            </div>
+
+            <div class="flex gap-3 mt-5">
+                ${podeBaixar ? `<button onclick="meus_pedidos_baixar('${pedido.id}')" class="btn flex-1 !text-sm !py-3 active:scale-95 transition-transform"><svg class="w-4 h-4 inline mr-1.5 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>Baixar Material</button>` : ''}
+                ${podeReembolsar ? `<button onclick="meus_pedidos_reembolsar('${pedido.id}')" class="flex-1 !text-sm !py-3 !px-4 rounded-xl border-2 border-red-300 text-red-600 font-semibold hover:bg-red-50 active:scale-95 transition-all">Solicitar Reembolso</button>` : ''}
+                ${!podeBaixar && !podeReembolsar ? '<button onclick="fecharModal()" class="btn flex-1 !text-sm !py-3">Fechar</button>' : ''}
+            </div>
+        </div>
+    `;
+    abrirModal(html, `Pedido ${pedido.id}`);
+}
+
+function meus_pedidos_baixar(id) {
+    fecharModal();
+    setTimeout(() => toast('Download iniciado! Verifique seus arquivos.', 'ok'), 300);
+}
+
+function meus_pedidos_reembolsar(id) {
+    const html = `
+        <div class="p-6 text-center">
+            <div class="w-14 h-14 mx-auto rounded-full bg-red-100 flex items-center justify-center mb-4">
+                <svg class="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            </div>
+            <h3 class="font-display font-bold text-marca-900 text-lg mb-2">Solicitar Reembolso</h3>
+            <p class="text-sm text-marca-600 mb-5">Deseja solicitar reembolso do pedido <strong>${id}</strong>? O valor será estornado em até 5 dias úteis.</p>
+            <div class="flex gap-3">
+                <button onclick="fecharModal()" class="flex-1 !text-sm !py-3 rounded-xl border-2 border-marca-200 text-marca-700 font-semibold hover:bg-marca-50 active:scale-95 transition-all">Cancelar</button>
+                <button onclick="meus_pedidos_confirmarReembolso('${id}')" class="flex-1 !text-sm !py-3 rounded-xl bg-red-500 text-white font-semibold hover:bg-red-600 active:scale-95 transition-all">Confirmar</button>
+            </div>
+        </div>
+    `;
+    abrirModal(html, 'Confirmar Reembolso');
+}
+
+function meus_pedidos_confirmarReembolso(id) {
+    fecharModal();
+    setTimeout(() => toast(`Reembolso do pedido ${id} solicitado com sucesso.`, 'info'), 300);
+}
+
+function meus_pedidos_filtrar(aba) {
+    meus_pedidos_abaAtiva = aba;
+    document.querySelectorAll('.meus_pedidos-aba').forEach(b => {
+        if (b.dataset.aba === aba) {
+            b.className = 'meus_pedidos-aba flex-1 py-2.5 text-xs font-semibold rounded-xl transition-all duration-200 bg-marca-900 text-white';
+        } else {
+            b.className = 'meus_pedidos-aba flex-1 py-2.5 text-xs font-semibold rounded-xl transition-all duration-200 text-marca-700 hover:bg-marca-50';
+        }
+    });
+    meus_pedidos_renderizar();
+}
+
+function meus_pedidos_renderizar() {
+    const lista = document.getElementById('meus_pedidos_lista');
+    const vazio = document.getElementById('meus_pedidos_vazio');
+    const contagem = document.getElementById('meus_pedidos_contagem');
+    let filtrados = meus_pedidos_dados;
+    if (meus_pedidos_abaAtiva !== 'todos') {
+        filtrados = meus_pedidos_dados.filter(p => p.status === meus_pedidos_abaAtiva);
+    }
+    contagem.textContent = filtrados.length + ' pedido' + (filtrados.length !== 1 ? 's' : '');
+    if (filtrados.length === 0) {
+        lista.classList.add('hidden');
+        vazio.classList.remove('hidden');
+    } else {
+        lista.classList.remove('hidden');
+        vazio.classList.add('hidden');
+        lista.innerHTML = filtrados.map(p => `
+            <div onclick="meus_pedidos_abrirDetalhe(meus_pedidos_dados.find(x=>x.id==='${p.id}'))" class="card !p-4 cursor-pointer active:scale-[0.98] transition-transform hover:border-marca-300">
+                <div class="flex items-start gap-3.5">
+                    <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background:${p.img}">
+                        <span class="text-white font-bold text-xs font-display">${p.produtos.split(':')[0].trim().substring(0,3).toUpperCase()}</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-start justify-between gap-2">
+                            <div class="min-w-0">
+                                <p class="text-xs text-marca-400 font-semibold">${p.id}</p>
+                                <p class="text-sm font-semibold text-marca-900 truncate mt-0.5">${p.produtos}</p>
+                            </div>
+                            ${meus_pedidos_iconeStatus(p.status)}
+                        </div>
+                        <div class="flex items-center justify-between mt-2">
+                            <p class="text-xs text-marca-500">${meus_pedidos_formatarData(p.data)}</p>
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-sm font-bold text-marca-900 font-display">${brl(p.valor)}</span>
+                            </div>
+                        </div>
+                        <div class="mt-2">${meus_pedidos_badge(p.status)}</div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+}
+
+function meus_pedidos_atualizar() {
+    toast('Pedidos atualizados com sucesso!', 'ok');
+}
+
+(function() {
+    meus_pedidos_renderizar();
+})();
+</script>
+
     <!-- TELAS -->
     </main>
 
