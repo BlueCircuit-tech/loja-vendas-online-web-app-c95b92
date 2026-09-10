@@ -992,6 +992,354 @@
   </script>
 </section>
 
+    <section data-tela="pagamento" class="hidden">
+        <div class="max-w-[430px] mx-auto bg-white min-h-screen animate-fadeIn">
+            <div class="px-5 pt-6 pb-4">
+                <h1 class="font-display text-2xl font-bold text-marca-900">Finalizar Pedido</h1>
+                <p class="text-sm text-stone-500 mt-1">Confira os dados e escolha a forma de pagamento</p>
+            </div>
+
+            <div class="px-5 space-y-4 pb-24">
+                <div class="bg-white border border-stone-200 rounded-2xl p-4 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-marca-600 to-marca-800 flex items-center justify-center flex-shrink-0 shadow-md">
+                            <span class="text-white font-display font-bold text-sm">MSE</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-display font-semibold text-marca-900 text-sm leading-tight truncate">Método Sistema de Execução</h3>
+                            <p class="text-xs text-stone-500 mt-0.5">E-book + Materiais Complementares</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between pt-2 border-t border-stone-100">
+                        <span class="text-sm text-stone-600">1 × E-book</span>
+                        <span class="text-sm font-semibold text-marca-800">R$ 97,00</span>
+                    </div>
+                    <div class="flex items-center justify-between pt-1.5">
+                        <span class="text-sm text-stone-600">Bônus: Planner Semanal</span>
+                        <span class="text-sm font-semibold text-marca-800">R$ 37,00</span>
+                    </div>
+                    <div class="flex items-center justify-between pt-3 mt-1 border-t border-stone-200">
+                        <span class="font-display font-bold text-marca-900">Total</span>
+                        <span class="font-display font-bold text-xl text-marca-800">R$ 134,00</span>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-stone-200 rounded-2xl p-5 shadow-sm">
+                    <h3 class="font-display font-semibold text-marca-900 text-base mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-marca-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                        Dados Pessoais
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-600 mb-1.5 uppercase tracking-wide">Nome completo</label>
+                            <input id="pg-nome" type="text" placeholder="Ex: Maria Silva Santos" class="w-full px-4 py-3 rounded-xl border border-stone-200 text-sm text-marca-900 placeholder:text-stone-400 focus:outline-none focus:border-marca-500 focus:ring-2 focus:ring-marca-200 transition-all bg-stone-50 focus:bg-white" oninput="pagamento_preencher()">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-600 mb-1.5 uppercase tracking-wide">E-mail</label>
+                            <input id="pg-email" type="email" placeholder="seu@email.com" class="w-full px-4 py-3 rounded-xl border border-stone-200 text-sm text-marca-900 placeholder:text-stone-400 focus:outline-none focus:border-marca-500 focus:ring-2 focus:ring-marca-200 transition-all bg-stone-50 focus:bg-white" oninput="pagamento_preencher()">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-600 mb-1.5 uppercase tracking-wide">CPF</label>
+                            <input id="pg-cpf" type="text" placeholder="000.000.000-00" maxlength="14" class="w-full px-4 py-3 rounded-xl border border-stone-200 text-sm text-marca-900 placeholder:text-stone-400 focus:outline-none focus:border-marca-500 focus:ring-2 focus:ring-marca-200 transition-all bg-stone-50 focus:bg-white" oninput="pagamento_mascaraCPF(this); pagamento_preencher()">
+                        </div>
+                    </div>
+                    <div class="mt-3 flex items-start gap-2 p-3 bg-marca-50 rounded-xl border border-marca-100">
+                        <svg class="w-4 h-4 text-marca-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+                        <p class="text-xs text-marca-700 leading-relaxed">Seus dados são protegidos com criptografia de ponta a ponta. Compra 100% segura.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-stone-200 rounded-2xl p-5 shadow-sm">
+                    <h3 class="font-display font-semibold text-marca-900 text-base mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-marca-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v10.5a2.25 2.25 0 002.25 2.25z"/></svg>
+                        Forma de Pagamento
+                    </h3>
+                    <div class="space-y-2.5">
+                        <button onclick="pagamento_selecionar('pix')" id="pg-btn-pix" class="w-full flex items-center gap-3.5 p-4 rounded-xl border-2 border-stone-200 bg-white hover:border-marca-300 transition-all duration-200 active:scale-[0.98] group text-left">
+                            <div id="pg-radio-pix" class="w-5 h-5 rounded-full border-2 border-stone-300 flex items-center justify-center flex-shrink-0 transition-all">
+                                <div class="w-2.5 h-2.5 rounded-full bg-marca-600 scale-0 transition-transform duration-200" id="pg-check-pix"></div>
+                            </div>
+                            <svg class="w-8 h-8 flex-shrink-0" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="#32BCAD"/><path d="M12.5 20.5c2-2.5 5.2-3.8 8.5-3.8 4.5 0 8 2 9 5.5h-4.2c-.8-1.5-2.5-2.5-4.5-2.5-1.5 0-3 .5-3.5 1.5h-1.8c.5-2.5 3-4.2 6-4.7zm6 1.5c.5-1 1.8-1.5 3-1.5 1.5 0 2.8.5 3.5 1.5h-6.5zM20 16h-4.5c-1 0-1.8.5-2 1.5H9.5v1.2H12c0 .5.5 1 1 1h.5v.8H13c-1 0-2 .5-2 1.5v.5h7c1 0 2-.5 2-1.5 0-.5-.3-1.2-1-1.5h1.5V17.5c0-1.2-1-2-2.5-2h-2z" fill="#FFF"/></svg>
+                            <div class="flex-1">
+                                <span class="font-display font-semibold text-marca-900 text-sm block">Pix</span>
+                                <span class="text-xs text-stone-500">Aprovação instantânea</span>
+                            </div>
+                            <svg class="w-4 h-4 text-marca-600 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+                        </button>
+                        <button onclick="pagamento_selecionar('cartao')" id="pg-btn-cartao" class="w-full flex items-center gap-3.5 p-4 rounded-xl border-2 border-stone-200 bg-white hover:border-marca-300 transition-all duration-200 active:scale-[0.98] group text-left">
+                            <div id="pg-radio-cartao" class="w-5 h-5 rounded-full border-2 border-stone-300 flex items-center justify-center flex-shrink-0 transition-all">
+                                <div class="w-2.5 h-2.5 rounded-full bg-marca-600 scale-0 transition-transform duration-200" id="pg-check-cartao"></div>
+                            </div>
+                            <svg class="w-8 h-8 flex-shrink-0" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="#1A1F71"/><rect x="6" y="13" width="28" height="17" rx="3" fill="#FFF" stroke="#E8E8E8" stroke-width="0.5"/><rect x="6" y="13" width="28" height="5" rx="0" fill="#F7B600"/><rect x="6" y="16.5" width="28" height="1.5" fill="#1A1F71" opacity="0.15"/><circle cx="13" cy="24.5" r="2" fill="#EB001B" opacity="0.6"/><circle cx="18" cy="24.5" r="2" fill="#F79E1B" opacity="0.6"/></svg>
+                            <div class="flex-1">
+                                <span class="font-display font-semibold text-marca-900 text-sm block">Cartão de Crédito</span>
+                                <span class="text-xs text-stone-500">Em até 12× sem juros</span>
+                            </div>
+                            <svg class="w-4 h-4 text-marca-600 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+                        </button>
+                        <button onclick="pagamento_selecionar('boleto')" id="pg-btn-boleto" class="w-full flex items-center gap-3.5 p-4 rounded-xl border-2 border-stone-200 bg-white hover:border-marca-300 transition-all duration-200 active:scale-[0.98] group text-left">
+                            <div id="pg-radio-boleto" class="w-5 h-5 rounded-full border-2 border-stone-300 flex items-center justify-center flex-shrink-0 transition-all">
+                                <div class="w-2.5 h-2.5 rounded-full bg-marca-600 scale-0 transition-transform duration-200" id="pg-check-boleto"></div>
+                            </div>
+                            <svg class="w-8 h-8 flex-shrink-0" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="#FFF"/><rect x="7" y="12" width="26" height="18" rx="3" fill="none" stroke="#7C2D12" stroke-width="2"/><rect x="11" y="16" width="18" height="2" rx="1" fill="#F97316"/><rect x="11" y="21" width="14" height="2" rx="1" fill="#F97316" opacity="0.5"/><rect x="11" y="26" width="10" height="2" rx="1" fill="#F97316" opacity="0.3"/></svg>
+                            <div class="flex-1">
+                                <span class="font-display font-semibold text-marca-900 text-sm block">Boleto Bancário</span>
+                                <span class="text-xs text-stone-500">Vencimento em 3 dias úteis</span>
+                            </div>
+                            <svg class="w-4 h-4 text-marca-600 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+                        </button>
+                    </div>
+                    <div id="pg-cartao-form" class="hidden mt-4 p-4 bg-yellow-50 rounded-xl border border-yellow-200 space-y-3 animate-fadeIn">
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-600 mb-1.5 uppercase tracking-wide">Número do cartão</label>
+                            <input id="pg-num-cartao" type="text" placeholder="0000 0000 0000 0000" maxlength="19" class="w-full px-4 py-3 rounded-xl border border-stone-200 text-sm text-marca-900 placeholder:text-stone-400 focus:outline-none focus:border-marca-500 focus:ring-2 focus:ring-marca-200 transition-all bg-white" oninput="pagamento_mascaraCartao(this)">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-stone-600 mb-1.5 uppercase tracking-wide">Validade</label>
+                                <input id="pg-validade" type="text" placeholder="MM/AA" maxlength="5" class="w-full px-4 py-3 rounded-xl border border-stone-200 text-sm text-marca-900 placeholder:text-stone-400 focus:outline-none focus:border-marca-500 focus:ring-2 focus:ring-marca-200 transition-all bg-white" oninput="pagamento_mascaraValidade(this)">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-stone-600 mb-1.5 uppercase tracking-wide">CVV</label>
+                                <input id="pg-cvv" type="text" placeholder="123" maxlength="3" class="w-full px-4 py-3 rounded-xl border border-stone-200 text-sm text-marca-900 placeholder:text-stone-400 focus:outline-none focus:border-marca-500 focus:ring-2 focus:ring-marca-200 transition-all bg-white">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-600 mb-1.5 uppercase tracking-wide">Nome no cartão</label>
+                            <input id="pg-nome-cartao" type="text" placeholder="Como no cartão" class="w-full px-4 py-3 rounded-xl border border-stone-200 text-sm text-marca-900 placeholder:text-stone-400 focus:outline-none focus:border-marca-500 focus:ring-2 focus:ring-marca-200 transition-all bg-white uppercase" oninput="this.value=this.value.toUpperCase()">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-600 mb-1.5 uppercase tracking-wide">Parcelamento</label>
+                            <select id="pg-parcelas" class="w-full px-4 py-3 rounded-xl border border-stone-200 text-sm text-marca-900 focus:outline-none focus:border-marca-500 focus:ring-2 focus:ring-marca-200 transition-all bg-white appearance-none" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237C2D12' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 12px center;">
+                            </select>
+                        </div>
+                    </div>
+                    <div id="pg-pix-info" class="hidden mt-4 p-4 bg-marca-50 rounded-xl border border-marca-100 animate-fadeIn">
+                        <div class="flex items-center gap-2 mb-2">
+                            <svg class="w-5 h-5 text-marca-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <span class="font-display font-semibold text-marca-800 text-sm">Pagamento via Pix</span>
+                        </div>
+                        <p class="text-xs text-stone-600 leading-relaxed">Após confirmar, você receberá o QR Code e o código Pix para pagamento. O acesso ao material é liberado automaticamente em até 2 minutos após a confirmação.</p>
+                    </div>
+                    <div id="pg-boleto-info" class="hidden mt-4 p-4 bg-marca-50 rounded-xl border border-marca-100 animate-fadeIn">
+                        <div class="flex items-center gap-2 mb-2">
+                            <svg class="w-5 h-5 text-marca-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <span class="font-display font-semibold text-marca-800 text-sm">Boleto Bancário</span>
+                        </div>
+                        <p class="text-xs text-stone-600 leading-relaxed">O boleto será gerado após a confirmação e enviado por e-mail. O vencimento é em 3 dias úteis. O acesso é liberado após a compensação bancária.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-stone-200 rounded-2xl p-5 shadow-sm">
+                    <h3 class="font-display font-semibold text-marca-900 text-base mb-3 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-marca-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.094 18.094 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z"/></svg>
+                        Cupom de Desconto
+                    </h3>
+                    <div class="flex gap-2">
+                        <input id="pg-cupom" type="text" placeholder="Digite seu cupom" class="flex-1 px-4 py-3 rounded-xl border border-stone-200 text-sm text-marca-900 placeholder:text-stone-400 focus:outline-none focus:border-marca-500 focus:ring-2 focus:ring-marca-200 transition-all bg-stone-50 focus:bg-white uppercase">
+                        <button onclick="pagamento_aplicarCupom()" id="pg-btn-cupom" class="px-5 py-3 bg-marca-100 text-marca-800 font-semibold text-sm rounded-xl hover:bg-marca-200 active:scale-95 transition-all whitespace-nowrap font-display">Aplicar</button>
+                    </div>
+                    <div id="pg-cupom-msg" class="hidden mt-2 text-xs font-medium"></div>
+                </div>
+
+                <div class="bg-white border border-stone-200 rounded-2xl p-5 shadow-sm">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm text-stone-600">Subtotal</span>
+                        <span class="text-sm text-stone-600" id="pg-subtotal">R$ 134,00</span>
+                    </div>
+                    <div id="pg-desconto-row" class="hidden flex items-center justify-between mb-2">
+                        <span class="text-sm text-emerald-600">Desconto</span>
+                        <span class="text-sm text-emerald-600" id="pg-desconto-val">-R$ 0,00</span>
+                    </div>
+                    <div class="flex items-center justify-between pt-2 border-t border-stone-200">
+                        <span class="font-display font-bold text-marca-900">Total</span>
+                        <span class="font-display font-bold text-xl text-marca-800" id="pg-total">R$ 134,00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-stone-200 px-5 py-4 z-50">
+                <div class="max-w-[430px] mx-auto">
+                    <button onclick="pagamento_confirmar()" id="pg-btn-confirmar" class="w-full py-4 bg-marca-600 hover:bg-marca-700 active:scale-[0.97] text-white font-display font-bold text-base rounded-2xl transition-all duration-200 shadow-lg shadow-marca-600/25 flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+                        <span>Confirmar e Pagar</span>
+                    </button>
+                    <div class="flex items-center justify-center gap-1.5 mt-3">
+                        <svg class="w-3.5 h-3.5 text-stone-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+                        <span class="text-[11px] text-stone-400 font-medium">Compra 100% segura e protegida</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+        (function() {
+            var pagamento_metodo = null;
+            var pagamento_cupomAplicado = false;
+            var pagamento_valorOriginal = 134.00;
+            var pagamento_valorDesconto = 0;
+
+            window.pagamento_selecionar = function(metodo) {
+                pagamento_metodo = metodo;
+                var radios = ['pix', 'cartao', 'boleto'];
+                radios.forEach(function(m) {
+                    var border = document.getElementById('pg-btn-' + m).classList;
+                    var check = document.getElementById('pg-check-' + m);
+                    if (m === metodo) {
+                        border.remove('border-stone-200');
+                        border.add('border-marca-500', 'bg-marca-50');
+                        check.classList.remove('scale-0');
+                        check.classList.add('scale-100');
+                    } else {
+                        border.add('border-stone-200');
+                        border.remove('border-marca-500', 'bg-marca-50');
+                        check.classList.add('scale-0');
+                        check.classList.remove('scale-100');
+                    }
+                });
+                var cartaoForm = document.getElementById('pg-cartao-form');
+                var pixInfo = document.getElementById('pg-pix-info');
+                var boletoInfo = document.getElementById('pg-boleto-info');
+                cartaoForm.classList.add('hidden');
+                pixInfo.classList.add('hidden');
+                boletoInfo.classList.add('hidden');
+                if (metodo === 'cartao') cartaoForm.classList.remove('hidden');
+                if (metodo === 'pix') pixInfo.classList.remove('hidden');
+                if (metodo === 'boleto') boletoInfo.classList.remove('hidden');
+                if (metodo === 'cartao') pagamento_criarParcelas();
+            };
+
+            function pagamento_criarParcelas() {
+                var sel = document.getElementById('pg-parcelas');
+                if (sel.options.length > 0) return;
+                sel.innerHTML = '';
+                for (var i = 1; i <= 12; i++) {
+                    var val = (pagamento_valorOriginal - pagamento_valorDesconto) / i;
+                    var opt = document.createElement('option');
+                    opt.value = i;
+                    opt.textContent = i + '× de R$ ' + val.toFixed(2).replace('.', ',') + (i === 1 ? ' à vista' : ' sem juros');
+                    sel.appendChild(opt);
+                }
+            }
+
+            window.pagamento_mascaraCPF = function(el) {
+                var v = el.value.replace(/\D/g, '');
+                if (v.length > 11) v = v.substring(0, 11);
+                if (v.length > 9) v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, '$1.$2.$3-$4');
+                else if (v.length > 6) v = v.replace(/(\d{3})(\d{3})(\d{1,3})/, '$1.$2.$3');
+                else if (v.length > 3) v = v.replace(/(\d{3})(\d{1,3})/, '$1.$2');
+                el.value = v;
+            };
+
+            window.pagamento_mascaraCartao = function(el) {
+                var v = el.value.replace(/\D/g, '');
+                if (v.length > 16) v = v.substring(0, 16);
+                var r = v.match(/.{1,4}/g);
+                el.value = r ? r.join(' ') : '';
+            };
+
+            window.pagamento_mascaraValidade = function(el) {
+                var v = el.value.replace(/\D/g, '');
+                if (v.length > 4) v = v.substring(0, 4);
+                if (v.length >= 2) v = v.substring(0, 2) + '/' + v.substring(2);
+                el.value = v;
+            };
+
+            window.pagamento_preencher = function() {
+                var nome = document.getElementById('pg-nome').value;
+                var email = document.getElementById('pg-email').value;
+                var cpf = document.getElementById('pg-cpf').value;
+                if (nome && email && cpf && cpf.replace(/\D/g, '').length === 11) {
+                    var btn = document.getElementById('pg-btn-confirmar');
+                    btn.classList.remove('opacity-50');
+                }
+            };
+
+            window.pagamento_aplicarCupom = function() {
+                var cupom = document.getElementById('pg-cupom').value.trim().toUpperCase();
+                var msgEl = document.getElementById('pg-cupom-msg');
+                var btn = document.getElementById('pg-btn-cupom');
+                msgEl.classList.remove('hidden', 'text-red-600', 'text-emerald-600');
+                if (!cupom) {
+                    msgEl.textContent = 'Digite um código de cupom.';
+                    msgEl.classList.add('text-red-600');
+                    return;
+                }
+                var cuponsValidos = { 'BOASVINDAS10': 0.10, 'HABITOS20': 0.20, 'BLACKFRIDAY': 0.30, 'LANCAMENTO15': 0.15 };
+                if (cuponsValidos[cupom] && !pagamento_cupomAplicado) {
+                    pagamento_valorDesconto = pagamento_valorOriginal * cuponsValidos[cupom];
+                    pagamento_cupomAplicado = true;
+                    var novoTotal = pagamento_valorOriginal - pagamento_valorDesconto;
+                    document.getElementById('pg-desconto-row').classList.remove('hidden');
+                    document.getElementById('pg-desconto-val').textContent = '-R$ ' + pagamento_valorDesconto.toFixed(2).replace('.', ',');
+                    document.getElementById('pg-total').textContent = 'R$ ' + novoTotal.toFixed(2).replace('.', ',');
+                    msgEl.textContent = 'Cupom "' + cupom + '" aplicado! ' + (cuponsValidos[cupom] * 100) + '% de desconto.';
+                    msgEl.classList.add('text-emerald-600');
+                    btn.textContent = 'Aplicado';
+                    btn.classList.add('bg-emerald-100', 'text-emerald-700');
+                    btn.classList.remove('bg-marca-100', 'text-marca-800');
+                    btn.disabled = true;
+                    document.getElementById('pg-cupom').disabled = true;
+                    if (pagamento_metodo === 'cartao') pagamento_criarParcelasComValor(novoTotal);
+                    toast('Cupom aplicado com sucesso!', 'ok');
+                } else if (pagamento_cupomAplicado) {
+                    msgEl.textContent = 'Um cupom já foi aplicado a este pedido.';
+                    msgEl.classList.add('text-red-600');
+                } else {
+                    msgEl.textContent = 'Cupom inválido ou expirado.';
+                    msgEl.classList.add('text-red-600');
+                    toast('Cupom inválido.', 'erro');
+                }
+            };
+
+            function pagamento_criarParcelasComValor(total) {
+                var sel = document.getElementById('pg-parcelas');
+                sel.innerHTML = '';
+                for (var i = 1; i <= 12; i++) {
+                    var val = total / i;
+                    var opt = document.createElement('option');
+                    opt.value = i;
+                    opt.textContent = i + '× de R$ ' + val.toFixed(2).replace('.', ',') + (i === 1 ? ' à vista' : ' sem juros');
+                    sel.appendChild(opt);
+                }
+            }
+
+            window.pagamento_confirmar = function() {
+                var nome = document.getElementById('pg-nome').value.trim();
+                var email = document.getElementById('pg-email').value.trim();
+                var cpf = document.getElementById('pg-cpf').value.replace(/\D/g, '');
+                if (!nome) { toast('Preencha o nome completo.', 'erro'); return; }
+                if (!email || !email.includes('@')) { toast('Preencha um e-mail válido.', 'erro'); return; }
+                if (cpf.length !== 11) { toast('Preencha o CPF corretamente.', 'erro'); return; }
+                if (!pagamento_metodo) { toast('Selecione uma forma de pagamento.', 'erro'); return; }
+                if (pagamento_metodo === 'cartao') {
+                    var numCartao = document.getElementById('pg-num-cartao').value.replace(/\s/g, '');
+                    var validade = document.getElementById('pg-validade').value;
+                    var cvv = document.getElementById('pg-cvv').value;
+                    var nomeCartao = document.getElementById('pg-nome-cartao').value.trim();
+                    if (numCartao.length < 15) { toast('Preencha o número do cartão.', 'erro'); return; }
+                    if (!validade || validade.length < 5) { toast('Preencha a validade.', 'erro'); return; }
+                    if (!cvv || cvv.length < 3) { toast('Preencha o CVV.', 'erro'); return; }
+                    if (!nomeCartao) { toast('Preencha o nome no cartão.', 'erro'); return; }
+                }
+                var btn = document.getElementById('pg-btn-confirmar');
+                btn.disabled = true;
+                btn.innerHTML = '<svg class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span>Processando...</span>';
+                btn.classList.add('opacity-80');
+                setTimeout(function() {
+                    btn.disabled = false;
+                    btn.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg><span>Confirmar e Pagar</span>';
+                    btn.classList.remove('opacity-80');
+                    mostrarTela('pedido-confirmado');
+                    toast('Pedido realizado com sucesso!', 'ok');
+                }, 2000);
+            };
+
+            pagamento_selecionar('pix');
+            pagamento_criarParcelas();
+        })();
+        </script>
+    </section>
+
     <!-- TELAS -->
 
       <!-- ══════════════ NAVEGAÇÃO INFERIOR ══════════════ -->
